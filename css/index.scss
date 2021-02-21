@@ -38,8 +38,13 @@ body {
 }
 
 .container {
-  width: 1300px;
+  max-width: 1300px;
   margin: 0 auto;
+}
+
+.container-wide {
+  margin: 0 auto;
+  max-width: 1800px;
 }
 
 .button {
@@ -305,6 +310,7 @@ body {
   background-color: $primary-color;
 
   &__container {
+    // width: 1800px;
     display: flex;
     padding-top: 114px;
     padding-bottom: 115px;
@@ -379,7 +385,7 @@ body {
 
   &__left,
   &__right {
-    min-width: 50%;
+    max-width: 50%;
   }
 
   &__list {
@@ -391,18 +397,113 @@ body {
   &__list-item {
     max-width: 270px;
     min-height: 115px;
-    
   }
 
   &__list-item:nth-child(odd) {
     margin-right: 64px;
   }
 
+  &__list-item:first-child,
+  &__list-item:nth-child(2) {
+    margin-bottom: 76px;
+  }
+
+
   &__list-title {
     font-family: $secondary-font;
     font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 23px;
+    color: #1f1f1f;
   }
 
+  &__list-text {
+    font-family: $primary-font;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 28px;
+    color: #838383;
+  }
+
+  &__title {
+    color: #1f1f1f;
+    font-size: 48px;
+    font-family: $secondary-font;
+    margin-bottom: 60px;
+    font-weight: 700;
+
+  }
+
+  &__text {
+    color: #838383;
+    font-weight: 300;
+    line-height: 28px;
+    font-family: $primary-font;
+  }
+
+  &__upper-text {
+    margin-bottom: 32px;
+  }
+
+}
+
+.portfolio {
+  padding-top: 138px;
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+
+  &__menu {
+    display: flex;
+  }
+
+  &__menu-item {
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+
+    cursor: pointer;
+
+    color: #A4A4A4;
+  }
+
+  &__menu-item:hover {
+    border-bottom: 1px solid #1f1f1f;
+  }
+
+  &__menu-item:not(:last-child) {
+    margin-right: 70px;
+  }
+
+  &__projects-list {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__projects-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__projects-list-item {
+    margin-bottom: 8px;
+  }
+
+  &__projects-list-item:not(:nth-child(4n)) {
+    margin-right: 8px;
+  }
+
+  &__projects-list-item:hover {
+    opacity: .7;
+  }
+
+  &__project-list-img {
+    // width: 443px;
+    width: 385px;
+    height: 335px;
+  }
 
 
 }

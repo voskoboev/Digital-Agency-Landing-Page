@@ -23,8 +23,13 @@ body {
 }
 
 .container {
-  width: 1300px;
+  max-width: 1300px;
   margin: 0 auto;
+}
+
+.container-wide {
+  margin: 0 auto;
+  max-width: 1800px;
 }
 
 .button {
@@ -385,7 +390,7 @@ body {
 }
 
 .features__left, .features__right {
-  min-width: 50%;
+  max-width: 50%;
 }
 
 .features__list {
@@ -409,8 +414,111 @@ body {
   margin-right: 64px;
 }
 
+.features__list-item:first-child, .features__list-item:nth-child(2) {
+  margin-bottom: 76px;
+}
+
 .features__list-title {
   font-family: "Source Sans Pro";
   font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 23px;
+  color: #1f1f1f;
+}
+
+.features__list-text {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
+  color: #838383;
+}
+
+.features__title {
+  color: #1f1f1f;
+  font-size: 48px;
+  font-family: "Source Sans Pro";
+  margin-bottom: 60px;
+  font-weight: 700;
+}
+
+.features__text {
+  color: #838383;
+  font-weight: 300;
+  line-height: 28px;
+  font-family: Roboto;
+}
+
+.features__upper-text {
+  margin-bottom: 32px;
+}
+
+.portfolio {
+  padding-top: 138px;
+}
+
+.portfolio__nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 50px;
+}
+
+.portfolio__menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.portfolio__menu-item {
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  color: #A4A4A4;
+}
+
+.portfolio__menu-item:hover {
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.portfolio__menu-item:not(:last-child) {
+  margin-right: 70px;
+}
+
+.portfolio__projects-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.portfolio__projects-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.portfolio__projects-list-item {
+  margin-bottom: 8px;
+}
+
+.portfolio__projects-list-item:not(:nth-child(4n)) {
+  margin-right: 8px;
+}
+
+.portfolio__projects-list-item:hover {
+  opacity: .7;
+}
+
+.portfolio__project-list-img {
+  width: 385px;
+  height: 335px;
 }
 /*# sourceMappingURL=index.css.map */
