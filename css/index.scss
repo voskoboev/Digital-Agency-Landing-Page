@@ -507,3 +507,140 @@ body {
 
 
 }
+
+
+.clients {
+
+  .clients__container {
+    display: flex;
+    padding-top: 140px;
+    padding-bottom: 125px;
+  }
+
+  .clients__left {
+    width: 50%;
+  }
+
+  .clients__title {
+    color: #1f1f1f;
+    font-size: 48px;
+    font-family: $secondary-font;
+    font-weight: 700;
+    margin-bottom: 50px;
+  }
+
+  .clients__text {
+    font-size: 16px;
+    font-family: $primary-font;
+    font-weight: 300;
+    color: #1f1f1f;
+    width: 560px;
+    margin-bottom: 50px;
+    line-height: 28px;
+
+  }
+
+  .clients__btn {
+    width: 190px;
+    min-height: 51px;
+    font-family: $primary-font;
+    font-size: 16px;
+    border: 2px solid #1f1f1f;
+    background-color: transparent;
+  }
+
+  .clients__btn:hover {
+    background-color: #1f1f1f;
+    color: #fff;
+  }
+
+  .clients__right {
+    width: 50%;
+  }
+
+  // .clients__video {
+  //   background-size: cover;
+  // }
+
+}
+
+.brands {
+  background-color: #202b30;
+
+
+  .brands__container {
+    display: flex;
+    padding-bottom: 140px;
+  }
+
+  .brands__left {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 110px;
+    align-items: center;
+    padding-right: 120px;
+
+  }
+
+  .brands__pic:first-child,
+  .brands__pic:nth-child(3) {
+    margin-right: 80px;
+  }
+
+  .brands__pic:first-child,
+  .brands__pic:nth-child(2) {
+    margin-bottom: 75px;
+  }
+
+  .brands__first-pic {
+    background-image: url(/images/brands/fast-company.png);
+    width: 229px;
+    height: 34px;
+  }
+
+  .brands__second-pic {
+    background-image: url(/images/brands/southern-company.png);
+    width: 217px;
+    height: 76px;
+  }
+
+  .brands__third-pic {
+    background-image: url(/images/brands/angles.png);
+    width: 142px;
+    height: 103px;
+  }
+
+  .brands__fourth-pic {
+    background-image: url(/images/brands/v-ips.png);
+    width: 215px;
+    height: 70px;
+  }
+
+  .brands__right {
+    width: 50%;
+    color: #fff;
+    padding-top: 160px;
+    text-align: right;
+  }
+
+  .brands__title {
+    color: #fff;
+    font-size: 48px;
+    font-family: $secondary-font;
+    font-weight: 700;
+    margin-bottom: 50px;
+    // text-align: right;
+  }
+
+  .brands__text {
+    font-size: 16px;
+    font-family: $primary-font;
+    font-weight: 300;
+    color: #fff;
+    margin-bottom: 50px;
+    line-height: 28px;
+    
+  }
+}
