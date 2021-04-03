@@ -70,29 +70,29 @@ body {
   // padding-bottom: 245px; // по avocode ?
   // padding-bottom: 190px;
 
-  &__color-wrapper {
+  .header__color-wrapper {
     background-color: rgba(0, 0, 0, 0.5);
     padding-bottom: 180px; // выставлено по картинке на экране
   }
 
-  &__upper {
+  .header__upper {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     padding-top: 60px;
   }
 
-  &__logo {
+  .header__logo {
     width: 126px;
     height: 32px;
     display: block;
   }
 
-  &__menu {
+  .header__menu {
     display: flex;
   }
 
-  &__menu-item {
+  .header__menu-item {
 
 
     height: 22px;
@@ -100,26 +100,26 @@ body {
     cursor: pointer;
   }
 
-  &__menu-item:hover {
+  .header__menu-item:hover {
     border-bottom: 2px solid $secondary-color;
   }
 
-  &__menu-item:not(:last-child) {
+  .header__menu-item:not(:last-child) {
     margin-right: 60px;
   }
 
-  &__menu-link {
+  .header__menu-link {
     color: #fff;
     font-family: $primary-font;
     font-size: 16px;
     font-weight: 500;
   }
 
-  &__center {
+  .header__center {
     padding-top: 126px;
   }
 
-  &__title {
+  .header__title {
     font-family: $secondary-font;
     font-size: 60px;
     font-weight: 700; // ?
@@ -132,7 +132,7 @@ body {
     line-height: normal;
   }
 
-  &__text {
+  .header__text {
     color: #fff;
     font-family: $primary-font;
     font-size: 16px;
@@ -145,21 +145,21 @@ body {
     line-height: 28px;
   }
 
-  &__btn-container {
+  .header__btn-container {
     text-align: center;
     // margin-bottom: 245px;
   }
 
-  &__btn {
+  .header__btn {
     border-color: $secondary-color;
     display: inline-block;
   }
 
-  &__btn:hover {
+  .header__btn:hover {
     background-color: $secondary-color;
   }
 
-  &__start-btn {
+  .header__start-btn {
     margin-right: 30px;
   }
 }
@@ -170,28 +170,28 @@ body {
   margin-top: -85px;
   padding-bottom: 140px;
 
-  &__card {
+  .solutions__card {
     width: 420px;
     height: 420px;
     padding: 77px 58px 73px 58px;
     background-color: $primary-color;
   }
 
-  &__card:hover {
+  .solutions__card:hover {
     background-color: $secondary-color;
   }
 
-  &__card:not(:last-child) {
+  .solutions__card:not(:last-child) {
     margin-right: 20px;
   }
 
-  &__card-img {
+  .solutions__card-img {
     width: 61px;
     height: 61px;
     margin-bottom: 53px;
   }
 
-  &__card-title {
+  .solutions__card-title {
     margin-bottom: 63px;
     font-family: $primary-font;
     font-size: 20px;
@@ -201,7 +201,7 @@ body {
 
   }
 
-  &__card-title:after {
+  .solutions__card-title:after {
     content: '';
     width: 50px;
     height: 3px;
@@ -211,7 +211,7 @@ body {
     top: 47px;
   }
 
-  &__card-text {
+  .solutions__card-text {
     font-family: Roboto;
     font-size: 16px;
     font-weight: 300;
@@ -223,7 +223,7 @@ body {
 .services {
   padding-bottom: 143px;
 
-  &__title {
+  .services__title {
     font-family: $primary-font;
     font-size: 16px;
     font-weight: 700;
@@ -232,7 +232,7 @@ body {
     margin-bottom: 30px;
   }
 
-  &__explain-title {
+  .services__explain-title {
     color: #1f1f1f;
     font-family: $secondary-font;
     font-size: 60px;
@@ -241,11 +241,11 @@ body {
     margin-bottom: 60px;
   }
 
-  &__explain-title-decor {
+  .services__explain-title-decor {
     color: $secondary-color;
   }
 
-  &__text {
+  .services__text {
     color: #838383;
     font-family: $primary-font;
     font-size: 16px;
@@ -257,13 +257,13 @@ body {
     margin-bottom: 127px;
   }
 
-  &__feature-container {
+  .services__feature-container {
     display: flex;
     // justify-content: space-between;
     flex-wrap: wrap;
   }
 
-  &__feature {
+  .services__feature {
     width: 300px;
     min-height: 225px;
     display: flex;
@@ -271,23 +271,23 @@ body {
     align-items: center;
   }
 
-  &__feature:not(:nth-child(3n)) {
+  .services__feature:not(:nth-child(3n)) {
     margin-right: 195px;
   }
 
-  &__feature:first-child,
-  &__feature:nth-child(2),
-  &__feature:nth-child(3) {
+  .services__feature:first-child,
+  .services__feature:nth-child(2),
+  .services__feature:nth-child(3) {
     // ?
     margin-bottom: 70px;
   }
 
-  &__feature-img {
+  .services__feature-img {
     object-fit: contain;
     margin-bottom: 32px;
   }
 
-  &__feature-title {
+  .services__feature-title {
     color: #1f1f1f;
     font-family: $secondary-font;
     font-size: 32px;
@@ -295,7 +295,7 @@ body {
     margin-bottom: 30px;
   }
 
-  &__feature-text {
+  .services__feature-text {
     color: #838383;
     font-family: $primary-font;
     font-size: 16px;
@@ -309,18 +309,18 @@ body {
 .promo {
   background-color: $primary-color;
 
-  &__container {
+  .promo__container {
     // width: 1800px;
     display: flex;
     padding-top: 114px;
     padding-bottom: 115px;
   }
 
-  &__left-side {
+  .promo__left-side {
     width: 50%;
   }
 
-  &__title {
+  .promo__title {
     color: #ffffff;
     font-family: $secondary-font;
     font-size: 48px;
@@ -328,7 +328,7 @@ body {
     margin-bottom: 60px;
   }
 
-  &__text {
+  .promo__text {
     color: #fff;
     font-family: $primary-font;
     font-size: 16px;
@@ -338,7 +338,7 @@ body {
     max-width: 557px;
   }
 
-  &__btn {
+  .promo__btn {
     border-color: #fff;
     font-family: $primary-font;
     ;
@@ -346,29 +346,29 @@ body {
     font-weight: 400;
   }
 
-  &__btn:hover {
+  .promo__btn:hover {
     color: $primary-color;
     background-color: #fff;
   }
 
-  &__right-side {
+  .promo__right-side {
     width: 50%;
     display: flex;
     justify-content: flex-end;
 
   }
 
-  &__img {
+  .promo__img {
     width: 256px;
     height: 370px;
   }
 
-  &__img:hover {
+  .promo__img:hover {
     background-image: $secondary-color;
     opacity: 1;
   }
 
-  &__first-img {
+  .promo__first-img {
     margin-right: 35px;
   }
 }
@@ -376,40 +376,40 @@ body {
 .features {
   background-color: #f8f8f8;
 
-  &__container {
+  .features__container {
 
     padding-top: 138px;
     padding-bottom: 155px;
     display: flex;
   }
 
-  &__left,
-  &__right {
+  .features__left,
+  .features__right {
     max-width: 50%;
   }
 
-  &__list {
+  .features__list {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
   }
 
-  &__list-item {
+  .features__list-item {
     max-width: 270px;
     min-height: 115px;
   }
 
-  &__list-item:nth-child(odd) {
+  .features__list-item:nth-child(odd) {
     margin-right: 64px;
   }
 
-  &__list-item:first-child,
-  &__list-item:nth-child(2) {
+  .features__list-item:first-child,
+  .features__list-item:nth-child(2) {
     margin-bottom: 76px;
   }
 
 
-  &__list-title {
+  .features__list-title {
     font-family: $secondary-font;
     font-size: 20px;
     font-weight: 600;
@@ -417,7 +417,7 @@ body {
     color: #1f1f1f;
   }
 
-  &__list-text {
+  .features__list-text {
     font-family: $primary-font;
     font-size: 16px;
     font-weight: 300;
@@ -425,7 +425,7 @@ body {
     color: #838383;
   }
 
-  &__title {
+  .features__title {
     color: #1f1f1f;
     font-size: 48px;
     font-family: $secondary-font;
@@ -434,14 +434,14 @@ body {
 
   }
 
-  &__text {
+  .features__text {
     color: #838383;
     font-weight: 300;
     line-height: 28px;
     font-family: $primary-font;
   }
 
-  &__upper-text {
+  .features__upper-text {
     margin-bottom: 32px;
   }
 
@@ -450,17 +450,17 @@ body {
 .portfolio {
   padding-top: 138px;
 
-  &__nav {
+  .portfolio__nav {
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
   }
 
-  &__menu {
+  .portfolio__menu {
     display: flex;
   }
 
-  &__menu-item {
+  .portfolio__menu-item {
     padding-bottom: 4px;
     border-bottom: 1px solid transparent;
 
@@ -469,37 +469,37 @@ body {
     color: #A4A4A4;
   }
 
-  &__menu-item:hover {
+  .portfolio__menu-item:hover {
     border-bottom: 1px solid #1f1f1f;
   }
 
-  &__menu-item:not(:last-child) {
+  .portfolio__menu-item:not(:last-child) {
     margin-right: 70px;
   }
 
-  &__projects-list {
+  .portfolio__projects-list {
     display: flex;
     justify-content: center;
   }
 
-  &__projects-list {
+  .portfolio__projects-list {
     display: flex;
     flex-wrap: wrap;
   }
 
-  &__projects-list-item {
+  .portfolio__projects-list-item {
     margin-bottom: 8px;
   }
 
-  &__projects-list-item:not(:nth-child(4n)) {
+  .portfolio__projects-list-item:not(:nth-child(4n)) {
     margin-right: 8px;
   }
 
-  &__projects-list-item:hover {
+  .portfolio__projects-list-item:hover {
     opacity: .7;
   }
 
-  &__project-list-img {
+  .portfolio__project-list-img {
     // width: 443px;
     width: 385px;
     height: 335px;
@@ -566,7 +566,6 @@ body {
 
 .brands {
   background-color: #202b30;
-
 
   .brands__container {
     display: flex;
@@ -643,4 +642,106 @@ body {
     line-height: 28px;
     
   }
+}
+
+.benefits {
+  background-color: #f8f8f8;
+
+  .benefits__container {
+    display: flex;
+
+    position: relative;
+  }
+
+  .benefits__left {
+    width: 50%;
+    padding-top: 140px;
+
+    box-shadow: 100px 20px 10px -30px rgba(248, 248, 248, 1);
+
+    z-index: 100;
+
+  }
+
+  .benefits__title {
+    min-width: 515px;
+
+    color: #1f1f1f;
+    font-family: $secondary-font;
+    font-weight: 700;
+    font-size: 48px;
+
+    margin-bottom: 50px;
+  }
+
+  .benefits__text {
+
+    max-width: 570px;
+    color: #838383;
+    font-family: $primary-font;
+    font-weight: 300;
+    font-size: 16px;
+
+    line-height: 28px;
+
+    margin-bottom: 52px;
+
+  }
+
+  .benefits__left-lower {
+    display: flex;
+  }
+
+  .benefits__card-img {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 20px;
+  }
+
+  .benefits__card-img--left {
+    background-image: url(/images/benefits/database.png);
+  }
+
+  .benefits__card-img--right {
+    background-image: url(/images/benefits/framework.png);
+  }
+
+  .benefits__card-title {
+    color: #5e5e5e;
+    font-size: 20px;
+    font-family: $secondary-font;
+    font-weight: 400;
+    margin-bottom: 30px; 
+  }
+
+  .benefits__card-text {
+    max-width: 570px;
+    color: #838383;
+    font-family: $primary-font;
+    font-weight: 300;
+    font-size: 16px;
+
+    line-height: 28px;
+    margin-bottom: 140px;
+  }
+
+  .benefits__right {
+    width: 100%;
+    height: 100%;
+
+    background-image: url(/images/benefits/bench.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    position: absolute;
+    right: -700px;
+    top: 0;
+
+    // background-position: 50px 0;
+
+
+
+    // opacity: 0.9;
+  }
+
 }
