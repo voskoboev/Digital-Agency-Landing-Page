@@ -15,7 +15,9 @@
 
   </style> -->
 
-  <script src="js/index.js"></script>
+
+  <script src="libs/jquery/jquery_3.6.0.js" defer></script>
+  <script src="js/index.js" defer></script>
 
 </head>
 
@@ -457,9 +459,120 @@
     </div>
   </section>
 
-  <section style="height: 200px">
+  <section class="order">
+    <div class="container order__container">
 
+
+      <form class="order__form" action="#">
+
+        <div class="order__form-upper">
+          <div class="order__form-upper-left">
+            <h3 class="order__title">
+              Want to have a proffesional project? Let’s talk about it.
+            </h3>
+            <p class="order__text">
+              Est ultricies integer quis auctor elit sed vulputate mi. Lectus nulla at volutpat diam ut. Justo donec
+              enim
+              diam
+              vulputate ut pharetra sit amet aliquam. Parturient montes nascetur ridiculus mus mauris vitae.
+            </p>
+            <p class="order__text">
+              Vel fringilla est ullamcorper eget nulla. Urna duis convallis convallis tellus id interdum velit laoreet
+              id.
+              Donec adipiscing tristique risus nec feugiat. Egestas dui id ornare arcu odio ut sem nulla.
+            </p>
+
+          </div>
+          <div class="order__form-upper-right">
+            <input class="order__form-input order__form-input--name" type="text" name="name" placeholder="Your name*"
+              maxlength="100" required>
+            <div class="order__inputs-container">
+              <input class="order__form-input order__form-input--company" type="text" placeholder="Company name*"
+                maxlength="100" required>
+              <input class="order__form-input order__form-input--email" type="email" placeholder="Email address*"
+                maxlength="100" required>
+            </div>
+            <select class="order__form-input order__form-input--service" name="service" required>
+              <option class="order__form-input--service-placeholder" value="placeholder" disabled selected hidden>
+                Select your option*
+              </option>
+              <option class="order__form-input--service-option" value="strategy">
+                Strategy
+              </option>
+              <option class="order__form-input--service-option" value="marketing">
+                Marketing
+              </option>
+              <option class="order__form-input--service-option" value="technology">
+                Technology
+              </option>
+              <option class="order__form-input--service-option" value="ecommerce">
+                Ecommerce
+              </option>
+              <option class="order__form-input--service-option" value="branding">
+                Branding
+              </option>
+              <option class="order__form-input--service-option" value="SEO">
+                SEO Identity
+              </option>
+            </select>
+            <textarea class="order__form-input order__form-input--textarea" name="textarea"
+              placeholder="Describe your project*" maxlength="2500"></textarea>
+
+          </div>
+
+        </div>
+        <div class="order__form-lower">
+          <input class="order__form-input--submit" type="submit" value="Submit">
+        </div>
+      </form>
+
+    </div>
   </section>
+
+  <footer class="footer">
+    <div class="container footer__container">
+      <div class="footer__left">
+        <a href="#" class="footer__logo-link">
+          <img class="footer__logo-img" src="/images/logo.png" alt="logo">
+        </a>
+        <div class="footer__contacts">
+          <p class="footer__contact">
+            Contact
+          </p>
+          <address class="footer__address">
+            758 E. Beechwood Lane Bay Shore, NY 11706,
+            <a class="footer__email-link" href="mailto:http://www.youremail@address.com">
+              youremail@address.com
+            </a>,
+            <a class="footer__tel-link" href="tel:+12025550158">
+              +1-202-555-0158
+            </a>
+          </address>
+        </div>
+        <ul class="footer__socials">
+          <li class="footer__socials-item">
+            <a class="footer__socials-item-link footer__socials-item-link--inst" href="#" target="_blank">
+            </a>
+          </li>
+          <li class="footer__socials-item">
+            <a class="footer__socials-item-link footer__socials-item-link--fb" href="#" target="_blank">
+            </a>
+          </li>
+          <li class="footer__socials-item">
+            <a class="footer__socials-item-link footer__socials-item-link--tw" href="#" target="_blank">
+            </a>
+          </li>
+          <li class="footer__socials-item">
+            <a class="footer__socials-item-link footer__socials-item-link--ln" href="#" target="_blank">
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__right">
+
+      </div>
+    </div>
+  </footer>
 
 </body>
 
