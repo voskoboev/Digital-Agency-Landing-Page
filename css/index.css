@@ -21,6 +21,7 @@ img {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   overflow-x: hidden;
+  width: 100vw;
 }
 
 .container {
@@ -63,7 +64,7 @@ body {
 
 .header .header__color-wrapper {
   background-color: rgba(0, 0, 0, 0.5);
-  padding-bottom: 180px;
+  padding-bottom: 242px;
 }
 
 .header .header__upper {
@@ -76,13 +77,14 @@ body {
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
           align-items: baseline;
-  padding-top: 60px;
+  padding-top: 50px;
 }
 
 .header .header__logo {
   width: 126px;
   height: 32px;
   display: block;
+  padding-top: 10px;
 }
 
 .header .header__menu {
@@ -113,7 +115,7 @@ body {
 }
 
 .header .header__center {
-  padding-top: 126px;
+  padding-top: 110px;
 }
 
 .header .header__title {
@@ -124,8 +126,9 @@ body {
   width: 950px;
   text-align: center;
   margin: 0 auto;
-  margin-bottom: 66px;
+  margin-bottom: 45px;
   line-height: normal;
+  letter-spacing: .3px;
 }
 
 .header .header__text {
@@ -136,7 +139,7 @@ body {
   width: 650px;
   text-align: center;
   margin: 0 auto;
-  margin-bottom: 66px;
+  margin-bottom: 54px;
   line-height: 28px;
 }
 
@@ -190,7 +193,7 @@ body {
 }
 
 .solutions .solutions__card-title {
-  margin-bottom: 63px;
+  margin-bottom: 59px;
   font-family: Roboto;
   font-size: 20px;
   font-weight: 500;
@@ -205,7 +208,7 @@ body {
   background-color: #fff;
   position: absolute;
   left: 0;
-  top: 47px;
+  top: 50px;
 }
 
 .solutions .solutions__card-text {
@@ -217,7 +220,7 @@ body {
 }
 
 .services {
-  padding-bottom: 143px;
+  padding-bottom: 137px;
 }
 
 .services .services__title {
@@ -226,7 +229,7 @@ body {
   font-weight: 700;
   color: #fb414e;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 19px;
 }
 
 .services .services__explain-title {
@@ -235,7 +238,7 @@ body {
   font-size: 60px;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 45px;
 }
 
 .services .services__explain-title-decor {
@@ -251,7 +254,7 @@ body {
   text-align: center;
   max-width: 680px;
   margin: 0 auto;
-  margin-bottom: 127px;
+  margin-bottom: 123px;
 }
 
 .services .services__feature-container {
@@ -284,13 +287,13 @@ body {
 .services .services__feature:first-child,
 .services .services__feature:nth-child(2),
 .services .services__feature:nth-child(3) {
-  margin-bottom: 70px;
+  margin-bottom: 62px;
 }
 
 .services .services__feature-img {
   -o-object-fit: contain;
      object-fit: contain;
-  margin-bottom: 32px;
+  margin-bottom: 25px;
 }
 
 .services .services__feature-title {
@@ -298,7 +301,7 @@ body {
   font-family: "Source Sans Pro";
   font-size: 32px;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
 }
 
 .services .services__feature-text {
@@ -319,11 +322,12 @@ body {
   display: -ms-flexbox;
   display: flex;
   padding-top: 114px;
-  padding-bottom: 115px;
+  padding-bottom: 116px;
 }
 
 .promo .promo__left-side {
   width: 50%;
+  padding-top: 10px;
 }
 
 .promo .promo__title {
@@ -331,7 +335,8 @@ body {
   font-family: "Source Sans Pro";
   font-size: 48px;
   font-weight: 700;
-  margin-bottom: 60px;
+  margin-bottom: 46px;
+  line-height: 55px;
 }
 
 .promo .promo__text {
@@ -340,7 +345,7 @@ body {
   font-size: 16px;
   font-weight: 300;
   line-height: 28px;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   max-width: 557px;
 }
 
@@ -386,7 +391,7 @@ body {
 
 .features .features__container {
   padding-top: 138px;
-  padding-bottom: 155px;
+  padding-bottom: 143px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -415,19 +420,19 @@ body {
 }
 
 .features .features__list-item:nth-child(odd) {
-  margin-right: 64px;
+  margin-right: 59px;
 }
 
 .features .features__list-item:first-child,
 .features .features__list-item:nth-child(2) {
-  margin-bottom: 76px;
+  margin-bottom: 69px;
 }
 
 .features .features__list-title {
   font-family: "Source Sans Pro";
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 23px;
+  margin-bottom: 18px;
   color: #1f1f1f;
 }
 
@@ -439,12 +444,17 @@ body {
   color: #838383;
 }
 
+.features .features__right {
+  padding-left: 10px;
+}
+
 .features .features__title {
   color: #1f1f1f;
   font-size: 48px;
   font-family: "Source Sans Pro";
-  margin-bottom: 60px;
+  margin-bottom: 47px;
   font-weight: 700;
+  line-height: 50px;
 }
 
 .features .features__text {
@@ -490,7 +500,7 @@ body {
 }
 
 .portfolio .portfolio__menu-item:not(:last-child) {
-  margin-right: 70px;
+  margin-right: 65px;
 }
 
 .portfolio .portfolio__projects-list {
@@ -523,7 +533,7 @@ body {
 }
 
 .portfolio .portfolio__project-list-img {
-  width: 385px;
+  width: 443px;
   height: 335px;
 }
 
@@ -531,7 +541,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 140px;
+  padding-top: 126px;
   padding-bottom: 125px;
 }
 
@@ -544,7 +554,8 @@ body {
   font-size: 48px;
   font-family: "Source Sans Pro";
   font-weight: 700;
-  margin-bottom: 50px;
+  margin-bottom: 46px;
+  line-height: 52px;
 }
 
 .clients .clients__text {
@@ -553,7 +564,7 @@ body {
   font-weight: 300;
   color: #1f1f1f;
   width: 560px;
-  margin-bottom: 50px;
+  margin-bottom: 54px;
   line-height: 28px;
 }
 
@@ -573,6 +584,7 @@ body {
 
 .clients .clients__right {
   width: 50%;
+  padding-left: 10px;
 }
 
 .brands {
@@ -583,7 +595,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-bottom: 140px;
+  padding-bottom: 85px;
 }
 
 .brands .brands__left {
@@ -596,10 +608,10 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding-top: 110px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-top: 80px;
   padding-right: 120px;
 }
 
@@ -608,9 +620,12 @@ body {
   margin-right: 80px;
 }
 
-.brands .brands__pic:first-child,
-.brands .brands__pic:nth-child(2) {
-  margin-bottom: 75px;
+.brands .brands__pic:nth-child(3) {
+  margin-bottom: 32px;
+}
+
+.brands .brands__pic:nth-child(4) {
+  margin-bottom: 5px;
 }
 
 .brands .brands__first-pic {
@@ -623,6 +638,7 @@ body {
   background-image: url(/images/brands/southern-company.png);
   width: 217px;
   height: 76px;
+  margin-bottom: 30px;
 }
 
 .brands .brands__third-pic {
@@ -640,7 +656,7 @@ body {
 .brands .brands__right {
   width: 50%;
   color: #fff;
-  padding-top: 160px;
+  padding-top: 127px;
   text-align: right;
 }
 
@@ -649,7 +665,8 @@ body {
   font-size: 48px;
   font-family: "Source Sans Pro";
   font-weight: 700;
-  margin-bottom: 50px;
+  margin-bottom: 38px;
+  line-height: 60px;
 }
 
 .brands .brands__text {

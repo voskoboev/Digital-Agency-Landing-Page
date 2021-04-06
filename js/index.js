@@ -1,8 +1,21 @@
-// order__form-input--service
+'use strict';
 
-// const input = document.querySelector('.order__form-input--service');
-// const v123 = document.querySelector('.123');
+// scrollToTop()
+// scrollToSolutions();
 
-// input.onclick(() => {
-  
-// });
+function scrollToTop() {
+  const btn = $('.header__services-btn');
+
+  btn.click(() => {
+    $('html, body').animate({scrollTop: 0});
+  });
+}
+
+function scrollToSolutions() {
+  const btn = $('.header__start-btn');
+  const position = $('.solutions').offset().top;
+
+  btn.click(() => {
+    $('html, body').animate({scrollTop: position});
+  });
+}
