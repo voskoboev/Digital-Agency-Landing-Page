@@ -28,40 +28,38 @@
 
       <div class="container">
         <div class="header__upper">
-          <a href="" class="header__logo">
+          <a href="#" class="header__logo">
             <img class="header__logo-img" src="images/logo.png" alt="logo">
           </a>
-          <nav class="header__nav">
-            <ol class="header__menu">
-              <li class="header__menu-item">
-                <a href="#" class="header__menu-link">
-
+          <nav class="nav header__nav">
+            <ol class="nav__menu">
+              <li class="nav__menu-item nav__menu-item--home">
+                <a href="#" class="nav__menu-link linky">
                   Home
                 </a>
               </li>
-              <li class="header__menu-item">
-                <a href="#" class="header__menu-link">
-
+              <li class="nav__menu-item nav__menu-item--services">
+                <a href="#" class="nav__menu-link">
                   Services
                 </a>
               </li>
-              <li class="header__menu-item">
-                <a href="#" class="header__menu-link">
-                  Works
-                </a>
-              </li>
-              <li class="header__menu-item">
-                <a href="#" class="header__menu-link">
-                  About us
-                </a>
-              </li>
-              <li class="header__menu-item">
-                <a href="#" class="header__menu-link">
+              <li class="nav__menu-item nav__menu-item--features">
+                <a href="#" class="nav__menu-link">
                   Features
                 </a>
               </li>
-              <li class="header__menu-item">
-                <a href="#" class="header__menu-link">
+              <li class="nav__menu-item nav__menu-item--works">
+                <a href="#" class="nav__menu-link">
+                  Works
+                </a>
+              </li>
+              <li class="nav__menu-item nav__menu-item--about">
+                <a href="#" class="nav__menu-link">
+                  About us
+                </a>
+              </li>
+              <li class="nav__menu-item nav__menu-item--contact">
+                <a href="#" class="nav__menu-link">
                   Contact
                 </a>
               </li>
@@ -384,8 +382,8 @@
         </button>
       </div>
       <div class="clients__right">
-        <video class="clients__video" src="#" controls poster="/images/office-desk1-cut.jpeg" width="641px"
-          height="335px">
+        <video class="clients__video" controls poster="/images/office-desk1-cut.jpeg" controls width="660">
+          <source class="clients__video-src" src="/videos/office.mp4" type="video/mp4">
           Sorry, your browser doesn't support embedded videos.
         </video>
       </div>
@@ -494,7 +492,7 @@
             </div>
             <select class="order__form-input order__form-input--service" name="service" required>
               <option class="order__form-input--service-placeholder" value="placeholder" disabled selected hidden>
-                Select your option*
+                Select service*
               </option>
               <option class="order__form-input--service-option" value="strategy">
                 Strategy
@@ -570,6 +568,50 @@
       </div>
       <div class="footer__right">
 
+        <nav class="nav footer__nav">
+          <ol class="nav__menu">
+            <li class="nav__menu-item nav__menu-item--home">
+              <a href="#" class="nav__menu-link">
+                Home
+              </a>
+            </li>
+            <li class="nav__menu-item nav__menu-item--services">
+              <a href="#" class="nav__menu-link">
+                Services
+              </a>
+            </li>
+            <li class="nav__menu-item nav__menu-item--features">
+              <a href="#" class="nav__menu-link">
+                Features
+              </a>
+            </li>
+            <li class="nav__menu-item nav__menu-item--works">
+              <a href="#" class="nav__menu-link">
+                Works
+              </a>
+            </li>
+            <li class="nav__menu-item nav__menu-item--about">
+              <a href="#" class="nav__menu-link">
+                About us
+              </a>
+            </li>
+            <li class="nav__menu-item nav__menu-item--contact">
+              <a href="#" class="nav__menu-link">
+                Contact
+              </a>
+            </li>
+          </ol>
+        </nav>
+        <p class="footer__text">
+          Subscribe to newsletter
+        </p>
+        <form action="#" class="footer__form">
+          <input class="footer__form-input--email" type="text" placeholder="Your e-mail address:" required>
+          <input class="form__input--submit" type="submit" value="Submit">
+        </form>
+        <p class="footer__copyright">
+          &copy; 2019. All rights reserved. Buy Kallyas Wordpress Theme.
+        </p>
       </div>
     </div>
   </footer>
