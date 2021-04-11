@@ -8,13 +8,11 @@
   <title>Kallyas</title>
 
   <link rel="stylesheet" href="libs/reset/reset.css">
-  <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="scss/index.css">
 
   <!-- <style>
 
   </style> -->
-
 
   <script src="libs/jquery/jquery_3.6.0.js" defer></script>
   <script src="js/index.js" defer></script>
@@ -22,6 +20,29 @@
 </head>
 
 <body>
+
+  <div class="card-modal card-modal--first">
+    <div class="card-modal__close-btn"></div>
+    <iframe class="card-modal__video" src="https://www.youtube.com/embed/LlYwZbVlz40" title="YouTube video player"
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+  <div class="card-modal card-modal--second">
+    <div class="card-modal__close-btn"></div>
+    <iframe class="card-modal__video" src="https://player.vimeo.com/video/164438721" frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <div class="card-modal card-modal--third">
+    <div class="card-modal__close-btn"></div>
+    <iframe class="card-modal__video" src="https://player.vimeo.com/video/163668237" frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+  <div class="scroll-top-btn">
+
+  </div>
+
+
   <header class="header">
 
     <div class="header__color-wrapper">
@@ -95,41 +116,49 @@
 
     <!-- <div class="container"> -->
 
-    <div class="solutions__card">
-      <a href="#" class="solutions__card-link">
-        <img src="images/papers.png" alt="papers" class="solutions__card-img">
-        <h4 class="solutions__card-title">
-          Content Concept & Strategy
-        </h4>
-        <p class="solutions__card-text">
-          Aenean pharetra magna ac placerat magna vestibulum lectus mauris ultrices eros. Eget aliquet nibh dignissim
-          odio velit mauris.
-        </p>
-      </a>
+    <div class="solutions__card solutions__card--first">
+      <!-- <a href="#" class="solutions__card-link"> -->
+      <div class="solutions__card-pointer">
+      </div>
+
+      <!-- <img src="/images/solutions/pointer3.png" alt="pointer" class="solutions__card-pointer"> -->
+
+      <img src="images/solutions/papers.png" alt="papers" class="solutions__card-img">
+      <h4 class="solutions__card-title">
+        Content Concept & Strategy
+      </h4>
+      <p class="solutions__card-text">
+        Aenean pharetra magna ac placerat magna vestibulum lectus mauris ultrices eros. Eget aliquet nibh
+        dignissim
+        odio velit mauris.
+      </p>
+      <!-- </a> -->
+
+
     </div>
 
-    <div class="solutions__card">
-      <a href="" class="solutions__card-link">
-        <img src="images/pencil.png" alt="pencil" class="solutions__card-img">
-        <h4 class="solutions__card-title">
-          Design & Concepts
-        </h4>
-        <p class="solutions__card-text">
-          In egestas erat imperdiet sed euismod. A diam maecenas sed enim ut sem. Faucibus in ornare quam viverra.
-        </p>
-      </a>
+    <div class="solutions__card solutions__card--second">
+      <!-- <a href="" class="solutions__card-link"> -->
+      <img src="images/solutions/pencil.png" alt="pencil" class="solutions__card-img">
+      <h4 class="solutions__card-title">
+        Design & Concepts
+      </h4>
+      <p class="solutions__card-text">
+        In egestas erat imperdiet sed euismod. A diam maecenas sed enim ut sem. Faucibus in ornare quam viverra.
+      </p>
+      <!-- </a> -->
     </div>
 
-    <div class="solutions__card">
-      <a href="" class="solutions__card-link">
-        <img src="images/graph.png" alt="graph" class="solutions__card-img">
-        <h4 class="solutions__card-title">
-          SEO & Marketing Solutions
-        </h4>
-        <p class="solutions__card-text">
-          In egestas erat imperdiet sed euismod. A diam maecenas sed enim ut sem. Faucibus in ornare quam viverra.
-        </p>
-      </a>
+    <div class="solutions__card solutions__card--third">
+      <!-- <a href="" class="solutions__card-link"> -->
+      <img src="images/solutions/graph.png" alt="graph" class="solutions__card-img">
+      <h4 class="solutions__card-title">
+        SEO & Marketing Solutions
+      </h4>
+      <p class="solutions__card-text">
+        In egestas erat imperdiet sed euismod. A diam maecenas sed enim ut sem. Faucibus in ornare quam viverra.
+      </p>
+      <!-- </a> -->
     </div>
 
     <!-- </div> -->
@@ -168,7 +197,8 @@
             Marketing
           </h3>
           <p class="services__feature-text">
-            Duis at consectetur lorem donec massa sapien faucibus et. Et malesuada fames ac turpis egestas maecenas
+            Duis at consectetur lorem donec massa sapien faucibus et. Et malesuada fames ac turpis egestas
+            maecenas
             pharetra.
           </p>
         </div>
@@ -188,7 +218,8 @@
             Ecommerce
           </h3>
           <p class="services__feature-text">
-            Malesuada fames ac turpis egestas maecenas pharetra convallis posuere. Aliquam ut porttitor a sollicitudin.
+            Malesuada fames ac turpis egestas maecenas pharetra convallis posuere. Aliquam ut porttitor a
+            sollicitudin.
           </p>
         </div>
         <div class="services__feature">
@@ -197,7 +228,8 @@
             Branding
           </h3>
           <p class="services__feature-text">
-            Orci a scelerisque purus semper eget. Ac ut consequat semper viverra nam libero justo lectus arcu bibendum
+            Orci a scelerisque purus semper eget. Ac ut consequat semper viverra nam libero justo lectus arcu
+            bibendum
             at
             laoreet sit.
           </p>
@@ -208,7 +240,8 @@
             SEO Identity
           </h3>
           <p class="services__feature-text">
-            Etiam sit amet nisl purus in mollis nunc. Orci a scelerisque purus semper. Eget dolor diam quam nulla morbi
+            Etiam sit amet nisl purus in mollis nunc. Orci a scelerisque purus semper. Eget dolor diam quam nulla
+            morbi
             non arcu.
           </p>
         </div>
@@ -224,8 +257,10 @@
           most effective results
         </h2>
         <p class="promo__text">
-          Pellentesque habitant morbi tristique senectus et netus et. Accumsan lacus vel facilisis volutpat est velit
-          egestas. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. At varius vel pharetra vel
+          Pellentesque habitant morbi tristique senectus et netus et. Accumsan lacus vel facilisis volutpat est
+          velit
+          egestas. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. At varius vel pharetra
+          vel
           turpis nunc eget.
         </p>
         <button class="button promo__btn">
@@ -253,14 +288,16 @@
           <li class="features__list-item">
             <h4 class="features__list-title">02. True responsiveness</h4>
             <p class="features__list-text">
-              At risus viverra adipiscing at in tellus. Nec tincidunt praesent semper feugiat nibh. Nunc scelerisque
+              At risus viverra adipiscing at in tellus. Nec tincidunt praesent semper feugiat nibh. Nunc
+              scelerisque
               viverra.
             </p>
           </li>
           <li class="features__list-item">
             <h4 class="features__list-title">03. Different layout type</h4>
             <p class="features__list-text">
-              Sed arcu non odio euismod lacinia at quis risus. Turpis in eu mi bibendum neque egestas congue quisque.
+              Sed arcu non odio euismod lacinia at quis risus. Turpis in eu mi bibendum neque egestas congue
+              quisque.
             </p>
           </li>
           <li class="features__list-item">
@@ -278,8 +315,10 @@
           cost effective services.
         </h2>
         <p class="features__text features__upper-text">
-          Massa ultricies mi quis hendrerit dolor magna eget est lorem. Amet risus nullam eget felis eget. Orci dapibus
-          ultrices in iaculis nunc sed augue lacus viverra. Blandit volutpat maecenas volutpat blandit aliquam etiam
+          Massa ultricies mi quis hendrerit dolor magna eget est lorem. Amet risus nullam eget felis eget. Orci
+          dapibus
+          ultrices in iaculis nunc sed augue lacus viverra. Blandit volutpat maecenas volutpat blandit aliquam
+          etiam
           erat velit scelerisque.
         </p>
         <p class="features__text features__lower-text">
@@ -373,8 +412,10 @@
           We are trusted by more than 3600+ clients.
         </h3>
         <p class="clients__text">
-          Pellentesque habitant morbi tristique senectus et netus et. Accumsan lacus vel facilisis volutpat est velit
-          egestas. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. At varius vel pharetra vel
+          Pellentesque habitant morbi tristique senectus et netus et. Accumsan lacus vel facilisis volutpat est
+          velit
+          egestas. Aliquet lectus proin nibh nisl condimentum id venenatis a condimentum. At varius vel pharetra
+          vel
           turpis nunc eget.
         </p>
         <button class="clients__btn">
@@ -406,7 +447,8 @@
           crafted by our agency.
         </h3>
         <p class="brands__text">
-          Aenean sed adipiscing diam donec. Est placerat in egestas erat. Cras fermentum odio eu feugiat pretium nibh
+          Aenean sed adipiscing diam donec. Est placerat in egestas erat. Cras fermentum odio eu feugiat pretium
+          nibh
           ipsum consequat. Enim eu turpis egestas pretium aenean pharetra magna ac placerat. Lacus luctus accumsan
           tortor posuere.
         </p>
@@ -423,7 +465,8 @@
           </h3>
           <p class="benefits__text">
             Enim ut tellus elementum sagittis vitae et leo duis. Feugiat sed lectus vestibulum mattis ullamcorper.
-            Aenean et tortor at risus viverra adipiscing at. Neque aliquam vestibulum morbi blandit cursus risus at.
+            Aenean et tortor at risus viverra adipiscing at. Neque aliquam vestibulum morbi blandit cursus risus
+            at.
           </p>
 
         </div>
@@ -435,7 +478,8 @@
               Secured Database
             </h5>
             <p class="benefits__card-text">
-              Ullamcorper dignissim cras tincidunt vet lobortis feugiat vivamus. Sed euismod nisi porta lorem mollis
+              Ullamcorper dignissim cras tincidunt vet lobortis feugiat vivamus. Sed euismod nisi porta lorem
+              mollis
               turpis.
             </p>
           </div>
@@ -469,13 +513,15 @@
               Want to have a proffesional project? Let’s talk about it.
             </h3>
             <p class="order__text">
-              Est ultricies integer quis auctor elit sed vulputate mi. Lectus nulla at volutpat diam ut. Justo donec
+              Est ultricies integer quis auctor elit sed vulputate mi. Lectus nulla at volutpat diam ut. Justo
+              donec
               enim
               diam
               vulputate ut pharetra sit amet aliquam. Parturient montes nascetur ridiculus mus mauris vitae.
             </p>
             <p class="order__text">
-              Vel fringilla est ullamcorper eget nulla. Urna duis convallis convallis tellus id interdum velit laoreet
+              Vel fringilla est ullamcorper eget nulla. Urna duis convallis convallis tellus id interdum velit
+              laoreet
               id.
               Donec adipiscing tristique risus nec feugiat. Egestas dui id ornare arcu odio ut sem nulla.
             </p>
@@ -538,8 +584,12 @@
             Contact
           </p>
           <address class="footer__address">
-            758 E. Beechwood Lane Bay Shore, NY 11706,
-            <a class="footer__email-link" href="mailto:http://www.youremail@address.com">
+            <div class="footer__adress-tooltip">
+              Click to See the Map
+              <div class="footer__adress-tooltip-triangle"></div>
+            </div>
+            <p class="footer__location">758 E. Beechwood Lane Bay Shore, NY 11706,</p> 
+            <a class="footer__email-link" href="mailto:youremail@address.com">
               youremail@address.com
             </a>,
             <a class="footer__tel-link" href="tel:+12025550158">
@@ -610,7 +660,7 @@
           <input class="form__input--submit" type="submit" value="Submit">
         </form>
         <p class="footer__copyright">
-          &copy; 2019. All rights reserved. Buy Kallyas Wordpress Theme.
+          &copy; 2021. All rights reserved.
         </p>
       </div>
     </div>
