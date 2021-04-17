@@ -1,19 +1,40 @@
 'use strict';
 
-// scrollToPoint();
-// manageSolutionsModals();
+scrollTo();
+manageSolutionsModals();
+toggleTooltipForAddress();
+manageFooterMapModal();
 
-// scrollToTopBtnClick();
+function scrollTo() {
+  const scrollToSections = () => {
+    const servicesItems = $('.nav__menu-item--services, .header__services-btn');
+    const portfolioItem = $('.nav__menu-item--works');
+    const promoItem = $('.nav__menu-item--features');
+    const clientsItem = $('.nav__menu-item--about');
+    const contactItems = $('.nav__menu-item--contact, .header__start-btn');
 
-function scrollToPoint() {
-  scrollToTop();
-  scrollToServices();
-  scrollToPortfolio();
-  scrollToOrder();
-  scrollToPromo();
-  scrollToClients();
+    const servicesSection = $('.services');
+    const portfolioSection = $('.portfolio');
+    const promoSection = $('.promo');
+    const clientsSection = $('.clients');
+    const contactSection = $('.contact');
 
-  function scrollToTop() {
+    const scrollToCertainSection = (interactItems, positionItem) => {
+      const position = positionItem.offset().top;
+
+      interactItems.click(() => {
+        $('html, body').animate({ scrollTop: position + 50 }, 1000);
+      });
+    }
+
+    scrollToCertainSection(servicesItems, servicesSection);
+    scrollToCertainSection(portfolioItem, portfolioSection);
+    scrollToCertainSection(promoItem, promoSection);
+    scrollToCertainSection(clientsItem, clientsSection);
+    scrollToCertainSection(contactItems, contactSection);
+  }
+
+  const scrollToTop = () => {
     const homeItem = $('.nav__menu-item--home');
 
     homeItem.click(() => {
@@ -21,50 +42,28 @@ function scrollToPoint() {
     });
   }
 
-  function scrollToServices() {
-    const servicesItem = $('.nav__menu-item--services, .header__services-btn');
-    const position = $('.services').offset().top;
+  const scrollToTopOnBtnClick = () => {
+    const btn = $('.scroll-top-btn');
 
-    servicesItem.click(() => {
-      $('html, body').animate({ scrollTop: position + 50 }, 1000);
+    $(window).scroll(() => {
+      const solutionsPosition = $('.solutions').offset().top;
+      const windowPosition = $(window).scrollTop();
+
+      if (windowPosition > solutionsPosition) {
+        btn.addClass('scroll-top-btn--active');
+      } else {
+        btn.removeClass('scroll-top-btn--active');
+      }
+    });
+
+    btn.click(() => {
+      $('html, body').animate({ scrollTop: 0 }, 1000);
     });
   }
 
-  function scrollToPortfolio() {
-    const worksItem = $('.nav__menu-item--works');
-    const position = $('.portfolio').offset().top;
-
-    worksItem.click(() => {
-      $('html, body').animate({ scrollTop: position + 50 }, 1000);
-    });
-  }
-
-  function scrollToOrder() {
-    const contactItem = $('.nav__menu-item--contact, .header__start-btn');
-    const position = $('.order').offset().top;
-
-    contactItem.click(() => {
-      $('html, body').animate({ scrollTop: position + 50 }, 1000);
-    });
-  }
-
-  function scrollToPromo() {
-    const featuresItem = $('.nav__menu-item--features');
-    const position = $('.promo').offset().top;
-
-    featuresItem.click(() => {
-      $('html, body').animate({ scrollTop: position + 50 }, 1000);
-    });
-  }
-
-  function scrollToClients() {
-    const aboutItem = $('.nav__menu-item--about');
-    const position = $('.clients').offset().top;
-
-    aboutItem.click(() => {
-      $('html, body').animate({ scrollTop: position + 50 }, 1000);
-    });
-  }
+  scrollToSections();
+  scrollToTop();
+  scrollToTopOnBtnClick();
 }
 
 function manageSolutionsModals() {
@@ -89,7 +88,6 @@ function manageSolutionsModals() {
   const fadeInModal = (card, modal) => {
     card.click(() => {
       modal.fadeIn();
-
       disableScroll();
     });
   }
@@ -130,22 +128,50 @@ function manageSolutionsModals() {
   closeBtnFadeOutModalAndStopVideo(modalThird);
 }
 
-function scrollToTopBtnClick() {
-  const btn = $('.scroll-top-btn');
 
-  $(window).scroll(() => {
-    const solutionsPosition = $('.solutions').offset().top;
-    const windowPosition = $(window).scrollTop();
 
-    if (windowPosition > solutionsPosition) {
-      btn.addClass('scroll-top-btn--active');
-    } else {
-      btn.removeClass('scroll-top-btn--active');
-    }
+function toggleTooltipForAddress() {
+  const address = $('.footer__location');
+  const tooltip = $('.footer__adress-tooltip');
+  const footerLeft = $('.footer__left');
+
+  address.hover(() => {
+    tooltip.addClass('footer__adress-tooltip--active');
   });
 
-  btn.click(() => {
-    $('html, body').animate({ scrollTop: 0 }, 1000);
+  footerLeft.mouseleave(() => {
+    tooltip.removeClass('footer__adress-tooltip--active');
   });
 }
 
+function manageFooterMapModal() {
+  const addressItems = $('.footer__location, .footer__adress-tooltip');
+  const mapModal = $('.map-modal');
+  const closeBtn = $('.map-modal__close-btn');
+  const body = $('body');
+
+  const disableScroll = () => {
+    body.addClass('body--active');
+  }
+
+  const enableScroll = () => {
+    body.removeClass('body--active');
+  }
+
+  addressItems.click(() => {
+    mapModal.fadeIn();
+    disableScroll();
+  });
+
+  mapModal.click(function (ev) {
+    if (ev.target === this) {
+      $(this).fadeOut();
+      enableScroll();
+    }
+  });
+
+  closeBtn.click(() => {
+    mapModal.fadeOut();
+    enableScroll();
+  });
+}

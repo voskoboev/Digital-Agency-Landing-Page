@@ -1,6 +1,6 @@
-@import 'fonts.scss';
-@import 'vars.scss';
-@import 'mixins.scss';
+@import '_fonts.scss';
+@import '_vars.scss';
+@import '_mixins.scss';
 
 
 html {
@@ -39,9 +39,6 @@ body {
   overflow: hidden;
 }
 
-
-
-
 .container {
   max-width: 1300px;
   margin: 0 auto;
@@ -78,6 +75,8 @@ body {
   position: fixed;
   bottom: 50px;
   right: 50px;
+
+  cursor: pointer;
 
   visibility: hidden;
   transform: translateY(30px);
@@ -121,9 +120,6 @@ body {
   transition: .2s all ease;
   opacity: .3;
 }
-
-
-
 
 .card-modal {
   display: none;
@@ -187,7 +183,68 @@ body {
   }
 }
 
+.map-modal {
+  display: none;
 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .8);
+
+  z-index: 10;
+
+  .map-modal__close-btn {
+    width: 40px;
+    height: 40px;
+
+    position: absolute;
+    top: 50px;
+    right: 50px;
+
+    cursor: pointer;
+
+    // background-color: #fff;
+  }
+
+  .map-modal__close-btn::before,
+  .map-modal__close-btn::after {
+    position: absolute;
+    top: 18px;
+    left: -5px;
+    content: '';
+    width: 50px;
+    height: 5px;
+    border-radius: 15%;
+    background-color: #b5b8b1;
+  }
+
+  .map-modal__close-btn::before {
+    transform: rotate(45deg);
+  }
+
+  .map-modal__close-btn::after {
+    transform: rotate(135deg);
+  }
+
+  .map-modal__close-btn:hover::before {
+    background-color: lighten(#b5b8b1, 10%)
+  }
+
+  .map-modal__close-btn:hover::after {
+    background-color: lighten(#b5b8b1, 10%)
+  }
+
+  .map-modal__container {
+    width: 1000px;
+    height: 565px;
+    // background-color: #fff;
+
+    position: absolute;
+    left: calc(50% - 500px);
+    top: calc(50% - 282.5px);
+  }
+
+}
 
 
 .nav {
@@ -873,6 +930,11 @@ body {
     height: 34px;
   }
 
+  // .brands__first-pic:hover {
+  //   filter: blur(5px);
+  //   transition: .5s all ease;
+  // }
+
   .brands__second-pic {
     background-image: url(/images/brands/southern-company.png);
     width: 217px;
@@ -1030,18 +1092,18 @@ body {
 
 }
 
-.order {
+.contact {
 
-  .order__container {
+  .contact__container {
     padding-bottom: 140px;
   }
 
-  .order__form-upper {
+  .contact__form-upper {
     display: flex;
     margin-bottom: 40px;
   }
 
-  .order__form-upper-left {
+  .contact__form-upper-left {
     width: 50%;
     text-align: right;
 
@@ -1050,7 +1112,7 @@ body {
 
   }
 
-  .order__title {
+  .contact__title {
     font-family: $secondary-font;
     font-weight: 700;
     color: #000;
@@ -1063,7 +1125,7 @@ body {
 
   }
 
-  .order__text {
+  .contact__text {
     font-family: $primary-font;
     font-weight: 300;
     font-size: 16px;
@@ -1078,17 +1140,17 @@ body {
 
   }
 
-  .order__text:first-of-type {
+  .contact__text:first-of-type {
     margin-bottom: 30px;
   }
 
-  .order__form-upper-right {
+  .contact__form-upper-right {
     width: 50%;
     padding-top: 152px;
     padding-left: 10px;
   }
 
-  .order__form-input {
+  .contact__form-input {
     border: 1px solid #000;
     padding-left: 20px;
     font-family: $primary-font;
@@ -1096,37 +1158,37 @@ body {
     font-size: 14px;
   }
 
-  .order__form-input:not(:last-child) {
+  .contact__form-input:not(:last-child) {
     height: 51px;
   }
 
-  .order__form-input::placeholder {
+  .contact__form-input::placeholder {
     color: #000;
   }
 
-  .order__form-input:focus::placeholder {
+  .contact__form-input:focus::placeholder {
     color: transparent;
   }
 
 
-  .order__form-input--name {
+  .contact__form-input--name {
     width: 100%;
     margin-bottom: 20px;
   }
 
-  .order__inputs-container {
+  .contact__inputs-container {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
   }
 
-  .order__form-input--company,
-  .order__form-input--email {
+  .contact__form-input--company,
+  .contact__form-input--email {
     width: 310px;
 
   }
 
-  .order__form-input--service {
+  .contact__form-input--service {
     width: 100%;
     margin-bottom: 20px;
     background-image: url(/images/order/drop-down-arrow.png);
@@ -1135,11 +1197,11 @@ body {
     appearance: none;
   }
 
-  .order__form-input--service-option {
+  .contact__form-input--service-option {
     height: 50px;
   }
 
-  .order__form-input--textarea {
+  .contact__form-input--textarea {
     width: 100%;
     min-height: 270px;
     max-height: 400px;
@@ -1150,7 +1212,7 @@ body {
     // font-family: $primary-font;
   }
 
-  .order__form-input--submit {
+  .contact__form-input--submit {
     background-color: $secondary-color;
     border: 2px solid $secondary-color;
     font-family: $primary-font;
@@ -1165,17 +1227,17 @@ body {
     border: 2px solid $secondary-color;
   }
 
-  // .order__form-input--submit:active {
+  // .contact__form-input--submit:active {
   //   background-color: darken($secondary-color, 15%);
   // }
 
-  .order__form-input--submit:hover {
+  .contact__form-input--submit:hover {
     color: $secondary-color;
     background-color: #fff;
     border: 2px solid $secondary-color;
   }
 
-  .order__form-input--submit:active {
+  .contact__form-input--submit:active {
     background-color: $secondary-color;
     color: #fff;
   }
@@ -1197,7 +1259,7 @@ body {
     padding-top: 100px;
   }
 
-  .footer__logo-link {
+  .footer__logo {
     margin-bottom: 100px;
     display: block;
   }
@@ -1244,6 +1306,8 @@ body {
     left: 180px;
 
     visibility: hidden;
+    opacity: 0;
+    transition: .3s all ease;
   }
 
   // .footer__adress-tooltip:hover {
@@ -1253,6 +1317,8 @@ body {
 
   .footer__adress-tooltip--active {
     visibility: visible;
+    opacity: 1;
+
   }
 
   .footer__adress-tooltip-triangle {
