@@ -1,9 +1,28 @@
 'use strict';
 
+initSlickSlider();
 scrollTo();
 manageSolutionsModals();
 toggleTooltipForAddress();
 manageFooterMapModal();
+
+function initSlickSlider() {
+  const container = $('.promo__carousel-container');
+
+  container.slick({
+    arrows: true,
+    dots: true,
+    infinite: true,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    variableWidth: true,
+    draggable: true,
+    
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+  });
+}
 
 function scrollTo() {
   const scrollToSections = () => {
@@ -128,8 +147,6 @@ function manageSolutionsModals() {
   closeBtnFadeOutModalAndStopVideo(modalThird);
 }
 
-
-
 function toggleTooltipForAddress() {
   const address = $('.footer__location');
   const tooltip = $('.footer__adress-tooltip');
@@ -175,3 +192,4 @@ function manageFooterMapModal() {
     enableScroll();
   });
 }
+

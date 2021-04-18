@@ -560,7 +560,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   padding-top: 114px;
-  padding-bottom: 116px;
+  padding-bottom: 70px;
 }
 
 .promo .promo__left-side {
@@ -601,12 +601,18 @@ body {
 
 .promo .promo__right-side {
   width: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  padding-left: 100px;
+}
+
+.promo .slick-list {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.promo .promo__carousel-slide {
+  width: 256px;
+  height: 370px;
+  margin-right: 35px;
 }
 
 .promo .promo__img {
@@ -616,11 +622,72 @@ body {
 
 .promo .promo__img:hover {
   background-image: #fb414e;
-  opacity: 1;
 }
 
 .promo .promo__first-img {
   margin-right: 35px;
+}
+
+.promo .slick-arrow {
+  position: absolute;
+  z-index: 10;
+  font-size: 0;
+  background: url(../images/arrow.png);
+  background-size: 30px 30px;
+  width: 30px;
+  height: 30px;
+  border: 0;
+}
+
+.promo .slick-prev {
+  left: 5px;
+  top: calc(50% - 45px);
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.promo .slick-next {
+  right: 5px;
+  top: calc(50% - 45px);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.promo .slick-dots {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.promo .slick-dots li {
+  list-style: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  font-size: 0;
+}
+
+.promo .slick-dots li:not(:last-child) {
+  margin-right: 10px;
+}
+
+.promo .slick-dots li button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #fff;
+}
+
+.promo .slick-active {
+  background-color: #fff;
+  z-index: 100;
 }
 
 .features {

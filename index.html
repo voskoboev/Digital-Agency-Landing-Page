@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <title>Kallyas</title>
-  
+
   <!-- favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
@@ -17,15 +17,17 @@
   <!-- /favicon -->
 
   <link rel="stylesheet" href="libs/reset/reset.css">
+
+  <link rel="stylesheet" href="libs/slick-slider/slick.css">
+  
   <link rel="stylesheet" href="scss/index.css">
-
-  <!-- <style>
-
-  </style> -->
-
-  <script src="libs/jquery/jquery_3.6.0.js" defer></script>
-  <script src="js/index.js" defer></script>
-
+  
+  
+  
+  <!-- <script src="libs/jquery/jquery_3.6.0.js"></script>
+  <script src="libs/slick-slider/slick.min.js"></script>
+  <script src="js/index.js"></script> -->
+  
 </head>
 
 <body>
@@ -53,9 +55,10 @@
   <div class="map-modal">
     <div class="map-modal__close-btn"></div>
     <div class="map-modal__container">
-      
-    <script class="map-modal__script" type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Adccc367d4b5f01c62d0d1d38e4f37bd6e4b7e07925b0103b3668134e0a5a8ee5&amp;width=1000&amp;height=565&amp;lang=ru_RU&amp;scroll=true">
-    </script>
+
+      <script class="map-modal__script" type="text/javascript" charset="utf-8" async
+        src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Adccc367d4b5f01c62d0d1d38e4f37bd6e4b7e07925b0103b3668134e0a5a8ee5&amp;width=1000&amp;height=565&amp;lang=ru_RU&amp;scroll=true">
+      </script>
     </div>
 
   </div>
@@ -286,8 +289,27 @@
         </button>
       </div>
       <div class="promo__right-side">
-        <img src="images/lobby.jpg" alt="lobby" class="promo__img promo__first-img">
-        <img src="images/lobby.jpg" alt="lobby" class="promo__img promo__second-img">
+        <div class="promo__carousel-container">
+
+          <div class="promo__carousel-slide">
+            <img class="promo__img promo__first-img" src="images/lobby.jpg" alt="lobby">
+
+          </div>
+
+          <div class="promo__carousel-slide">
+            <img class="promo__img promo__second-img" src="images/lobby.jpg" alt="lobby">
+
+          </div>
+
+          <div class="promo__carousel-slide">
+            <img class="promo__img promo__third-img" src="images/lobby.jpg" alt="lobby">
+          </div>
+
+          <div class="promo__carousel-slide">
+            <img class="promo__img promo__fourth-img" src="images/lobby.jpg" alt="lobby">
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
@@ -546,8 +568,8 @@
 
           </div>
           <div class="contact__form-upper-right">
-            <input class="contact__form-input contact__form-input--name" type="text" name="name" placeholder="Your name*"
-              maxlength="100" required>
+            <input class="contact__form-input contact__form-input--name" type="text" name="name"
+              placeholder="Your name*" maxlength="100" required>
             <div class="contact__inputs-container">
               <input class="contact__form-input contact__form-input--company" type="text" placeholder="Company name*"
                 maxlength="100" required>
@@ -606,7 +628,7 @@
               Click to See the Map
               <div class="footer__adress-tooltip-triangle"></div>
             </div>
-            <p class="footer__location">758 E. Beechwood Lane Bay Shore, NY 11706,</p> 
+            <p class="footer__location">758 E. Beechwood Lane Bay Shore, NY 11706,</p>
             <a class="footer__email-link" href="mailto:youremail@address.com">
               youremail@address.com
             </a>,
@@ -684,6 +706,9 @@
     </div>
   </footer>
 
+  <script src="libs/jquery/jquery_3.6.0.js"></script>
+  <script src="libs/slick-slider/slick.min.js"></script>
+  <script src="js/index.js"></script>
 </body>
 
 </html>
