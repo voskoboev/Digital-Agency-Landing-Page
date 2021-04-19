@@ -1,26 +1,47 @@
 'use strict';
 
 initSlickSlider();
-scrollTo();
-manageSolutionsModals();
-toggleTooltipForAddress();
-manageFooterMapModal();
+// scrollTo();
+// manageSolutionsModals();
+// toggleTooltipForAddress();
+// manageFooterMapModal();
 
 function initSlickSlider() {
   const container = $('.promo__carousel-container');
 
   container.slick({
-    arrows: true,
-    dots: true,
     infinite: true,
     slidesToShow: 2,
     slidesToScroll: 2,
+    // arrows: true,
+    dots: true,
     variableWidth: true,
     draggable: true,
-    
-    autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: true,
+    // autoplay: true,
+    // autoplaySpeed: 2000,
+    // pauseOnHover: true,
+
+    // responsive: [
+    //   {
+    //     breakpoint: 1350,
+    //     settings: {
+    //       infinite: true,
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //       arrows: true,
+    //       dots: true,
+    //       // variableWidth: true,
+    //       draggable: true,
+    //       autoplay: true,
+    //       autoplaySpeed: 2000,
+    //       pauseOnHover: true,
+    //     }
+    //   },
+    //   {
+
+    //   }
+    // ]
+
   });
 }
 
