@@ -1,0 +1,10 @@
+@mixin sections-scroll-display {
+  transform: translateY(250px);
+  transition: 1s all ease;
+  opacity: 0;
+
+  &--active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

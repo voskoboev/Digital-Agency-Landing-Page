@@ -19,15 +19,15 @@
   <link rel="stylesheet" href="libs/reset/reset.css">
 
   <link rel="stylesheet" href="libs/slick-slider/slick.css">
-  
+
   <link rel="stylesheet" href="scss/index.css">
-  
-  
-  
+
+
+
   <!-- <script src="libs/jquery/jquery_3.6.0.js"></script>
   <script src="libs/slick-slider/slick.min.js"></script>
   <script src="js/index.js"></script> -->
-  
+
 </head>
 
 <body>
@@ -76,7 +76,7 @@
           <nav class="nav header__nav">
             <ol class="nav__menu">
               <li class="nav__menu-item nav__menu-item--home">
-                <a href="#" class="nav__menu-link linky">
+                <a href="#" class="nav__menu-link">
                   Home
                 </a>
               </li>
@@ -463,10 +463,17 @@
         </button>
       </div>
       <div class="clients__right">
-        <video class="clients__video" controls poster="/images/office-desk1-cut.jpeg" controls width="660">
-          <source class="clients__video-src" src="/videos/office.mp4" type="video/mp4">
-          Sorry, your browser doesn't support embedded videos.
-        </video>
+        <div class="clients__right-container">
+          <video class="clients__video" poster="/images/office-desk1-cut.jpeg">
+            <source class="clients__video-src" src="/videos/office.mp4" type="video/mp4">
+            Sorry, your browser doesn't support embedded videos.
+          </video>
+          <div class="clients__video-btn">
+            <div class="clients__video-btn-play">
+            </div>
+          </div>
+
+        </div>
       </div>
 
     </div>

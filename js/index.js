@@ -5,6 +5,10 @@ initSlickSlider();
 // manageSolutionsModals();
 // toggleTooltipForAddress();
 // manageFooterMapModal();
+// playClientsVideo();
+
+popUpSectionsOnScroll();
+
 
 function initSlickSlider() {
   const container = $('.promo__carousel-container');
@@ -214,3 +218,83 @@ function manageFooterMapModal() {
   });
 }
 
+
+
+
+function playClientsVideo() {
+  const videoAndPlayBtn = $('.clients__video, .clients__video-btn');
+  const video = $('.clients__video');
+  const playBtn = $('.clients__video-btn');
+
+  video.click(function () {
+    playBtn.addClass('clients__video-btn-play--hidden');
+
+    if ($(this).attr('controls') === undefined) {
+      $(this).attr('controls', 'controls');
+    }
+  });
+
+  playBtn.click(function () {
+    $(this).addClass('clients__video-btn-play--hidden');
+    video.trigger('play');
+
+    if (video.attr('controls') === undefined) {
+      video.attr('controls', 'controls');
+    }
+  });
+
+  videoAndPlayBtn.hover(() => {
+    playBtn.toggleClass('clients__video-btn-play--active');
+  });
+}
+
+// function displayFeature() {
+
+//     var $magic = $(".magic"),
+//       magicWHalf = $magic.width() / 2;
+//     $(document).on("mousemove", function(e) {
+//       $magic.css({
+//         "left": e.pageX - magicWHalf,
+//         "top": e.pageY - magicWHalf
+//       });
+//     });
+// }
+
+// function displayFeature();
+
+function popUpSectionsOnScroll() {
+  const solutions = $('.solutions');
+  const services = 'services';
+  const promo = 'promo';
+  const features = 'features';
+  const portfolio = 'portfolio';
+  const clients = 'clients';
+  const brands = 'brands';
+  const benefits = 'benefits';
+  const contact = 'contact';
+  const footer = 'footer';
+
+  $(window).scroll(function () {
+    if ($(this).scrollTop() !== 0) {
+      solutions.addClass('solutions--active');
+    }
+  });
+
+  function popUpOnScroll(section) {
+    $(window).scroll(function () {
+      if ($(this).scrollTop() + $(window).innerHeight() > $(`.${section}`).position().top) {
+        $(`.${section}`).addClass(`${section}--active`);
+      }
+    });
+  }
+
+  popUpOnScroll(services);
+  popUpOnScroll(promo);
+  popUpOnScroll(features);
+  popUpOnScroll(portfolio);
+  popUpOnScroll(clients);
+  popUpOnScroll(brands);
+  popUpOnScroll(benefits);
+  popUpOnScroll(contact);
+  popUpOnScroll(footer);
+}

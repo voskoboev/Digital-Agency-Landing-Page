@@ -269,15 +269,16 @@ body {
   }
 
   .nav__menu-item {
-
     height: 22px;
     border-bottom: 2px solid transparent;
     cursor: pointer;
   }
 
+
   .nav__menu-item:hover {
     border-bottom: 2px solid $secondary-color;
-    transition: .1s border-bottom ease;
+    transition: .3s border-bottom ease;
+    
   }
 
   .nav__menu-item:not(:last-child) {
@@ -404,6 +405,16 @@ body {
   justify-content: center;
   margin-top: -92px;
 
+  // transform: translateY(250px);
+  // transition: 1s all ease;
+  // opacity: 0;
+
+  // &--active {
+  //   transform: translateY(0);
+  //   opacity: 1;
+  // }
+
+  @include sections-scroll-display;
 
   // padding-bottom: 140px;
 
@@ -555,6 +566,8 @@ body {
   padding-top: 140px;
   padding-bottom: 137px;
 
+  @include sections-scroll-display;
+
   @media screen and (max-width: 992px) {
     & {
       padding-top: 98px; // 70% от начального
@@ -681,10 +694,20 @@ body {
     text-align: center;
   }
 
+  // .services__feature-container {
+  // opacity: .5;
+  // }
+
+  .services__feature {
+    border: 1px solid #000;
+  }
+
 }
 
 .promo {
   background-color: $primary-color;
+
+  @include sections-scroll-display;
 
   .promo__container {
     // width: 1800px;
@@ -702,8 +725,8 @@ body {
 
   @media screen and (max-width: 992px) {
     .promo__container {
-     padding-top: 80px;
-    //  padding-bottom: 50px;
+      padding-top: 80px;
+      //  padding-bottom: 50px;
     }
   }
 
@@ -858,6 +881,8 @@ body {
 .features {
   background-color: #f8f8f8;
 
+  @include sections-scroll-display;
+
   .features__container {
 
     padding-top: 138px;
@@ -971,10 +996,12 @@ body {
 .portfolio {
   padding-top: 138px;
 
+  @include sections-scroll-display;
+
   @media screen and (max-width: 992px) {
-   & {
-     padding-top: 97px;
-   }
+    & {
+      padding-top: 97px;
+    }
   }
 
   .portfolio__nav {
@@ -1097,11 +1124,13 @@ body {
 
 .clients {
 
+  @include sections-scroll-display;
+
 
   .clients__container {
     display: flex;
     padding-top: 126px;
-    padding-bottom: 122px;
+    padding-bottom: 113px;
 
   }
 
@@ -1197,6 +1226,7 @@ body {
   .clients__right {
     width: 50%;
     padding-left: 10px;
+    padding-top: 10px;
   }
 
   @media screen and (max-width: 1150px) {
@@ -1209,11 +1239,56 @@ body {
     }
   }
 
+  .clients__right-container {
+    position: relative;
+  }
+
   .clients__video {
+    width: 660px;
+    // height: 336px;
     margin-top: -20px;
     // width: 650x;
     // height: 340px;
   }
+
+  .clients__video:hover {
+    cursor: pointer;
+  }
+
+  .clients__video-btn {
+    width: 90px;
+    height: 90px;
+    background-color: transparent;
+    position: absolute;
+    top: calc(50% - 55px);
+    left: calc(50% - 45px);
+    border-radius: 50%;
+    border: 1px solid #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .clients__video-btn:hover {
+    cursor: pointer;
+  }
+
+  .clients__video-btn-play {
+    background-image: url(../images/play-btn.png);
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 16px;
+  }
+
+  .clients__video-btn-play--active {
+    opacity: .7;
+  }
+
+  .clients__video-btn-play--hidden {
+    display: none;
+  }
+
 
 
 
@@ -1221,6 +1296,8 @@ body {
 
 .brands {
   background-color: #202b30;
+
+  @include sections-scroll-display;
 
   .brands__container {
     display: flex;
@@ -1371,6 +1448,8 @@ body {
 .benefits {
   background-color: #f8f8f8;
 
+  @include sections-scroll-display;
+
   .benefits__container {
     display: flex;
     position: relative;
@@ -1513,10 +1592,10 @@ body {
       text-align: center;
     }
   }
-  
+
   @media screen and (max-width: 992px) {
     .benefits__card-text {
-     margin-bottom: 95px;
+      margin-bottom: 95px;
     }
   }
 
@@ -1547,6 +1626,8 @@ body {
 }
 
 .contact {
+
+  @include sections-scroll-display;
 
   .contact__container {
     padding-bottom: 140px;
@@ -1730,6 +1811,8 @@ body {
   background-color: #202b30;
   color: #fff;
   font-family: $primary-font;
+
+  @include sections-scroll-display;
 
   .footer__container {
     display: flex;
