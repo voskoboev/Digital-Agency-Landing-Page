@@ -1,6 +1,10 @@
-@import '_fonts.scss';
-@import '_vars.scss';
-@import '_mixins.scss';
+@import '_fonts';
+@import '_vars';
+@import '_mixins';
+
+@import 'UI/_nav';
+@import 'UI/_button';
+@import 'UI/_scroll-to-top-button';
 
 
 html {
@@ -20,9 +24,14 @@ html {
   box-sizing: inherit;
 }
 
+::selection {
+  background-color: lighten($secondary-color, 20%);
+}
+
 a {
   text-decoration: none;
 }
+
 
 img {
   display: block;
@@ -41,7 +50,6 @@ body {
   // background-color: red !important;
 }
 
-
 .body--active {
   height: 100%;
   overflow: hidden;
@@ -55,78 +63,6 @@ body {
 .container-wide {
   margin: 0 auto;
   max-width: 1800px;
-}
-
-.button {
-  width: 190px;
-  min-height: 55px;
-  color: #fff;
-  background: transparent;
-  border-style: solid;
-  border-width: 2px;
-  outline: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: $primary-font;
-  padding: 5px;
-}
-
-.scroll-top-btn {
-  width: 70px;
-  height: 70px;
-  background-color: #f8f8f8;
-  opacity: 0;
-  z-index: 1000;
-  border: 2px solid #000;
-  border-radius: 50%;
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-
-  cursor: pointer;
-
-  visibility: hidden;
-  transform: translateY(30px);
-  transition: .2s all ease;
-
-}
-
-.scroll-top-btn::before {
-  content: '';
-  width: 45px;
-  height: 5px;
-  background-color: #000;
-  position: absolute;
-  top: 27px;
-  left: 0;
-  transform: rotate(300deg);
-
-  border-radius: 15%;
-}
-
-.scroll-top-btn::after {
-  content: '';
-  width: 45px;
-  height: 5px;
-  background-color: #000;
-  position: absolute;
-  top: 27px;
-  right: 0;
-  transform: rotate(60deg);
-
-  border-radius: 15%;
-}
-
-.scroll-top-btn:active {
-  background-color: #fff;
-}
-
-.scroll-top-btn--active {
-  visibility: visible;
-  transform: translateY(0);
-  transition: .2s all ease;
-  opacity: .3;
 }
 
 .card-modal {
@@ -251,53 +187,6 @@ body {
     left: calc(50% - 500px);
     top: calc(50% - 282.5px);
   }
-
-}
-
-
-.nav {
-
-  @media screen and (max-width: 768px) {
-    & {
-      display: none;
-    }
-  }
-
-  .nav__menu {
-    display: flex;
-    // flex-wrap: wrap;
-  }
-
-  .nav__menu-item {
-    height: 22px;
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
-  }
-
-
-  .nav__menu-item:hover {
-    border-bottom: 2px solid $secondary-color;
-    transition: .3s border-bottom ease;
-    
-  }
-
-  .nav__menu-item:not(:last-child) {
-    margin-right: 60px;
-  }
-
-  @media screen and (max-width: 992px) {
-    .nav__menu-item:not(:last-child) {
-      margin-right: 30px;
-    }
-  }
-
-  .nav__menu-link {
-    color: #fff;
-    font-family: $primary-font;
-    font-size: 16px;
-    font-weight: 500;
-  }
-
 }
 
 
@@ -310,10 +199,16 @@ body {
   // padding-bottom: 190px;
 
 
+
+
   .header__color-wrapper {
     background-color: rgba(0, 0, 0, .5);
     padding-bottom: 242px; // выставлено по картинке на экране 180
+
+    // box-shadow: 0px -31px 13px -15px rgba(255, 255, 255, 1) inset;
+
   }
+
 
   @media screen and (max-width: 959px) {
     .header__color-wrapper {
@@ -414,7 +309,7 @@ body {
   //   opacity: 1;
   // }
 
-  @include sections-scroll-display;
+  @include sections-onscroll-display;
 
   // padding-bottom: 140px;
 
@@ -426,6 +321,8 @@ body {
     cursor: pointer;
 
     position: relative;
+
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, .2);
   }
 
   @media screen and (max-width: 1200px) {
@@ -566,7 +463,7 @@ body {
   padding-top: 140px;
   padding-bottom: 137px;
 
-  @include sections-scroll-display;
+  @include sections-onscroll-display;
 
   @media screen and (max-width: 992px) {
     & {
@@ -698,16 +595,12 @@ body {
   // opacity: .5;
   // }
 
-  .services__feature {
-    border: 1px solid #000;
-  }
-
 }
 
 .promo {
   background-color: $primary-color;
 
-  @include sections-scroll-display;
+  @include sections-onscroll-display;
 
   .promo__container {
     // width: 1800px;
@@ -881,7 +774,7 @@ body {
 .features {
   background-color: #f8f8f8;
 
-  @include sections-scroll-display;
+  @include sections-onscroll-display;
 
   .features__container {
 
@@ -980,6 +873,10 @@ body {
 
   }
 
+  .features__title {
+    
+  }
+
   .features__text {
     color: #838383;
     font-weight: 300;
@@ -996,7 +893,7 @@ body {
 .portfolio {
   padding-top: 138px;
 
-  @include sections-scroll-display;
+  @include sections-onscroll-display;
 
   @media screen and (max-width: 992px) {
     & {
@@ -1124,7 +1021,7 @@ body {
 
 .clients {
 
-  @include sections-scroll-display;
+  @include sections-onscroll-display;
 
 
   .clients__container {
@@ -1297,7 +1194,7 @@ body {
 .brands {
   background-color: #202b30;
 
-  @include sections-scroll-display;
+  @include sections-onscroll-display;
 
   .brands__container {
     display: flex;
@@ -1344,6 +1241,23 @@ body {
     }
   }
 
+  .brands__pic {
+    // opacity: 50%;
+    // transition: 1s all ease;
+
+    transition: .5s all ease;
+  }
+
+  // .brands__pic:hover {
+    // filter: grayscale(100%);
+
+    // transform: skew(-15deg, 15deg);
+
+  //   transform: scale(1.1);
+
+  //   transition: 1s all ease;
+  // }
+
   .brands__pic:first-child,
   .brands__pic:nth-child(3) {
     margin-right: 80px;
@@ -1362,7 +1276,12 @@ body {
   //   margin-bottom: 30px; // 75
   // }
 
-  .brands__first-pic {
+  .brands__pic--active {
+    transform: scale(1.2);
+    transition: .5s all ease;
+  }
+
+  .brands__pic--first {
     background-image: url(/images/brands/fast-company.png);
     width: 229px;
     height: 34px;
@@ -1373,7 +1292,7 @@ body {
   //   transition: .5s all ease;
   // }
 
-  .brands__second-pic {
+  .brands__pic--second {
     background-image: url(/images/brands/southern-company.png);
     width: 217px;
     height: 76px;
@@ -1381,18 +1300,18 @@ body {
   }
 
   @media screen and (max-width: 1200px) {
-    .brands__second-pic {
+    .brands__pic--second {
       margin-right: 40px; // ? проверить необходимость и когда убрать
     }
   }
 
-  .brands__third-pic {
+  .brands__pic--third {
     background-image: url(/images/brands/angles.png);
     width: 142px;
     height: 103px;
   }
 
-  .brands__fourth-pic {
+  .brands__pic--fourth {
     background-image: url(/images/brands/v-ips.png);
     width: 215px;
     height: 70px;
@@ -1447,8 +1366,13 @@ body {
 
 .benefits {
   background-color: #f8f8f8;
+  filter: grayscale(100%);
 
-  @include sections-scroll-display;
+  @include sections-onscroll-display;
+
+  &:hover {
+    filter: grayscale(0);
+  }
 
   .benefits__container {
     display: flex;
@@ -1468,6 +1392,8 @@ body {
     padding-top: 127px;
     box-shadow: 100px 20px 10px -30px rgba(248, 248, 248, 1);
     z-index: 100;
+
+    // filter: grayscale(100%);
 
   }
 
@@ -1613,7 +1539,16 @@ body {
 
     // background-position: 50px 0;
     // opacity: 0.9;
+
+    // filter: grayscale(100%);
+    // transition: .5s filter ease;
   }
+
+  // .benefits__right:hover {
+  //   filter: grayscale(0);
+  //   transition: .5s filter ease;
+  // }
+
 
   @media screen and (max-width: 1300px) {
     .benefits__right {
@@ -1621,13 +1556,18 @@ body {
     }
   }
 
+  // .benefits__right--active {
+  //   filter: grayscale(0);
+  //   transition: .5s filter ease;
+  // }
+
 
 
 }
 
 .contact {
 
-  @include sections-scroll-display;
+  @include sections-onscroll-display;
 
   .contact__container {
     padding-bottom: 140px;
@@ -1812,7 +1752,7 @@ body {
   color: #fff;
   font-family: $primary-font;
 
-  @include sections-scroll-display;
+  @include sections-onscroll-display;
 
   .footer__container {
     display: flex;

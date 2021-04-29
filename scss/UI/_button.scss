@@ -1,0 +1,14 @@
+.button {
+  width: 190px;
+  min-height: 55px;
+  color: #fff;
+  background: transparent;
+  border-style: solid;
+  border-width: 2px;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $primary-font;
+  padding: 5px;
+}

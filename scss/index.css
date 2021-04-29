@@ -47,52 +47,82 @@
   src: local(""), url("../fonts/SourceSansPro/source-sans-pro-v14-latin-700.woff2") format("woff2"), url("../fonts/SourceSansPro/source-sans-pro-v14-latin-700.woff") format("woff");
 }
 
-html {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+@media screen and (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+}
+
+.nav__menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.nav__menu-item {
+  position: relative;
+  height: 22px;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.nav__menu-item::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border-bottom: 2px solid transparent;
+}
+
+.nav__menu-item:hover::before {
+  -webkit-animation: animate-border .2s linear forwards;
+          animation: animate-border .2s linear forwards;
+}
+
+@-webkit-keyframes animate-border {
+  0% {
+    width: 0;
+    height: 100%;
+    border-bottom: 2px solid #fb414e;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    border-bottom: 2px solid #fb414e;
+  }
+}
+
+@keyframes animate-border {
+  0% {
+    width: 0;
+    height: 100%;
+    border-bottom: 2px solid #fb414e;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    border-bottom: 2px solid #fb414e;
+  }
+}
+
+.nav__menu-item:not(:last-child) {
+  margin-right: 60px;
+}
+
+@media screen and (max-width: 992px) {
+  .nav__menu-item:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+
+.nav__menu-link {
+  color: #fff;
+  font-family: Roboto;
   font-size: 16px;
-}
-
-*,
-*:before,
-*:after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
-}
-
-a {
-  text-decoration: none;
-}
-
-img {
-  display: block;
-}
-
-button:hover,
-input[type="submit"]:hover {
-  -webkit-transition: .2s all ease;
-  transition: .2s all ease;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  overflow-x: hidden;
-  width: 100vw;
-}
-
-.body--active {
-  height: 100%;
-  overflow: hidden;
-}
-
-.container {
-  max-width: 1300px;
-  margin: 0 auto;
-}
-
-.container-wide {
-  margin: 0 auto;
-  max-width: 1800px;
+  font-weight: 500;
 }
 
 .button {
@@ -172,6 +202,62 @@ body {
   -webkit-transition: .2s all ease;
   transition: .2s all ease;
   opacity: .3;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+::-moz-selection {
+  background-color: #fda5ab;
+}
+
+::selection {
+  background-color: #fda5ab;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  -webkit-transition: .2s all ease;
+  transition: .2s all ease;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+.body--active {
+  height: 100%;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.container-wide {
+  margin: 0 auto;
+  max-width: 1800px;
 }
 
 .card-modal {
@@ -284,47 +370,6 @@ body {
   position: absolute;
   left: calc(50% - 500px);
   top: calc(50% - 282.5px);
-}
-
-@media screen and (max-width: 768px) {
-  .nav {
-    display: none;
-  }
-}
-
-.nav .nav__menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.nav .nav__menu-item {
-  height: 22px;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-}
-
-.nav .nav__menu-item:hover {
-  border-bottom: 2px solid #fb414e;
-  -webkit-transition: .3s border-bottom ease;
-  transition: .3s border-bottom ease;
-}
-
-.nav .nav__menu-item:not(:last-child) {
-  margin-right: 60px;
-}
-
-@media screen and (max-width: 992px) {
-  .nav .nav__menu-item:not(:last-child) {
-    margin-right: 30px;
-  }
-}
-
-.nav .nav__menu-link {
-  color: #fff;
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: 500;
 }
 
 .header {
@@ -453,6 +498,8 @@ body {
   background-color: #202b30;
   cursor: pointer;
   position: relative;
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+          box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
 @media screen and (max-width: 1200px) {
@@ -648,10 +695,6 @@ body {
   font-weight: 300;
   line-height: 28px;
   text-align: center;
-}
-
-.services .services__feature {
-  border: 1px solid #000;
 }
 
 .promo {
@@ -1354,6 +1397,11 @@ body {
   }
 }
 
+.brands .brands__pic {
+  -webkit-transition: .5s all ease;
+  transition: .5s all ease;
+}
+
 .brands .brands__pic:first-child,
 .brands .brands__pic:nth-child(3) {
   margin-right: 80px;
@@ -1367,13 +1415,20 @@ body {
   margin-bottom: 5px;
 }
 
-.brands .brands__first-pic {
+.brands .brands__pic--active {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transition: .5s all ease;
+  transition: .5s all ease;
+}
+
+.brands .brands__pic--first {
   background-image: url(/images/brands/fast-company.png);
   width: 229px;
   height: 34px;
 }
 
-.brands .brands__second-pic {
+.brands .brands__pic--second {
   background-image: url(/images/brands/southern-company.png);
   width: 217px;
   height: 76px;
@@ -1381,18 +1436,18 @@ body {
 }
 
 @media screen and (max-width: 1200px) {
-  .brands .brands__second-pic {
+  .brands .brands__pic--second {
     margin-right: 40px;
   }
 }
 
-.brands .brands__third-pic {
+.brands .brands__pic--third {
   background-image: url(/images/brands/angles.png);
   width: 142px;
   height: 103px;
 }
 
-.brands .brands__fourth-pic {
+.brands .brands__pic--fourth {
   background-image: url(/images/brands/v-ips.png);
   width: 215px;
   height: 70px;
@@ -1443,6 +1498,8 @@ body {
 
 .benefits {
   background-color: #f8f8f8;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
   -webkit-transform: translateY(250px);
           transform: translateY(250px);
   -webkit-transition: 1s all ease;
@@ -1454,6 +1511,11 @@ body {
   -webkit-transform: translateY(0);
           transform: translateY(0);
   opacity: 1;
+}
+
+.benefits:hover {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
 }
 
 .benefits .benefits__container {

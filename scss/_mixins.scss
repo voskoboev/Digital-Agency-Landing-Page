@@ -1,4 +1,4 @@
-@mixin sections-scroll-display {
+@mixin sections-onscroll-display {
   transform: translateY(250px);
   transition: 1s all ease;
   opacity: 0;

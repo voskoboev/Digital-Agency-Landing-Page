@@ -2,13 +2,12 @@
 
 initSlickSlider();
 // scrollTo();
+popUpSectionsOnScroll();
 // manageSolutionsModals();
 // toggleTooltipForAddress();
 // manageFooterMapModal();
 // playClientsVideo();
-
-popUpSectionsOnScroll();
-
+// activateBrandsPics();
 
 function initSlickSlider() {
   const container = $('.promo__carousel-container');
@@ -67,8 +66,8 @@ function scrollTo() {
       const position = positionItem.offset().top;
 
       interactItems.click(() => {
-        $('html, body').animate({ scrollTop: position + 50 }, 1000);
-      });
+        $('html, body').animate({ scrollTop: position - 200 }, 1000);
+      }); // позиция изменена из-за всплывающих секций, изначальное значение + 50
     }
 
     scrollToCertainSection(servicesItems, servicesSection);
@@ -110,13 +109,50 @@ function scrollTo() {
   scrollToTopOnBtnClick();
 }
 
+function popUpSectionsOnScroll() {
+  const headerWrapper = $('.header__color-wrapper');
+  const solutions = $('.solutions');
+  const services = 'services';
+  const promo = 'promo';
+  const features = 'features';
+  const portfolio = 'portfolio';
+  const clients = 'clients';
+  const brands = 'brands';
+  const benefits = 'benefits';
+  const contact = 'contact';
+  const footer = 'footer';
+
+  $(window).scroll(function () {
+    if ($(this).scrollTop() !== 0) {
+      solutions.addClass('solutions--active');
+      headerWrapper.addClass('header__color-wrapper--active');
+    }
+  });
+
+  function popUpOnScroll(section) {
+    $(window).scroll(function () {
+      if ($(this).scrollTop() + $(window).innerHeight() > $(`.${section}`).position().top) {
+        $(`.${section}`).addClass(`${section}--active`);
+      }
+    });
+  }
+
+  popUpOnScroll(services);
+  popUpOnScroll(promo);
+  popUpOnScroll(features);
+  popUpOnScroll(portfolio);
+  popUpOnScroll(clients);
+  popUpOnScroll(brands);
+  popUpOnScroll(benefits);
+  popUpOnScroll(contact);
+  popUpOnScroll(footer);
+}
+
 function manageSolutionsModals() {
   const body = $('body');
-
   const cardFirst = $('.solutions__card--first');
   const cardSecond = $('.solutions__card--second');
   const cardThird = $('.solutions__card--third');
-
   const modalFirst = $('.card-modal--first');
   const modalSecond = $('.card-modal--second');
   const modalThird = $('.card-modal--third');
@@ -262,39 +298,37 @@ function playClientsVideo() {
 
 // function displayFeature();
 
-function popUpSectionsOnScroll() {
-  const solutions = $('.solutions');
-  const services = 'services';
-  const promo = 'promo';
-  const features = 'features';
-  const portfolio = 'portfolio';
-  const clients = 'clients';
-  const brands = 'brands';
-  const benefits = 'benefits';
-  const contact = 'contact';
-  const footer = 'footer';
+function activateBrandsPics() {
+  const firstPic = $('.brands__pic--first');
+  const secondPic = $('.brands__pic--second');
+  const thirdPic = $('.brands__pic--third');
+  const fourthPic = $('.brands__pic--fourth');
+  const activationClass = 'brands__pic--active';
+  const activationTime = 2000;
 
-  $(window).scroll(function () {
-    if ($(this).scrollTop() !== 0) {
-      solutions.addClass('solutions--active');
-    }
-  });
-
-  function popUpOnScroll(section) {
-    $(window).scroll(function () {
-      if ($(this).scrollTop() + $(window).innerHeight() > $(`.${section}`).position().top) {
-        $(`.${section}`).addClass(`${section}--active`);
-      }
-    });
+  function activatePicsConsecutively() {
+    setTimeout(() => {
+      firstPic.addClass(activationClass);
+      fourthPic.removeClass(activationClass);
+      setTimeout(() => {
+        secondPic.addClass(activationClass);
+        firstPic.removeClass(activationClass);
+        setTimeout(() => {
+          thirdPic.addClass(activationClass);
+          secondPic.removeClass(activationClass);
+          setTimeout(() => {
+            fourthPic.addClass(activationClass);
+            thirdPic.removeClass(activationClass);
+            setTimeout(() => {
+              activatePicsConsecutively();
+            }, 0)
+          }, activationTime);
+        }, activationTime);
+      }, activationTime);
+    }, activationTime);
   }
 
-  popUpOnScroll(services);
-  popUpOnScroll(promo);
-  popUpOnScroll(features);
-  popUpOnScroll(portfolio);
-  popUpOnScroll(clients);
-  popUpOnScroll(brands);
-  popUpOnScroll(benefits);
-  popUpOnScroll(contact);
-  popUpOnScroll(footer);
+  activatePicsConsecutively();
 }
+
+
