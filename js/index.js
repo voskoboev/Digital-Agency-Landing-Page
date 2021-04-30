@@ -110,8 +110,8 @@ function scrollTo() {
 }
 
 function popUpSectionsOnScroll() {
-  const headerWrapper = $('.header__color-wrapper');
-  const solutions = $('.solutions');
+  // const headerWrapper = $('.header__color-wrapper');
+  // const solutions = $('.solutions');
   const services = 'services';
   const promo = 'promo';
   const features = 'features';
@@ -122,12 +122,12 @@ function popUpSectionsOnScroll() {
   const contact = 'contact';
   const footer = 'footer';
 
-  $(window).scroll(function () {
-    if ($(this).scrollTop() !== 0) {
-      solutions.addClass('solutions--active');
-      headerWrapper.addClass('header__color-wrapper--active');
-    }
-  });
+  // $(window).scroll(function () {
+  //   if ($(this).scrollTop() !== 0) {
+  //     solutions.addClass('solutions--active');
+  //     headerWrapper.addClass('header__color-wrapper--active');
+  //   }
+  // });
 
   function popUpOnScroll(section) {
     $(window).scroll(function () {
@@ -254,13 +254,10 @@ function manageFooterMapModal() {
   });
 }
 
-
-
-
 function playClientsVideo() {
-  const videoAndPlayBtn = $('.clients__video, .clients__video-btn');
   const video = $('.clients__video');
   const playBtn = $('.clients__video-btn');
+  const videoAndPlayBtn = $('.clients__video, .clients__video-btn');
 
   video.click(function () {
     playBtn.addClass('clients__video-btn-play--hidden');
@@ -299,10 +296,10 @@ function playClientsVideo() {
 // function displayFeature();
 
 function activateBrandsPics() {
-  const firstPic = $('.brands__pic--first');
-  const secondPic = $('.brands__pic--second');
-  const thirdPic = $('.brands__pic--third');
-  const fourthPic = $('.brands__pic--fourth');
+  const firstPic = $('.brands__pic:first');
+  const secondPic = $('.brands__pic:nth-child(2)');
+  const thirdPic = $('.brands__pic:nth-child(3)');
+  const fourthPic = $('.brands__pic:last');
   const activationClass = 'brands__pic--active';
   const activationTime = 2000;
 
@@ -319,9 +316,7 @@ function activateBrandsPics() {
           setTimeout(() => {
             fourthPic.addClass(activationClass);
             thirdPic.removeClass(activationClass);
-            setTimeout(() => {
-              activatePicsConsecutively();
-            }, 0)
+            activatePicsConsecutively();
           }, activationTime);
         }, activationTime);
       }, activationTime);
@@ -331,4 +326,35 @@ function activateBrandsPics() {
   activatePicsConsecutively();
 }
 
+function validateContactForm() {
+  const submitBtn = $('.contact__form-input--submit');
 
+  submitBtn.click(ev => {
+    const inputNameValue = $('.contact__form-input--name')
+    const inputCompanyValue = $('.contact__form-input--company');
+    const inputEmailValue = $('.contact__form-input--email');
+    const inputServiceValue = $('.contact__form-input--service');
+
+    ev.preventDefault();
+
+    const parseInputValues = inputField => {
+      return inputField.val().toString().trim();
+    }
+
+    inputServiceValue === null ? console.log(parseInputValues(inputServiceValue)) : console.log('Fill Out the Field!');
+
+    console.log(parseInputValues(inputNameValue));
+    console.log(parseInputValues(inputCompanyValue));
+    console.log(parseInputValues(inputEmailValue));
+    console.log(parseInputValues(inputServiceValue));
+
+    // $.ajax({
+
+    // })
+  });
+
+
+
+}
+
+validateContactForm();

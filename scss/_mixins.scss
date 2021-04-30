@@ -1,4 +1,7 @@
-@mixin sections-onscroll-display {
+// This module encompasses all mixins used in the project.
+
+// This mixin provides sections popup emergency on page scroll.
+@mixin sections-display-onscroll {
   transform: translateY(250px);
   transition: 1s all ease;
   opacity: 0;
@@ -6,5 +9,34 @@
   &--active {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@mixin font($family: $default-font, $weight: 400, $size: 1rem, $color: initial) {
+  font: {
+    family: $family;
+    weight: $weight;
+    size: $size;
+  }
+
+  color: $color;
+}
+
+@mixin flex($jcc: initial, $aic: initial, $flw: initial, $fld: initial) {
+  display: flex;
+  justify-content: $jcc;
+  align-items: $aic;
+
+  flex: {
+    wrap: $flw;
+    direction: $fld;
+  }
+}
+
+// This mixin used for help to align elements in responsive design.
+@mixin pl-pr($val) {
+  padding: {
+    left: $val;
+    right: $val;
   }
 }

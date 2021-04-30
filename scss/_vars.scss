@@ -1,6 +1,16 @@
+// This module encompasses all variables used in the project.
+
+// General colors used on the page.
 $primary-color: #202b30;
 $secondary-color: #fb414e;
 
+// Font colors vars covers most of font colors used on the page.
+$primary-font-color: #1f1f1f;
+$secondary-font-color: #838383;
+$dark-font-color: #000;
+$light-font-color: #fff;
+
+// Default system fonts used as a fallback fonts if necessary. They implemented to "body" selector in index.scss
 $default-font: -apple-system,
 BlinkMacSystemFont,
 'Segoe UI',
@@ -11,6 +21,11 @@ Cantarell,
 'Droid Sans',
 'Helvetica Neue',
 sans-serif;
-
 $primary-font: Roboto;
 $secondary-font: 'Source Sans Pro';
+
+%centering-flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

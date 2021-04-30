@@ -1,7 +1,13 @@
+// This module applies to all <button> tags on the page excepting <input type="submit"> tags used in the contact form and in the footer.
+
+// Certain <button> tags have their own specific styles computed over this module. These specific styles contains in "index.scss" file.
+
 .button {
   width: 190px;
   min-height: 55px;
-  color: #fff;
+
+  @include font($primary-font, 400, 1rem, $light-font-color);
+
   background: transparent;
   border-style: solid;
   border-width: 2px;
@@ -9,6 +15,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: $primary-font;
   padding: 5px;
 }
