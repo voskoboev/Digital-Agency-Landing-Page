@@ -1,0 +1,45 @@
+.tooltip {
+
+  @include font($primary-font, 400, 1rem, $dark-font-color);
+
+  border: 2px solid $secondary-color;
+
+  // content: 'Click to See the Map';
+  width: 170px;
+  height: 50px;
+
+  @extend %centering-flex-container;
+
+  background-color: #fff;
+
+  position: absolute;
+  // left: 400px;
+  // bottom: 8px;
+  
+  // display: none;
+  
+  visibility: hidden;
+  opacity: 0;
+
+  transition: .3s all ease;
+}
+
+// .footer__adress-tooltip:hover {
+//   background-color: #fff;
+//   color: $secondary-color;
+// }
+
+.tooltip--active {
+  visibility: visible;
+  opacity: 1;
+  
+  // display: block;
+}
+
+.tooltip__triangle {
+  border: 8px solid transparent;
+  border-top: 8px solid $secondary-color;
+  position: absolute;
+  bottom: -18px;
+  left: -2px;
+}

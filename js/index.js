@@ -4,8 +4,8 @@ initSlickSlider();
 // scrollTo();
 popUpSectionsOnScroll();
 // manageSolutionsModals();
-// toggleTooltipForAddress();
-// manageFooterMapModal();
+toggleTooltipForAddress();
+manageFooterMapModal();
 // playClientsVideo();
 // activateBrandsPics();
 
@@ -326,35 +326,166 @@ function activateBrandsPics() {
   activatePicsConsecutively();
 }
 
+// manageContactForm() {
+
+// }
+
 function validateContactForm() {
+  const formInputs = $('.contact__form-input');
+  const formTooltips = $('.tooltip__contact-form-item');
+  const tooltipText = $('.tooltip__text');
   const submitBtn = $('.contact__form-input--submit');
+  const tooltipActivationClass = 'tooltip--active';
+
+  // submitBtn.click((ev) => {
+  //   ev.preventDefault();
+
+  //   let items = $('.contact__form-input');
+
+  //   items.each(item => {
+  //       console.log(item.val())
+  //   })
+  // })
 
   submitBtn.click(ev => {
-    const inputNameValue = $('.contact__form-input--name')
-    const inputCompanyValue = $('.contact__form-input--company');
-    const inputEmailValue = $('.contact__form-input--email');
-    const inputServiceValue = $('.contact__form-input--service');
+    const inputNameValue = $('.contact__form-input--name').val()
+    const inputCompanyValue = $('.contact__form-input--company').val();
+    const inputEmailValue = $('.contact__form-input--email').val();
+    const inputServiceValue = $('.contact__form-input--service').val();
+    const inputTextareaValue = $('.contact__form-input--textarea').val();
+
+    const inputNameTooltip = $('.contact__form-input--name-tooltip');
+    const inputCompanyTooltip = $('.contact__form-input--company-tooltip');
+    const inputEmailTooltip = $('.contact__form-input--email-tooltip');
+    const inputServiceTooltip = $('.contact__form-input--service-tooltip');
+    const inputTextareaTooltip = $('.contact__form-input--textarea-tooltip');
+
+    // const formTooltips = $('.tooltip__contact-form-item');
+
+    const tooltipText = $('.tooltip__text');
+
+    const tooltipActivationClass = 'tooltip--active';
 
     ev.preventDefault();
 
-    const parseInputValues = inputField => {
-      return inputField.val().toString().trim();
+    switch (true) {
+      case inputNameValue === '':
+        inputNameTooltip.addClass(tooltipActivationClass);
+        break;
+      case inputNameValue.length > 100:
+        tooltipText.text('Max number is 100')
+        inputNameTooltip.addClass(tooltipActivationClass);
+        break;
+
+      case inputCompanyValue === '':
+        inputCompanyTooltip.addClass(tooltipActivationClass);
+        break;
+      case inputCompanyValue.length > 100:
+        tooltipText.text('Max number is 100')
+        inputCompanyTooltip.addClass(tooltipActivationClass);
+        break;
+
+      case inputEmailValue === '':
+        inputEmailTooltip.addClass(tooltipActivationClass);
+        break;
+      case inputEmailValue.includes('@') === false
+        || inputEmailValue.includes('.') === false:
+        alert('123')
+        break;
+      case inputEmailValue.length > 100:
+        tooltipText.text('Max number is 100')
+        inputEmailTooltip.addClass(tooltipActivationClass);
+        break;
+
+
+      case inputServiceValue === null:
+        inputServiceTooltip.addClass(tooltipActivationClass);
+        break;
+      case inputTextareaValue === '':
+        inputTextareaTooltip.addClass(tooltipActivationClass);
+        break;
+      case inputTextareaValue.length > 2500:
+        tooltipText.text('Max number is 2500')
+        inputTextareaTooltip.addClass(tooltipActivationClass);
+        break;
+
+      // case inputNameValue.length > 100:
+      //   tooltipText.text('Max number is 100')
+      //   inputNameTooltip.addClass(tooltipActivationClass);
+      //   break;
+      // case inputCompanyValue.length > 100:
+      //   tooltipText.text('Max number is 100')
+      //   inputCompanyTooltip.addClass(tooltipActivationClass);
+      //   break;
+      // case inputEmailValue.length > 100:
+      //   tooltipText.text('Max number is 100')
+      //   inputEmailTooltip.addClass(tooltipActivationClass);
+      //   break;
+      // case inputTextareaValue.length > 2500:
+      //   tooltipText.text('Max number is 2500')
+      //   inputTextareaTooltip.addClass(tooltipActivationClass);
+      //   break;
     }
 
-    inputServiceValue === null ? console.log(parseInputValues(inputServiceValue)) : console.log('Fill Out the Field!');
+    // switch (true) {
+    //   case inputNameValue.length > 100:
+    //     tooltipText.text('Max number is 100')
+    //     inputNameTooltip.addClass(tooltipActivationClass);
+    //     break;
+    //   case inputCompanyValue.length > 100:
+    //     tooltipText.text('Max number is 100')
+    //     inputCompanyTooltip.addClass(tooltipActivationClass);
+    //     break;
+    //   case inputEmailValue.length > 100:
+    //     tooltipText.text('Max number is 100')
+    //     inputEmailTooltip.addClass(tooltipActivationClass);
+    //     break;
+    //   case inputTextareaValue.length > 2500:
+    //     tooltipText.text('Max number is 2500')
+    //     inputTextareaTooltip.addClass(tooltipActivationClass);
+    //     break;
+    // }
 
-    console.log(parseInputValues(inputNameValue));
-    console.log(parseInputValues(inputCompanyValue));
-    console.log(parseInputValues(inputEmailValue));
-    console.log(parseInputValues(inputServiceValue));
+    // const parseInputValues = inputField => {
+    //   return inputField.toString().trim();
+    // }
 
-    // $.ajax({
+    // console.log(parseInputValues(inputNameValue));
+    // console.log(parseInputValues(inputCompanyValue));
+    // console.log(parseInputValues(inputEmailValue));
+    // console.log(parseInputValues(inputServiceValue));
 
-    // })
   });
 
 
+  formInputs.focus(function () {
+    formTooltips.removeClass(tooltipActivationClass)
+    tooltipText.text('Enter value!');
+  });
 
 }
 
 validateContactForm();
+
+function submitContactForm() {
+  const form = $('.contact__form');
+
+  form.submit(function (ev) {
+    ev.preventDefault();
+
+    $.ajax({
+      url: 'php/mail.php',
+      type: 'POST',
+      data: form.serialize(),
+      success: function () {
+        console.log('success'); // убрать
+        form.trigger('reset');
+      },
+      error: function () {
+        console.log('failed'); // убрать
+      }
+    });
+  });
+}
+
+// submitContactForm();

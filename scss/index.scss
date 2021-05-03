@@ -5,12 +5,8 @@
 @import 'UI/_nav';
 @import 'UI/_button';
 @import 'UI/_scroll-to-top-button';
+@import 'UI/_tooltip';
 
-
-html {
-  box-sizing: border-box;
-  font-size: 16px;
-}
 
 // @media screen and (max-width: 768px){
 //   html {
@@ -18,14 +14,28 @@ html {
 //   }
 // }
 
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
 
-::selection {
-  background-color: lighten($secondary-color, 20%);
+body {
+  font-family: $default-font;
+  overflow-x: hidden;
+  width: 100vw;
+
+  // background-color: red !important;
+}
+
+.body--active {
+  height: 100%;
+  overflow: hidden;
 }
 
 a {
@@ -41,17 +51,8 @@ input[type="submit"]:hover {
   transition: .2s all ease;
 }
 
-body {
-  font-family: $default-font;
-  overflow-x: hidden;
-  width: 100vw;
-
-  // background-color: red !important;
-}
-
-.body--active {
-  height: 100%;
-  overflow: hidden;
+::selection {
+  background-color: lighten($secondary-color, 20%);
 }
 
 .container {
@@ -185,10 +186,11 @@ body {
 
 
 .header {
-  background-image: url(../images/office.jpg);
-  background-repeat: no-repeat;
+
+  background: url(../images/office.jpg) no-repeat;
   background-size: auto auto;
   background-position-x: 50%;
+
   // padding-bottom: 245px; // по avocode ?
   // padding-bottom: 190px;
 
@@ -244,9 +246,7 @@ body {
 
   .header__title {
 
-
     @include font($secondary-font, 700, 3.75rem, $light-font-color);
-
 
     max-width: 950px;
     text-align: center;
@@ -1219,8 +1219,8 @@ body {
   }
 
   .clients__video-btn-play {
-    background-image: url(../images/play-btn.png);
-    background-repeat: no-repeat;
+    background: url(../images/play-btn.png) no-repeat;
+    // background-repeat: no-repeat;
     width: 12px;
     height: 16px;
   }
@@ -1559,8 +1559,8 @@ body {
     width: 100%;
     height: 100%;
 
-    background-image: url(/images/benefits/bench.png);
-    background-repeat: no-repeat;
+    background: url(/images/benefits/bench.png) no-repeat;
+    // background-repeat: no-repeat;
     background-size: contain;
 
     position: absolute;
@@ -1659,6 +1659,8 @@ body {
     width: 50%;
     padding-top: 152px;
     padding-left: 10px;
+
+    position: relative;
   }
 
   .contact__form-input {
@@ -1689,19 +1691,40 @@ body {
     margin-bottom: 20px;
   }
 
-  .contact__inputs-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  .contact__form-input--name-tooltip {
+    left: 400px;
+    top: 93px;
   }
+
+  // .contact__inputs-container {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   margin-bottom: 20px;
+  // }
 
   .contact__form-input--company,
   .contact__form-input--email {
-    width: 50%;
+    width: 48.5%;
   }
 
   .contact__form-input--company {
-    margin-right: 20px;
+    margin-right: 14px;
+    margin-bottom: 20px;
+
+  }
+
+  .contact__form-input--company-tooltip {
+    left: 150px;
+    top: 163px;
+  }
+
+  .contact__form-input--email {
+    margin-bottom: 20px;
+  }
+
+  .contact__form-input--email-tooltip {
+    top: 163px;
+    right: 0;
   }
 
   // @media screen and (max-width: 1400px) {
@@ -1715,14 +1738,19 @@ body {
   .contact__form-input--service {
     width: 100%;
     margin-bottom: 20px;
-    background-image: url(/images/order/drop-down-arrow.png);
-    background-repeat: no-repeat;
+    background-image: url(/images/order/drop-down-arrow.png) no-repeat;
+    // background-repeat: no-repeat;
     background-position: right 20px center;
     appearance: none;
   }
 
   .contact__form-input--service-option {
     height: 50px;
+  }
+
+  .contact__form-input--service-tooltip {
+    left: 400px;
+    top: 235px;
   }
 
   .contact__form-input--textarea {
@@ -1734,6 +1762,11 @@ body {
 
 
     // font-family: $primary-font;
+  }
+
+  .contact__form-input--textarea-tooltip {
+    left: 400px;
+    top: 306px;
   }
 
   .contact__form-input--submit {
@@ -1828,7 +1861,7 @@ body {
 
     border: 2px solid $secondary-color;
 
-    content: 'Click to See the Map';
+    // content: 'Click to See the Map';
     width: 170px;
     height: 50px;
 

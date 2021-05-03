@@ -1,5 +1,3 @@
-// This module encompasses all mixins used in the project.
-
 // This mixin provides sections popup emergency on page scroll.
 @mixin sections-display-onscroll {
   transform: translateY(250px);

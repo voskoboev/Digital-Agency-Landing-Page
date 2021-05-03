@@ -47,7 +47,7 @@
   src: local(""), url("../fonts/SourceSansPro/source-sans-pro-v14-latin-700.woff2") format("woff2"), url("../fonts/SourceSansPro/source-sans-pro-v14-latin-700.woff") format("woff");
 }
 
-.promo .slick-dots, .clients .clients__video-btn, .footer .footer__adress-tooltip {
+.tooltip, .promo .slick-dots, .clients .clients__video-btn, .footer .footer__adress-tooltip {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -218,6 +218,35 @@
   opacity: .3;
 }
 
+.tooltip {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #000;
+  border: 2px solid #fb414e;
+  width: 170px;
+  height: 50px;
+  background-color: #fff;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: .3s all ease;
+  transition: .3s all ease;
+}
+
+.tooltip--active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip__triangle {
+  border: 8px solid transparent;
+  border-top: 8px solid #fb414e;
+  position: absolute;
+  bottom: -18px;
+  left: -2px;
+}
+
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -231,12 +260,15 @@ html {
           box-sizing: inherit;
 }
 
-::-moz-selection {
-  background-color: #fda5ab;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+  width: 100vw;
 }
 
-::selection {
-  background-color: #fda5ab;
+.body--active {
+  height: 100%;
+  overflow: hidden;
 }
 
 a {
@@ -253,15 +285,12 @@ input[type="submit"]:hover {
   transition: .2s all ease;
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  overflow-x: hidden;
-  width: 100vw;
+::-moz-selection {
+  background-color: #fda5ab;
 }
 
-.body--active {
-  height: 100%;
-  overflow: hidden;
+::selection {
+  background-color: #fda5ab;
 }
 
 .container {
@@ -382,8 +411,7 @@ body {
 }
 
 .header {
-  background-image: url(../images/office.jpg);
-  background-repeat: no-repeat;
+  background: url(../images/office.jpg) no-repeat;
   background-size: auto auto;
   background-position-x: 50%;
 }
@@ -1317,8 +1345,7 @@ body {
 }
 
 .clients .clients__video-btn-play {
-  background-image: url(../images/play-btn.png);
-  background-repeat: no-repeat;
+  background: url(../images/play-btn.png) no-repeat;
   width: 12px;
   height: 16px;
 }
@@ -1690,8 +1717,7 @@ body {
 .benefits .benefits__right {
   width: 100%;
   height: 100%;
-  background-image: url(/images/benefits/bench.png);
-  background-repeat: no-repeat;
+  background: url(/images/benefits/bench.png) no-repeat;
   background-size: contain;
   position: absolute;
   right: -710px;
@@ -1777,6 +1803,7 @@ body {
   width: 50%;
   padding-top: 152px;
   padding-left: 10px;
+  position: relative;
 }
 
 .contact .contact__form-input {
@@ -1829,30 +1856,39 @@ body {
   margin-bottom: 20px;
 }
 
-.contact .contact__inputs-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-bottom: 20px;
+.contact .contact__form-input--name-tooltip {
+  left: 400px;
+  top: 93px;
 }
 
 .contact .contact__form-input--company,
 .contact .contact__form-input--email {
-  width: 50%;
+  width: 48.5%;
 }
 
 .contact .contact__form-input--company {
-  margin-right: 20px;
+  margin-right: 14px;
+  margin-bottom: 20px;
+}
+
+.contact .contact__form-input--company-tooltip {
+  left: 150px;
+  top: 163px;
+}
+
+.contact .contact__form-input--email {
+  margin-bottom: 20px;
+}
+
+.contact .contact__form-input--email-tooltip {
+  top: 163px;
+  right: 0;
 }
 
 .contact .contact__form-input--service {
   width: 100%;
   margin-bottom: 20px;
-  background-image: url(/images/order/drop-down-arrow.png);
-  background-repeat: no-repeat;
+  background-image: url(/images/order/drop-down-arrow.png) no-repeat;
   background-position: right 20px center;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -1863,12 +1899,22 @@ body {
   height: 50px;
 }
 
+.contact .contact__form-input--service-tooltip {
+  left: 400px;
+  top: 235px;
+}
+
 .contact .contact__form-input--textarea {
   width: 100%;
   min-height: 270px;
   max-height: 400px;
   padding: 15px 20px;
   resize: vertical;
+}
+
+.contact .contact__form-input--textarea-tooltip {
+  left: 400px;
+  top: 306px;
 }
 
 .contact .contact__form-input--submit {
@@ -1954,7 +2000,6 @@ body {
   font-size: 1rem;
   color: #000;
   border: 2px solid #fb414e;
-  content: 'Click to See the Map';
   width: 170px;
   height: 50px;
   background-color: #fff;
