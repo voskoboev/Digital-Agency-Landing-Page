@@ -1,11 +1,12 @@
 .tooltip {
 
   @include font($primary-font, 400, 1rem, $dark-font-color);
+  padding: 5px;
 
   border: 2px solid $secondary-color;
 
   // content: 'Click to See the Map';
-  width: 170px;
+  min-width: 170px;
   height: 50px;
 
   @extend %centering-flex-container;
