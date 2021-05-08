@@ -50,12 +50,32 @@
   }
 
   .modal-window__container {
-    width: 1000px;
-    height: 565px;
+    // width: 1000px;
+    // height: 565px;
     // background-color: #fff;
 
+    
     position: absolute;
-    left: calc(50% - 500px);
-    top: calc(50% - 282.5px);
+    left: calc(50%);
+    top: calc(50%);
+    transform: translate(-200px, -125px);
+  }
+  
+  .modal-window__text {
+    @include font($primary-font, 600, 2.5rem, $primary-font-color);
+    line-height: 50px;
+    
+    max-width: 400px;
+    min-height: 250px;
+
+    background-color: #fff;
+    padding: 20px;
+    outline: 5px solid $secondary-color;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
   }
 }

@@ -1,0 +1,211 @@
+.footer {
+  background-color: #202b30;
+  color: $light-font-color;
+  font-family: $primary-font;
+
+  @include sections-display-onscroll;
+
+  .footer__container {
+    display: flex;
+  }
+
+  @media screen and (max-width: 1400px) {
+    .footer__container {
+
+      @include pl-pr(40px);
+
+
+    }
+  }
+
+  .footer__left {
+    width: 50%;
+    padding-top: 100px;
+  }
+
+  .footer__logo {
+    margin-bottom: 100px;
+    display: block;
+  }
+
+  .footer__contact {
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .footer__address {
+    max-width: 340px;
+    line-height: 28px;
+    margin-bottom: 92px;
+    cursor: pointer;
+
+    position: relative;
+  }
+
+  // .footer__location {
+
+  // transition: 2s all ease;
+  // }
+
+  // .footer__location:hover::after {
+
+  .footer__adress-tooltip {
+
+    @include font($primary-font, 400, 1rem, $dark-font-color);
+
+    border: 2px solid $secondary-color;
+
+    // content: 'Click to See the Map';
+    width: 170px;
+    height: 50px;
+
+    @extend %centering-flex-container;
+
+    background-color: #fff;
+
+    position: absolute;
+    top: -60px;
+    left: 180px;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s all ease;
+  }
+
+  // .footer__adress-tooltip:hover {
+  //   background-color: #fff;
+  //   color: $secondary-color;
+  // }
+
+  .footer__adress-tooltip--active {
+    visibility: visible;
+    opacity: 1;
+
+  }
+
+  .footer__adress-tooltip-triangle {
+    border: 8px solid transparent;
+    border-top: 8px solid $secondary-color;
+    position: absolute;
+    bottom: -18px;
+    left: -2px;
+  }
+
+  .footer__address,
+  .footer__email-link,
+  .footer__tel-link {
+    color: inherit;
+    font-weight: 300;
+  }
+
+  .footer__location:hover,
+  .footer__email-link:hover,
+  .footer__tel-link:hover {
+    color: darken($light-font-color, 20%);
+  }
+
+  .footer__socials {
+    display: flex;
+  }
+
+  .footer__socials-item:not(:last-child) {
+    margin-right: 24px;
+  }
+
+  .footer__socials-item-link {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  .footer__socials-item-link:hover {
+    opacity: .8;
+  }
+
+  .footer__socials-item-link--inst {
+    background-image: url(/images/footer/inst.png);
+  }
+
+  .footer__socials-item-link--fb {
+    background-image: url(/images/footer/fb.png);
+  }
+
+  .footer__socials-item-link--tw {
+    background-image: url(/images/footer/tw.png);
+  }
+
+  .footer__socials-item-link--ln {
+    background-image: url(/images/footer/ln.png);
+  }
+
+  .footer__right {
+    width: 50%;
+    padding-top: 110px;
+    padding-left: 10px;
+  }
+
+  .footer__nav {
+    padding-left: 7px;
+    margin-bottom: 100px;
+  }
+
+  @media screen and (max-width: 1300px) {
+    .footer__nav {
+      display: none;
+    }
+  }
+
+  .footer__text {
+    text-align: right;
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+
+
+  .footer__form {
+    display: flex;
+    margin-bottom: 100px;
+  }
+
+  .footer__form-input--email {
+
+    @include font($primary-font, 300, 1rem, $dark-font-color);
+
+    min-height: 45px;
+    width: 100%;
+
+    padding-left: 16px;
+  }
+
+  .footer__form-input--email::placeholder {
+    color: #848484;
+  }
+
+  .footer__form-input--email:focus::placeholder {
+    color: transparent;
+  }
+
+  .form__input--submit {
+    width: 165px;
+    min-height: 45px;
+    background-color: $secondary-color;
+    color: $light-font-color;
+    border: none;
+  }
+
+  .form__input--submit:hover {
+    background-color: lighten($secondary-color, 6%)
+  }
+
+  .form__input--submit:active {
+    background-color: darken($secondary-color, 5%)
+  }
+
+  .footer__copyright {
+    color: #586165;
+    text-align: right;
+    font-size: 14px;
+
+    margin-bottom: 66px;
+  }
+}

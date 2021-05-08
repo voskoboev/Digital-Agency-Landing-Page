@@ -248,58 +248,7 @@
   left: -2px;
 }
 
-html {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-size: 16px;
-}
-
-*,
-*:before,
-*:after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  overflow-x: hidden;
-  width: 100vw;
-}
-
-.body--active {
-  height: 100%;
-  overflow: hidden;
-}
-
-a {
-  text-decoration: none;
-}
-
-img {
-  display: block;
-}
-
-button:hover,
-input[type="submit"]:hover {
-  -webkit-transition: .2s all ease;
-  transition: .2s all ease;
-}
-
-::-moz-selection {
-  background-color: #fda5ab;
-}
-
-::selection {
-  background-color: #fda5ab;
-}
-
-.container {
-  max-width: 1300px;
-  margin: 0 auto;
-}
-
-.card-modal {
+.modal-window {
   display: none;
   position: fixed;
   width: 100%;
@@ -308,7 +257,7 @@ input[type="submit"]:hover {
   z-index: 10;
 }
 
-.card-modal .card-modal__close-btn {
+.modal-window .modal-window__close-btn {
   width: 40px;
   height: 40px;
   position: absolute;
@@ -317,8 +266,8 @@ input[type="submit"]:hover {
   cursor: pointer;
 }
 
-.card-modal .card-modal__close-btn::before,
-.card-modal .card-modal__close-btn::after {
+.modal-window .modal-window__close-btn::before,
+.modal-window .modal-window__close-btn::after {
   position: absolute;
   top: 18px;
   left: -5px;
@@ -329,86 +278,53 @@ input[type="submit"]:hover {
   background-color: #b5b8b1;
 }
 
-.card-modal .card-modal__close-btn::before {
+.modal-window .modal-window__close-btn::before {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
 
-.card-modal .card-modal__close-btn::after {
+.modal-window .modal-window__close-btn::after {
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
 }
 
-.card-modal .card-modal__close-btn:hover::before {
+.modal-window .modal-window__close-btn:hover::before {
   background-color: #ced0cc;
 }
 
-.card-modal .card-modal__close-btn:hover::after {
+.modal-window .modal-window__close-btn:hover::after {
   background-color: #ced0cc;
 }
 
-.card-modal .card-modal__video {
-  width: 1000px;
-  height: 565px;
+.modal-window .modal-window__container {
   position: absolute;
-  left: calc(50% - 500px);
-  top: calc(50% - 282.5px);
+  left: calc(50%);
+  top: calc(50%);
+  -webkit-transform: translate(-200px, -125px);
+          transform: translate(-200px, -125px);
 }
 
-.map-modal {
-  display: none;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 10;
-}
-
-.map-modal .map-modal__close-btn {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 50px;
-  right: 50px;
-  cursor: pointer;
-}
-
-.map-modal .map-modal__close-btn::before,
-.map-modal .map-modal__close-btn::after {
-  position: absolute;
-  top: 18px;
-  left: -5px;
-  content: '';
-  width: 50px;
-  height: 5px;
-  border-radius: 15%;
-  background-color: #b5b8b1;
-}
-
-.map-modal .map-modal__close-btn::before {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-}
-
-.map-modal .map-modal__close-btn::after {
-  -webkit-transform: rotate(135deg);
-          transform: rotate(135deg);
-}
-
-.map-modal .map-modal__close-btn:hover::before {
-  background-color: #ced0cc;
-}
-
-.map-modal .map-modal__close-btn:hover::after {
-  background-color: #ced0cc;
-}
-
-.map-modal .map-modal__container {
-  width: 1000px;
-  height: 565px;
-  position: absolute;
-  left: calc(50% - 500px);
-  top: calc(50% - 282.5px);
+.modal-window .modal-window__text {
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: #1f1f1f;
+  line-height: 50px;
+  max-width: 400px;
+  min-height: 250px;
+  background-color: #fff;
+  padding: 20px;
+  outline: 5px solid #fb414e;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
 }
 
 .header {
@@ -2168,5 +2084,168 @@ input[type="submit"]:hover {
   text-align: right;
   font-size: 14px;
   margin-bottom: 66px;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+.body--active {
+  height: 100%;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  -webkit-transition: .2s all ease;
+  transition: .2s all ease;
+}
+
+::-moz-selection {
+  background-color: #fda5ab;
+}
+
+::selection {
+  background-color: #fda5ab;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.card-modal {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}
+
+.card-modal .card-modal__close-btn {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
+}
+
+.card-modal .card-modal__close-btn::before,
+.card-modal .card-modal__close-btn::after {
+  position: absolute;
+  top: 18px;
+  left: -5px;
+  content: '';
+  width: 50px;
+  height: 5px;
+  border-radius: 15%;
+  background-color: #b5b8b1;
+}
+
+.card-modal .card-modal__close-btn::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.card-modal .card-modal__close-btn::after {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+.card-modal .card-modal__close-btn:hover::before {
+  background-color: #ced0cc;
+}
+
+.card-modal .card-modal__close-btn:hover::after {
+  background-color: #ced0cc;
+}
+
+.card-modal .card-modal__video {
+  width: 1000px;
+  height: 565px;
+  position: absolute;
+  left: calc(50% - 500px);
+  top: calc(50% - 282.5px);
+}
+
+.map-modal {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}
+
+.map-modal .map-modal__close-btn {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
+}
+
+.map-modal .map-modal__close-btn::before,
+.map-modal .map-modal__close-btn::after {
+  position: absolute;
+  top: 18px;
+  left: -5px;
+  content: '';
+  width: 50px;
+  height: 5px;
+  border-radius: 15%;
+  background-color: #b5b8b1;
+}
+
+.map-modal .map-modal__close-btn::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.map-modal .map-modal__close-btn::after {
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+.map-modal .map-modal__close-btn:hover::before {
+  background-color: #ced0cc;
+}
+
+.map-modal .map-modal__close-btn:hover::after {
+  background-color: #ced0cc;
+}
+
+.map-modal .map-modal__container {
+  width: 1000px;
+  height: 565px;
+  position: absolute;
+  left: calc(50% - 500px);
+  top: calc(50% - 282.5px);
 }
 /*# sourceMappingURL=index.css.map */

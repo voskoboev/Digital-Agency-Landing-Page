@@ -328,94 +328,7 @@ function activateBrandsPics() {
   activatePicsConsecutively();
 }
 
-// manageContactForm() {
-
-// }
-
-// function validateContactForm() {
-//   const formInputs = $('.contact__form-input');
-//   const formTooltips = $('.tooltip__contact-form-item');
-//   const tooltipText = $('.tooltip__text');
-//   const submitBtn = $('.contact__form-input--submit');
-//   const tooltipActivationClass = 'tooltip--active';
-
-//   // submitBtn.click(ev => {
-
-//   const inputName = $('.contact__form-input--name');
-//   const inputCompany = $('.contact__form-input--company');
-//   const inputEmail = $('.contact__form-input--email');
-//   const inputService = $('.contact__form-input--service');
-//   const inputTextarea = $('.contact__form-input--textarea');
-
-//   const inputNameTooltip = $('.contact__form-input--name-tooltip');
-//   const inputCompanyTooltip = $('.contact__form-input--company-tooltip');
-//   const inputEmailTooltip = $('.contact__form-input--email-tooltip');
-//   const inputServiceTooltip = $('.contact__form-input--service-tooltip');
-//   const inputTextareaTooltip = $('.contact__form-input--textarea-tooltip');
-
-// ev.preventDefault();
-
-// function checkEmptyValue(input, tooltip) {
-//   const inputValue = input.val();
-
-//   if (inputValue === null || inputValue.toString().trim() === '') {
-//     tooltip.addClass(tooltipActivationClass);
-//     return; // ?
-//   }
-// }
-
-// function checkEmailCharTypes(emailInput, emailTooltip) {
-//   const inputValue = emailInput.val().toString().trim();
-//   const emailTooltipText = emailTooltip.find('p')
-
-//   if (inputValue === '') {
-//     return;
-//   }
-
-//   if (inputValue.includes('@') === false
-//     || inputValue.includes('.') === false) {
-//     emailTooltipText.text('Enter correct email');
-//     emailTooltip.addClass(tooltipActivationClass);
-//     return; // ?
-//   }
-// }
-
-// function checkLength(input, tooltip, length) {
-//   const inputValue = input.val().toString().trim();
-//   const tooltipText = tooltip.find('p');
-
-//   if (inputValue.length > length) {
-//     tooltipText.text(`Max number of letters is ${length}`);
-//     tooltip.addClass(tooltipActivationClass);
-//     return; // ?
-//   }
-// }
-
-
-// checkEmptyValue(inputName, inputNameTooltip);
-// checkEmptyValue(inputCompany, inputCompanyTooltip);
-// checkEmptyValue(inputEmail, inputEmailTooltip);
-// checkEmptyValue(inputService, inputServiceTooltip);
-// checkEmptyValue(inputTextarea, inputTextareaTooltip);
-
-// checkEmailCharTypes(inputEmail, inputEmailTooltip);
-
-// checkLength(inputName, inputNameTooltip, 100);
-// checkLength(inputCompany, inputCompanyTooltip, 100);
-// checkLength(inputEmail, inputEmailTooltip, 100);
-// checkLength(inputTextarea, inputTextareaTooltip, 2500);
-
-// });
-
-// formInputs.focus(function () {
-//   formTooltips.removeClass(tooltipActivationClass)
-//   tooltipText.text('Enter value!');
-// });
-// }
-
-// validateContactForm();
-
-function submitContactForm() {
+function manageContactForm() {
   const form = $('.contact__form');
   const formInputs = $('.contact__form-input');
   const formTooltips = $('.tooltip__contact-form-item');
@@ -423,13 +336,7 @@ function submitContactForm() {
   const submitBtn = $('.contact__form-input--submit');
   const tooltipActivationClass = 'tooltip--active';
 
-  // form.keypress(ev => {
-  //   if (ev.which === 13) {
-  //     alert('You pressed enter!');
-  //   }
-  // });
-
-  submitBtn.click(function (ev) {
+  function checkFormAndSubmitFormValues() {
     const inputName = $('.contact__form-input--name');
     const inputCompany = $('.contact__form-input--company');
     const inputEmail = $('.contact__form-input--email');
@@ -441,8 +348,6 @@ function submitContactForm() {
     const inputEmailTooltip = $('.contact__form-input--email-tooltip');
     const inputServiceTooltip = $('.contact__form-input--service-tooltip');
     const inputTextareaTooltip = $('.contact__form-input--textarea-tooltip');
-
-    ev.preventDefault();
 
     function checkEmptyValue(input, tooltip) {
       const inputValue = input.val();
@@ -486,26 +391,21 @@ function submitContactForm() {
       return true;
     }
 
-    const checkAggregatedCallsForAjax = () => {
-      const result =
-        checkEmptyValue(inputName, inputNameTooltip) &&
-          checkLength(inputName, inputNameTooltip, 100) &&
-          checkEmptyValue(inputCompany, inputCompanyTooltip) &&
-          checkLength(inputCompany, inputCompanyTooltip, 100) &&
-          checkEmptyValue(inputEmail, inputEmailTooltip) &&
-          checkLength(inputEmail, inputEmailTooltip, 100) &&
-          checkEmailCharTypes(inputEmail, inputEmailTooltip) &&
-          checkEmptyValue(inputService, inputServiceTooltip) &&
-          checkEmptyValue(inputTextarea, inputTextareaTooltip) &&
-          checkLength(inputTextarea, inputTextareaTooltip, 2500)
-          ? true : false;
-
-      return result;
+    function checkAggregatedCallsForAjax() {
+      return checkEmptyValue(inputName, inputNameTooltip) &&
+        checkLength(inputName, inputNameTooltip, 100) &&
+        checkEmptyValue(inputCompany, inputCompanyTooltip) &&
+        checkLength(inputCompany, inputCompanyTooltip, 100) &&
+        checkEmptyValue(inputEmail, inputEmailTooltip) &&
+        checkLength(inputEmail, inputEmailTooltip, 100) &&
+        checkEmailCharTypes(inputEmail, inputEmailTooltip) &&
+        checkEmptyValue(inputService, inputServiceTooltip) &&
+        checkEmptyValue(inputTextarea, inputTextareaTooltip) &&
+        checkLength(inputTextarea, inputTextareaTooltip, 2500);
     }
 
-    // form.submit(function (ev) {
-
     function startAjaxSending() {
+
       $.ajax({
         url: '/php/mail.php', // ? /
         type: 'POST',
@@ -513,38 +413,87 @@ function submitContactForm() {
         beforeSend: () => {
           return checkAggregatedCallsForAjax();
         },
-        success: function () {
+        success: () => {
+          toggleFormModal();
 
           console.log('success'); // убрать
 
           form.trigger('reset');
-
         },
-        error: function () {
-          console.log('failed'); // убрать
+        error: () => {
+          // console.log('failed'); // убрать
+          changeFormModalText();
+          toggleFormModal();
+
+          // form.trigger('reset');
         }
       });
     }
 
     startAjaxSending();
 
+    $('.modal-window').find('p').text('Your message has been sent');
+  }
+
+  submitBtn.click(ev => {
+    ev.preventDefault();
+    checkFormAndSubmitFormValues();
   });
 
-  function clearInputsAndRecoverText() {
-    formInputs.focus(() => {
-      formTooltips.removeClass(tooltipActivationClass)
-      tooltipText.text('Enter value!');
+  form.keypress(ev => {
+    if (ev.which === 13) {
+      ev.preventDefault();
+      checkFormAndSubmitFormValues();
+    }
+
+    return;
+  });
+
+  formInputs.focus(() => {
+    formTooltips.removeClass(tooltipActivationClass)
+    tooltipText.text('Enter value!');
+  });
+
+  // =================================
+
+  function toggleFormModal() {
+    const body = $('body');
+    const modal = $('.modal-window');
+    const modalCloseBtn = $('.modal-window__close-btn');
+
+    const disableScroll = () => {
+      body.addClass('body--active');
+    }
+
+    const enableScroll = () => {
+      body.removeClass('body--active');
+    }
+
+    modal.fadeIn();
+    disableScroll();
+
+    modal.click(function (ev) {
+      if (ev.target === this) {
+        $(this).fadeOut();
+        enableScroll();
+      }
+    });
+
+    modalCloseBtn.click(function () {
+      $(this)
+        .parent()
+        .fadeOut();
+      enableScroll();
     });
   }
 
-  clearInputsAndRecoverText()
-
-
-  function showModal() {
-    const body = $('body');
-
-    body.prepend()
+  function changeFormModalText() {
+    const modal = $('.modal-window');
+    modal
+      .find('p')
+      .text('Your message has not been sent. Try again later');
   }
+
 }
 
-submitContactForm();
+manageContactForm();
