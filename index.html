@@ -25,38 +25,48 @@
 <body>
   <div class="scroll-top-btn">
   </div>
-  <div class="card-modal card-modal--first">
-    <div class="card-modal__close-btn"></div>
-    <iframe class="card-modal__video" src="https://www.youtube.com/embed/LlYwZbVlz40" title="YouTube video player"
-      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>
+  <div class="modal-window modal-window__solutions-item--first">
+    <div class="modal-window__close-btn"></div>
+    <div class="modal-window__container modal-window__solutions-container">
+      <iframe class="modal-window__solutions-video" src="https://www.youtube.com/embed/LlYwZbVlz40"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
   </div>
-  <div class="card-modal card-modal--second">
-    <div class="card-modal__close-btn"></div>
-    <iframe class="card-modal__video" src="https://player.vimeo.com/video/164438721" frameborder="0"
-      allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  <div class="modal-window modal-window__solutions-item--second">
+    <div class="modal-window__close-btn modal-window__solutions-close-btn"></div>
+    <div class="modal-window__container modal-window__solutions-container">
+      <iframe class="modal-window__solutions-video" src="https://player.vimeo.com/video/164438721" frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </div>
-  <div class="card-modal card-modal--third">
-    <div class="card-modal__close-btn"></div>
-    <iframe class="card-modal__video" src="https://player.vimeo.com/video/163668237" frameborder="0"
-      allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  <div class="modal-window modal-window__solutions-item--third">
+    <div class="modal-window__close-btn modal-window__solutions-close-btn"></div>
+    <div class="modal-window__container modal-window__solutions-container">
+      <iframe class="modal-window__solutions-video" src="https://player.vimeo.com/video/163668237" frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </div>
-  <div class="map-modal">
-    <div class="map-modal__close-btn"></div>
-    <div class="map-modal__container">
+
+  <div class="modal-window modal-window__footer-map map-modal">
+    <div class="map-modal__close-btn modal-window__footer-map-close-btn"></div>
+    <div class="modal-window__container modal-window__footer-map-container map-modal__container">
       <script class="map-modal__script" type="text/javascript" charset="utf-8" async
         src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Adccc367d4b5f01c62d0d1d38e4f37bd6e4b7e07925b0103b3668134e0a5a8ee5&amp;width=1000&amp;height=565&amp;lang=ru_RU&amp;scroll=true">
       </script>
     </div>
   </div>
-  <div class="modal-window">
-    <div class="modal-window__close-btn"></div>
-    <div class="modal-window__container">
-      <p class="modal-window__text">
+
+  <div class="modal-window modal-window__contact-form-item">
+    <div class="modal-window__close-btn modal-window__contact-form-close-btn"></div>
+    <div class="modal-window__container modal-window__contact-form-container">
+      <p class="modal-window__form-text">
         Your message has been sent
       </p>
     </div>
   </div>
+
   <header class="header">
     <div class="header__color-wrapper">
       <div class="container">
@@ -364,66 +374,162 @@
 
     <nav class="portfolio__nav">
       <ul class="portfolio__menu">
-        <li class="portfolio__menu-item">
+        <li class="portfolio__menu-item portfolio__menu-item--all">
           ALL
         </li>
-        <li class="portfolio__menu-item">
+        <li class="portfolio__menu-item portfolio__menu-item--web">
           WEB
         </li>
-        <li class="portfolio__menu-item">
+        <li class="portfolio__menu-item portfolio__menu-item--ad">
           ADVERTISING
         </li>
-        <li class="portfolio__menu-item">
+        <li class="portfolio__menu-item portfolio__menu-item--branding">
           BRANDING
         </li>
-        <li class="portfolio__menu-item">
+        <li class="portfolio__menu-item portfolio__menu-item--design">
           DESIGN
         </li>
       </ul>
     </nav>
-
     <div class="portfolio__projects-container">
       <ul class="portfolio__projects-list">
-        <li class="portfolio__projects-list-item">
-          <a href="#" class="portfolio__project-list-link">
-            <img src="images/portfolio/hood-compressed.jpg" alt="hood" class="portfolio__project-list-img">
-          </a>
+        <li class="portfolio__projects-list-item portfolio__projects-list-item--web">
+          <div class="portfolio__projects-list-item-inner">
+            <img src="images/portfolio/hood-compressed.jpg" alt="hood" class="portfolio__project-list-item-img">
+            <div class="portfolio__projects-list-info">
+              <h4 class="portfolio__projects-list-item-title">
+                Title
+              </h4>
+              <p class="portfolio__projects-list-item-text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis perspiciatis quisquam, amet placeat
+                iste unde totam asperiores !
+              </p>
+              <a class="portfolio__projects-list-item-link" href="#">
+                Learn more
+              </a>
+            </div>
+          </div>
         </li>
-        <li class="portfolio__projects-list-item">
-          <a href="#" class="portfolio__project-list-link">
+        <li class="portfolio__projects-list-item portfolio__projects-list-item--web">
+          <div class="portfolio__projects-list-item-inner">
             <img src="images/portfolio/pc-compressed.jpg" alt="pc" class="portfolio__project-list-img">
-          </a>
+            <div class="portfolio__projects-list-info">
+              <h4 class="portfolio__projects-list-item-title">
+                Title
+              </h4>
+              <p class="portfolio__projects-list-item-text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis perspiciatis quisquam, amet placeat
+                iste unde totam asperiores !
+              </p>
+              <a class="portfolio__projects-list-item-link" href="#">
+                Learn more
+              </a>
+            </div>
+          </div>
         </li>
-        <li class="portfolio__projects-list-item">
-          <a href="#" class="portfolio__projects-list-link">
+        <li class="portfolio__projects-list-item portfolio__projects-list-item--ad">
+          <div class="portfolio__projects-list-item-inner">
             <img src="images/portfolio/plugs-compressed.jpg" alt="plugs" class="portfolio__project-list-img">
-          </a>
+            <div class="portfolio__projects-list-info">
+              <h4 class="portfolio__projects-list-item-title">
+                Title
+              </h4>
+              <p class="portfolio__projects-list-item-text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis perspiciatis quisquam, amet placeat
+                iste unde totam asperiores !
+              </p>
+              <a class="portfolio__projects-list-item-link" href="#">
+                Learn more
+              </a>
+            </div>
+          </div>
         </li>
-        <li class="portfolio__projects-list-item">
-          <a href="#" class="portfolio__projects-list-link">
+        <li class="portfolio__projects-list-item portfolio__projects-list-item--ad">
+          <div class="portfolio__projects-list-item-inner">
             <img src="images/portfolio/numbers-compressed.jpg" alt="numbers" class="portfolio__project-list-img">
-          </a>
+            <div class="portfolio__projects-list-info">
+              <h4 class="portfolio__projects-list-item-title">
+                Title
+              </h4>
+              <p class="portfolio__projects-list-item-text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis perspiciatis quisquam, amet placeat
+                iste unde totam asperiores !
+              </p>
+              <a class="portfolio__projects-list-item-link" href="#">
+                Learn more
+              </a>
+            </div>
+          </div>
         </li>
-        <li class="portfolio__projects-list-item">
-          <a href="#" class="portfolio__projects-list-link">
+        <li
+          class="portfolio__projects-list-item portfolio__projects-list-item--ad portfolio__projects-list-item--branding">
+          <div class="portfolio__projects-list-item-inner">
             <img src="images/portfolio/bag-compressed.jpg" alt="bag" class="portfolio__project-list-img">
-          </a>
+            <div class="portfolio__projects-list-info">
+              <h4 class="portfolio__projects-list-item-title">
+                Title
+              </h4>
+              <p class="portfolio__projects-list-item-text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis perspiciatis quisquam, amet placeat
+                iste unde totam asperiores !
+              </p>
+              <a class="portfolio__projects-list-item-link" href="#">
+                Learn more
+              </a>
+            </div>
+          </div>
         </li>
-        <li class="portfolio__projects-list-item">
-          <a href="#" class="portfolio__projects-list-link">
+        <li class="portfolio__projects-list-item portfolio__projects-list-item--branding">
+          <div class="portfolio__projects-list-item-inner">
             <img src="images/portfolio/bottle-compressed.jpg" alt="bottle" class="portfolio__project-list-img">
-          </a>
+            <div class="portfolio__projects-list-info">
+              <h4 class="portfolio__projects-list-item-title">
+                Title
+              </h4>
+              <p class="portfolio__projects-list-item-text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis perspiciatis quisquam, amet placeat
+                iste unde totam asperiores !
+              </p>
+              <a class="portfolio__projects-list-item-link" href="#">
+                Learn more
+              </a>
+            </div>
+          </div>
         </li>
-        <li class="portfolio__projects-list-item">
-          <a href="#" class="portfolio__projects-list-link">
+        <li class="portfolio__projects-list-item portfolio__projects-list-item--design">
+          <div class="portfolio__projects-list-item-inner">
             <img src="images/portfolio/la-magazine-compressed.jpg" alt="la-magazine"
               class="portfolio__project-list-img">
-          </a>
+            <div class="portfolio__projects-list-info">
+              <h4 class="portfolio__projects-list-item-title">
+                Title
+              </h4>
+              <p class="portfolio__projects-list-item-text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis perspiciatis quisquam, amet placeat
+                iste unde totam asperiores !
+              </p>
+              <a class="portfolio__projects-list-item-link" href="#">
+                Learn more
+              </a>
+            </div>
+          </div>
         </li>
-        <li class="portfolio__projects-list-item">
-          <a href="" class="portfolio__projects-list-link">
+        <li class="portfolio__projects-list-item portfolio__projects-list-item--design">
+          <div class="portfolio__projects-list-item-inner">
             <img src="images/portfolio/packages-compressed.jpg" alt="packages" class="portfolio__project-list-img">
-          </a>
+            <div class="portfolio__projects-list-info">
+              <h4 class="portfolio__projects-list-item-title">
+                Title
+              </h4>
+              <p class="portfolio__projects-list-item-text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis perspiciatis quisquam, amet placeat
+                iste unde totam asperiores !
+              </p>
+              <a class="portfolio__projects-list-item-link" href="#">
+                Learn more
+              </a>
+            </div>
+          </div>
         </li>
       </ul>
     </div>

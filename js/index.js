@@ -11,6 +11,8 @@ popUpSectionsOnScroll();
 // playClientsVideo();
 // activateBrandsPics();
 
+// manageContactForm();
+
 function initSlickSlider() {
   const container = $('.promo__carousel-container');
 
@@ -23,7 +25,7 @@ function initSlickSlider() {
     variableWidth: true,
     draggable: true,
     // autoplay: true,
-    // autoplaySpeed: 2000,
+    // autoplaySpeed: 2500,
     // pauseOnHover: true,
 
     // responsive: [
@@ -155,9 +157,10 @@ function manageSolutionsModals() {
   const cardFirst = $('.solutions__card--first');
   const cardSecond = $('.solutions__card--second');
   const cardThird = $('.solutions__card--third');
-  const modalFirst = $('.card-modal--first');
-  const modalSecond = $('.card-modal--second');
-  const modalThird = $('.card-modal--third');
+
+  const modalFirst = $('.modal-window__solutions-item--first');
+  const modalSecond = $('.modal-window__solutions-item--second');
+  const modalThird = $('.modal-window__solutions-item--third');
 
   const disableScroll = () => {
     body.addClass('body--active');
@@ -187,7 +190,7 @@ function manageSolutionsModals() {
   }
 
   const closeBtnFadeOutModalAndStopVideo = modal => {
-    const btn = $('.card-modal__close-btn');
+    const btn = $('.modal-window__solutions-close-btn');
     const modalAttr = modal.find('iframe').attr('src');
 
     btn.click(() => {
@@ -230,6 +233,9 @@ function manageFooterMapModal() {
   const closeBtn = $('.map-modal__close-btn');
   const body = $('body');
 
+  const scrollToTopBtn = $('.scroll-top-btn');
+  const scrollToTopBtnActive = 'scroll-top-btn--active';
+
   const disableScroll = () => {
     body.addClass('body--active');
   }
@@ -240,12 +246,14 @@ function manageFooterMapModal() {
 
   addressItems.click(() => {
     mapModal.fadeIn();
+    scrollToTopBtn.removeClass(scrollToTopBtnActive);
     disableScroll();
   });
 
   mapModal.click(function (ev) {
     if (ev.target === this) {
       $(this).fadeOut();
+      scrollToTopBtn.addClass(scrollToTopBtnActive);
       enableScroll();
     }
   });
@@ -404,36 +412,32 @@ function manageContactForm() {
         checkLength(inputTextarea, inputTextareaTooltip, 2500);
     }
 
-    function startAjaxSending() {
+    $.ajax({
+      url: '/php/mail.php', // ? /
+      type: 'POST',
+      data: form.serialize(),
+      beforeSend: () => {
+        return checkAggregatedCallsForAjax();
+      },
+      success: () => {
+        toggleFormModal();
 
-      $.ajax({
-        url: '/php/mail.php', // ? /
-        type: 'POST',
-        data: form.serialize(),
-        beforeSend: () => {
-          return checkAggregatedCallsForAjax();
-        },
-        success: () => {
-          toggleFormModal();
+        console.log('success'); // убрать
 
-          console.log('success'); // убрать
+        form.trigger('reset');
+      },
+      error: () => {
+        // console.log('failed'); // убрать
+        changeFormModalText();
+        toggleFormModal();
 
-          form.trigger('reset');
-        },
-        error: () => {
-          // console.log('failed'); // убрать
-          changeFormModalText();
-          toggleFormModal();
+        // form.trigger('reset');
+      }
+    });
 
-          // form.trigger('reset');
-        }
-      });
-    }
-
-    startAjaxSending();
-
-    $('.modal-window').find('p').text('Your message has been sent');
+    $('.modal-window__contact-form-item').find('p').text('Your message has been sent');
   }
+
 
   submitBtn.click(ev => {
     ev.preventDefault();
@@ -458,8 +462,11 @@ function manageContactForm() {
 
   function toggleFormModal() {
     const body = $('body');
-    const modal = $('.modal-window');
-    const modalCloseBtn = $('.modal-window__close-btn');
+    const modal = $('.modal-window__contact-form-item');
+    const modalCloseBtn = $('.modal-window__contact-form-close-btn');
+
+    const scrollToTopBtn = $('.scroll-top-btn');
+    const scrollToTopBtnActive = 'scroll-top-btn--active';
 
     const disableScroll = () => {
       body.addClass('body--active');
@@ -470,11 +477,13 @@ function manageContactForm() {
     }
 
     modal.fadeIn();
+    scrollToTopBtn.removeClass(scrollToTopBtnActive);
     disableScroll();
 
     modal.click(function (ev) {
       if (ev.target === this) {
         $(this).fadeOut();
+        scrollToTopBtn.addClass(scrollToTopBtnActive);
         enableScroll();
       }
     });
@@ -483,17 +492,58 @@ function manageContactForm() {
       $(this)
         .parent()
         .fadeOut();
+      scrollToTopBtn.addClass(scrollToTopBtnActive);
       enableScroll();
     });
   }
 
   function changeFormModalText() {
-    const modal = $('.modal-window');
+    const modal = $('.modal-window__contact-form-item');
     modal
       .find('p')
       .text('Your message has not been sent. Try again later');
   }
-
 }
 
-manageContactForm();
+function togglePortfolioTabs() {
+  const allMenuItem = $('.portfolio__menu-item--all');
+  const webMenuItem = $('.portfolio__menu-item--web');
+  const adMenuItem = $('.portfolio__menu-item--ad');
+  const brandingMenuItem = $('.portfolio__menu-item--branding');
+  const designMenuItem = $('.portfolio__menu-item--design');
+
+  const allListItems = $('.portfolio__projects-list-item');
+  const webListItems = $('.portfolio__projects-list-item--web');
+  const adListItems = $('.portfolio__projects-list-item--ad');
+  const brandingListItems = $('.portfolio__projects-list-item--branding');
+  const designListItems = $('.portfolio__projects-list-item--design');
+
+  const projectsList = $('.portfolio__projects-list');
+
+  projectsList.css({ // ?
+    'min-height': '686px',
+    'align-items': 'center',
+    // 'justify-content': 'center' // ?
+  });
+
+  function toggleTabs(menuItem, listItem, allListItems) {
+    menuItem.click(() => {
+      allListItems.hide();
+      allListItems.addClass('portfolio__projects-list-item--active');
+      listItem.fadeIn();
+
+      if (menuItem === allMenuItem) {
+        allListItems.removeClass('portfolio__projects-list-item--active');
+      }
+    });
+  }
+
+
+  toggleTabs(allMenuItem, allListItems, allListItems);
+  toggleTabs(webMenuItem, webListItems, allListItems);
+  toggleTabs(adMenuItem, adListItems, allListItems);
+  toggleTabs(brandingMenuItem, brandingListItems, allListItems);
+  toggleTabs(designMenuItem, designListItems, allListItems);
+}
+
+togglePortfolioTabs();

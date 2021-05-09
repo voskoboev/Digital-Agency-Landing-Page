@@ -7,75 +7,98 @@
   background-color: rgba(0, 0, 0, .8);
 
   z-index: 10;
+}
 
-  .modal-window__close-btn {
-    width: 40px;
-    height: 40px;
+.modal-window__close-btn {
+  width: 40px;
+  height: 40px;
 
-    position: absolute;
-    top: 50px;
-    right: 50px;
+  position: absolute;
+  top: 50px;
+  right: 50px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    // background-color: #fff;
-  }
+  // background-color: #fff;
+}
 
-  .modal-window__close-btn::before,
-  .modal-window__close-btn::after {
-    position: absolute;
-    top: 18px;
-    left: -5px;
-    content: '';
-    width: 50px;
-    height: 5px;
-    border-radius: 15%;
-    background-color: #b5b8b1;
-  }
+.modal-window__close-btn::before,
+.modal-window__close-btn::after {
+  position: absolute;
+  top: 18px;
+  left: -5px;
+  content: '';
+  width: 50px;
+  height: 5px;
+  border-radius: 15%;
+  background-color: #b5b8b1;
+}
 
-  .modal-window__close-btn::before {
-    transform: rotate(45deg);
-  }
+.modal-window__close-btn::before {
+  transform: rotate(45deg);
+}
 
-  .modal-window__close-btn::after {
-    transform: rotate(135deg);
-  }
+.modal-window__close-btn::after {
+  transform: rotate(135deg);
+}
 
-  .modal-window__close-btn:hover::before {
-    background-color: lighten(#b5b8b1, 10%)
-  }
+.modal-window__close-btn:hover::before {
+  background-color: lighten(#b5b8b1, 10%)
+}
 
-  .modal-window__close-btn:hover::after {
-    background-color: lighten(#b5b8b1, 10%)
-  }
+.modal-window__close-btn:hover::after {
+  background-color: lighten(#b5b8b1, 10%)
+}
 
-  .modal-window__container {
-    // width: 1000px;
-    // height: 565px;
-    // background-color: #fff;
+.modal-window__container {
+  // background-color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
 
-    
-    position: absolute;
-    left: calc(50%);
-    top: calc(50%);
-    transform: translate(-200px, -125px);
-  }
-  
-  .modal-window__text {
-    @include font($primary-font, 600, 2.5rem, $primary-font-color);
-    line-height: 50px;
-    
-    max-width: 400px;
-    min-height: 250px;
+.modal-window__solutions-container {
+  // для трех видео 
+  transform: translate(-500px, -282.5px);
+}
 
-    background-color: #fff;
-    padding: 20px;
-    outline: 5px solid $secondary-color;
+.modal-window__footer-map-container {
+  // для карты
+  transform: translate(-500px, -282.5px);
+}
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.modal-window__solutions-video {
+  // для трех видео 
+  width: 1000px;
+  height: 565px;
+}
 
-  }
+.map-modal__script {
+  // для карты
+  width: 1000px;
+  height: 565px;
+}
+
+.modal-window__contact-form-container {
+  transform: translate(-200px, -125px);
+}
+
+.modal-window__form-text {
+  // для формы
+  @include font($primary-font, 600, 2.5rem, $primary-font-color);
+  line-height: 50px;
+
+  max-width: 400px;
+  min-height: 250px;
+
+  background-color: #fff;
+  padding: 20px;
+  outline: 5px solid $secondary-color;
+
+  // flex($jcc: initial, $aic: initial, $flw: initial, $fld: initial)
+  @include flex(center, center);
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  text-align: center;
 }
