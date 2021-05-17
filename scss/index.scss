@@ -1,27 +1,12 @@
-@import '_fonts';
-@import '_vars';
-@import '_mixins';
+@import 'ancillary/_fonts';
+@import 'ancillary/_vars';
+@import 'ancillary/_mixins';
 
 @import 'UI.blocks/_nav';
 @import 'UI.blocks/_button';
 @import 'UI.blocks/_scroll-to-top-button';
 @import 'UI.blocks/_tooltip';
-
-@import 'UI.blocks/modal-window';
-
-// @import 'common.blocks/1.header/_header';
-// @import 'common.blocks/2.solutions/_solutions';
-// @import 'common.blocks/3.services/_services';
-// @import 'common.blocks/4.promo/_promo';
-// @import 'common.blocks/5.features/_features';
-// @import 'common.blocks/6.portfolio/_portfolio';
-// @import 'common.blocks/7.clients/_clients';
-// @import 'common.blocks/8.brands/_brands';
-// @import 'common.blocks/9.benefits/_benefits';
-// @import 'common.blocks/10.contact/_contact';
-// @import 'common.blocks/11.footer/_footer';
-
-
+@import 'UI.blocks/_modal-window';
 
 
 // @media screen and (max-width: 768px){
@@ -44,7 +29,7 @@ html {
 body {
   font-family: $default-font;
   overflow-x: hidden;
-  width: 100vw;
+  // width: 100vw;
 
   // background-color: red !important;
 }
@@ -79,22 +64,19 @@ input[type="submit"]:hover {
 
 .header {
 
-  background: url(../images/office.jpg) no-repeat;
+  background: url(../images/header/office.jpg) no-repeat;
   background-size: auto auto;
   background-position-x: 50%;
 
   // padding-bottom: 245px; // по avocode ?
   // padding-bottom: 190px;
 
-
   .header__color-wrapper {
+    width: 100%;
     background-color: rgba(0, 0, 0, .5);
     padding-bottom: 242px; // выставлено по картинке на экране 180
 
-    // box-shadow: 0px -31px 13px -15px rgba(255, 255, 255, 1) inset;
-
   }
-
 
   @media screen and (max-width: 959px) {
     .header__color-wrapper {
@@ -593,6 +575,8 @@ input[type="submit"]:hover {
   .promo__img {
     width: 256px; // повторы 
     height: 370px; // повторы 
+
+    object-fit: cover;
   }
 
   .promo__img:hover {
@@ -602,33 +586,6 @@ input[type="submit"]:hover {
 
   .promo__first-img {
     margin-right: 35px;
-  }
-
-  .slick-arrow {
-    position: absolute;
-    z-index: 10;
-    font-size: 0;
-
-    background: url(../images/arrow.png);
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px;
-    border: 0;
-
-    // display: none !important;
-  }
-
-  .slick-prev {
-    left: 5px;
-    top: calc(50% - 45px);
-    transform: rotate(270deg);
-
-  }
-
-  .slick-next {
-    right: 5px;
-    top: calc(50% - 45px);
-    transform: rotate(90deg);
   }
 
   .slick-dots {
@@ -1170,7 +1127,7 @@ input[type="submit"]:hover {
   }
 
   .clients__video-btn-play {
-    background: url(../images/play-btn.png) no-repeat;
+    background: url(../images/clients/play-btn.png) no-repeat;
     // background-repeat: no-repeat;
     width: 12px;
     height: 16px;
@@ -1460,11 +1417,11 @@ input[type="submit"]:hover {
   // }
 
   .benefits__card-img--left {
-    background-image: url(/images/benefits/database.png);
+    background-image: url(/images/benefits/database.webp);
   }
 
   .benefits__card-img--right {
-    background-image: url(/images/benefits/framework.png);
+    background-image: url(/images/benefits/framework.webp);
   }
 
   .benefits__card-title {
@@ -1508,7 +1465,7 @@ input[type="submit"]:hover {
     width: 100%;
     height: 100%;
 
-    background: url(/images/benefits/bench.png) no-repeat;
+    background: url(/images/benefits/bench.webp) no-repeat;
     // background-repeat: no-repeat;
     background-size: contain;
 
@@ -1878,19 +1835,19 @@ input[type="submit"]:hover {
   }
 
   .footer__socials-item-link--inst {
-    background-image: url(/images/footer/inst.png);
+    background-image: url(/images/footer/inst.webp);
   }
 
   .footer__socials-item-link--fb {
-    background-image: url(/images/footer/fb.png);
+    background-image: url(/images/footer/fb.webp);
   }
 
   .footer__socials-item-link--tw {
-    background-image: url(/images/footer/tw.png);
+    background-image: url(/images/footer/tw.webp);
   }
 
   .footer__socials-item-link--ln {
-    background-image: url(/images/footer/ln.png);
+    background-image: url(/images/footer/ln.webp);
   }
 
   .footer__right {

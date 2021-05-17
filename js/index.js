@@ -3,7 +3,7 @@
 initSlickSlider();
 // scrollTo();
 popUpSectionsOnScroll();
-// manageSolutionsModals();
+manageSolutionsModals();
 
 // toggleTooltipForAddress();
 // manageFooterMapModal();
@@ -20,12 +20,12 @@ function initSlickSlider() {
     infinite: true,
     slidesToShow: 2,
     slidesToScroll: 2,
-    // arrows: true,
+    arrows: false,
     dots: true,
     variableWidth: true,
     draggable: true,
     // autoplay: true,
-    // autoplaySpeed: 2500,
+    // autoplaySpeed: 2000,
     // pauseOnHover: true,
 
     // responsive: [
@@ -58,7 +58,7 @@ function scrollTo() {
     const portfolioItem = $('.nav__menu-item--works');
     const promoItem = $('.nav__menu-item--features');
     const clientsItem = $('.nav__menu-item--about');
-    const contactItems = $('.nav__menu-item--contact, .header__start-btn');
+    const contactItems = $('.nav__menu-item--contact, .header__start-btn, .promo__btn, .clients__btn');
 
     const servicesSection = $('.services');
     const portfolioSection = $('.portfolio');
@@ -437,7 +437,6 @@ function manageContactForm() {
 
     $('.modal-window__contact-form-item').find('p').text('Your message has been sent');
   }
-
 
   submitBtn.click(ev => {
     ev.preventDefault();

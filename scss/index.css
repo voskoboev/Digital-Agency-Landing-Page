@@ -372,7 +372,6 @@ html {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   overflow-x: hidden;
-  width: 100vw;
 }
 
 .body--active {
@@ -408,12 +407,13 @@ input[type="submit"]:hover {
 }
 
 .header {
-  background: url(../images/office.jpg) no-repeat;
+  background: url(../images/header/office.jpg) no-repeat;
   background-size: auto auto;
   background-position-x: 50%;
 }
 
 .header .header__color-wrapper {
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   padding-bottom: 242px;
 }
@@ -896,6 +896,8 @@ input[type="submit"]:hover {
 .promo .promo__img {
   width: 256px;
   height: 370px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .promo .promo__img:hover {
@@ -904,31 +906,6 @@ input[type="submit"]:hover {
 
 .promo .promo__first-img {
   margin-right: 35px;
-}
-
-.promo .slick-arrow {
-  position: absolute;
-  z-index: 10;
-  font-size: 0;
-  background: url(../images/arrow.png);
-  background-size: 30px 30px;
-  width: 30px;
-  height: 30px;
-  border: 0;
-}
-
-.promo .slick-prev {
-  left: 5px;
-  top: calc(50% - 45px);
-  -webkit-transform: rotate(270deg);
-          transform: rotate(270deg);
-}
-
-.promo .slick-next {
-  right: 5px;
-  top: calc(50% - 45px);
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
 }
 
 .promo .slick-dots li {
@@ -1452,7 +1429,7 @@ input[type="submit"]:hover {
 }
 
 .clients .clients__video-btn-play {
-  background: url(../images/play-btn.png) no-repeat;
+  background: url(../images/clients/play-btn.png) no-repeat;
   width: 12px;
   height: 16px;
 }
@@ -1778,11 +1755,11 @@ input[type="submit"]:hover {
 }
 
 .benefits .benefits__card-img--left {
-  background-image: url(/images/benefits/database.png);
+  background-image: url(/images/benefits/database.webp);
 }
 
 .benefits .benefits__card-img--right {
-  background-image: url(/images/benefits/framework.png);
+  background-image: url(/images/benefits/framework.webp);
 }
 
 .benefits .benefits__card-title {
@@ -1824,7 +1801,7 @@ input[type="submit"]:hover {
 .benefits .benefits__right {
   width: 100%;
   height: 100%;
-  background: url(/images/benefits/bench.png) no-repeat;
+  background: url(/images/benefits/bench.webp) no-repeat;
   background-size: contain;
   position: absolute;
   right: -710px;
@@ -2166,19 +2143,19 @@ input[type="submit"]:hover {
 }
 
 .footer .footer__socials-item-link--inst {
-  background-image: url(/images/footer/inst.png);
+  background-image: url(/images/footer/inst.webp);
 }
 
 .footer .footer__socials-item-link--fb {
-  background-image: url(/images/footer/fb.png);
+  background-image: url(/images/footer/fb.webp);
 }
 
 .footer .footer__socials-item-link--tw {
-  background-image: url(/images/footer/tw.png);
+  background-image: url(/images/footer/tw.webp);
 }
 
 .footer .footer__socials-item-link--ln {
-  background-image: url(/images/footer/ln.png);
+  background-image: url(/images/footer/ln.webp);
 }
 
 .footer .footer__right {
