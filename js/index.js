@@ -1,9 +1,9 @@
 'use strict';
 
 initSlickSlider();
-// scrollTo();
+scrollTo();
 popUpSectionsOnScroll();
-manageSolutionsModals();
+// manageSolutionsModals();
 
 // toggleTooltipForAddress();
 // manageFooterMapModal();
@@ -313,7 +313,7 @@ function activateBrandsPics() {
   const activationClass = 'brands__pic--active';
   const activationTime = 2000;
 
-  function activatePicsConsecutively() {
+  const activatePicsConsecutively = function activate() {
     setTimeout(() => {
       firstPic.addClass(activationClass);
       fourthPic.removeClass(activationClass);
@@ -326,7 +326,7 @@ function activateBrandsPics() {
           setTimeout(() => {
             fourthPic.addClass(activationClass);
             thirdPic.removeClass(activationClass);
-            activatePicsConsecutively();
+            activate();
           }, activationTime);
         }, activationTime);
       }, activationTime);
@@ -545,4 +545,39 @@ function togglePortfolioTabs() {
   toggleTabs(designMenuItem, designListItems, allListItems);
 }
 
-togglePortfolioTabs();
+// togglePortfolioTabs();
+
+
+
+
+
+function useMobileMenu() {
+  const body = $('body');
+  const mobileBtn = $('.header__nav-mobile-btn');
+  const navMenu = $('.nav__menu');
+  const menuItems = $('.nav__menu-item');
+
+  function activateScrollAndCloseMenu() {
+    body.removeClass('body--active');
+    navMenu.removeClass('nav__menu--active');
+  }
+
+  mobileBtn.click(() => {
+    navMenu.toggleClass('nav__menu--active');
+    body.toggleClass('body--active');
+  });
+
+  menuItems.click(() => {
+    activateScrollAndCloseMenu();
+  });
+
+  navMenu.click(function (ev) {
+    if (ev.target === this) {
+      activateScrollAndCloseMenu();
+    }
+  });
+}
+
+useMobileMenu();
+
+
