@@ -18,36 +18,25 @@ function initSlickSlider() {
 
   container.slick({
     infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 2,
+    slidesToShow: 2, // 2
+    slidesToScroll: 2, // 2 
     arrows: false,
     dots: true,
-    variableWidth: true,
+    variableWidth: false, // true
     draggable: true,
     // autoplay: true,
     // autoplaySpeed: 2000,
     // pauseOnHover: true,
-
-    // responsive: [
-    //   {
-    //     breakpoint: 1350,
-    //     settings: {
-    //       infinite: true,
-    //       slidesToShow: 1,
-    //       slidesToScroll: 1,
-    //       arrows: true,
-    //       dots: true,
-    //       // variableWidth: true,
-    //       draggable: true,
-    //       autoplay: true,
-    //       autoplaySpeed: 2000,
-    //       pauseOnHover: true,
-    //     }
-    //   },
-    //   {
-
-    //   }
-    // ]
+    responsive: [
+      {
+        breakpoint: 550,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+        }
+      }
+    ]
 
   });
 }
