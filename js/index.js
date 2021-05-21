@@ -1,14 +1,14 @@
 'use strict';
 
 initSlickSlider();
-scrollTo();
+// scrollTo();
 popUpSectionsOnScroll();
 // manageSolutionsModals();
 
 // toggleTooltipForAddress();
 // manageFooterMapModal();
 
-// playClientsVideo();
+playClientsVideo();
 // activateBrandsPics();
 
 // manageContactForm();
@@ -534,11 +534,7 @@ function togglePortfolioTabs() {
   toggleTabs(designMenuItem, designListItems, allListItems);
 }
 
-// togglePortfolioTabs();
-
-
-
-
+togglePortfolioTabs();
 
 function useMobileMenu() {
   const body = $('body');
