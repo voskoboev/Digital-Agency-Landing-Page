@@ -60,17 +60,37 @@
 .modal-window__solutions-container {
   // для трех видео 
   transform: translate(-500px, -282.5px);
+
+}
+@media screen and (max-width: 1000px) {
+  .modal-window__solutions-container {
+    transform: translate(-275px, -150px);
+  }
 }
 
 .modal-window__footer-map-container {
   // для карты
-  transform: translate(-500px, -282.5px);
+  transform: translate(-500px);
 }
+
+@media screen and (max-width: 1000px) {
+  .modal-window__footer-map-container {
+    transform: translate(-275px, -150px);
+  }
+}
+
 
 .modal-window__solutions-video {
   // для трех видео 
   width: 1000px;
   height: 565px;
+}
+
+@media screen and (max-width: 1000px) {
+  .modal-window__solutions-video {
+    width: 550px;
+    height: 300px;
+  }
 }
 
 .map-modal__script {

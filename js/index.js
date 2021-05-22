@@ -1,48 +1,66 @@
 'use strict';
 
 initSlickSlider();
-// scrollTo();
+scrollTo();
 popUpSectionsOnScroll();
 // manageSolutionsModals();
 
 // toggleTooltipForAddress();
 // manageFooterMapModal();
 
-playClientsVideo();
+// playClientsVideo();
 // activateBrandsPics();
 
 // manageContactForm();
+
+togglePortfolioTabs();
+
+useMobileMenu();
+
 
 function initSlickSlider() {
   const container = $('.promo__carousel-container');
 
   container.slick({
     infinite: true,
-    slidesToShow: 2, // 2
-    slidesToScroll: 2, // 2 
+    slidesToShow: 2,
+    slidesToScroll: 2,
     arrows: false,
     dots: true,
-    variableWidth: false, // true
+    variableWidth: true,
     draggable: true,
+
     // autoplay: true,
     // autoplaySpeed: 2000,
     // pauseOnHover: true,
+
     responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          autoplay: false,
+        }
+      },
       {
         breakpoint: 550,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
           dots: true,
+          variableWidth: false,
+          autoplay: false
         }
       }
     ]
-
   });
 }
 
 function scrollTo() {
-  const scrollToSections = () => {
+  scrollToSections();
+  scrollToTop();
+  scrollToTopOnPopUpBtnClick();
+
+  function scrollToSections() {
     const servicesItems = $('.nav__menu-item--services, .header__services-btn');
     const portfolioItem = $('.nav__menu-item--works');
     const promoItem = $('.nav__menu-item--features');
@@ -55,7 +73,13 @@ function scrollTo() {
     const clientsSection = $('.clients');
     const contactSection = $('.contact');
 
-    const scrollToCertainSection = (interactItems, positionItem) => {
+    scrollToCertainSection(servicesItems, servicesSection);
+    scrollToCertainSection(portfolioItem, portfolioSection);
+    scrollToCertainSection(promoItem, promoSection);
+    scrollToCertainSection(clientsItem, clientsSection);
+    scrollToCertainSection(contactItems, contactSection);
+
+    function scrollToCertainSection(interactItems, positionItem) {
       const position = positionItem.offset().top;
 
       interactItems.click(() => {
@@ -63,14 +87,14 @@ function scrollTo() {
       }); // позиция изменена из-за всплывающих секций, изначальное значение + 50
     }
 
-    scrollToCertainSection(servicesItems, servicesSection);
-    scrollToCertainSection(portfolioItem, portfolioSection);
-    scrollToCertainSection(promoItem, promoSection);
-    scrollToCertainSection(clientsItem, clientsSection);
-    scrollToCertainSection(contactItems, contactSection);
+    // scrollToCertainSection(servicesItems, servicesSection);
+    // scrollToCertainSection(portfolioItem, portfolioSection);
+    // scrollToCertainSection(promoItem, promoSection);
+    // scrollToCertainSection(clientsItem, clientsSection);
+    // scrollToCertainSection(contactItems, contactSection);
   }
 
-  const scrollToTop = () => {
+  function scrollToTop() {
     const homeItem = $('.nav__menu-item--home');
 
     homeItem.click(() => {
@@ -78,7 +102,7 @@ function scrollTo() {
     });
   }
 
-  const scrollToTopOnBtnClick = () => {
+  function scrollToTopOnPopUpBtnClick() {
     const btn = $('.scroll-top-btn');
 
     $(window).scroll(() => {
@@ -96,10 +120,6 @@ function scrollTo() {
       $('html, body').animate({ scrollTop: 0 }, 1000);
     });
   }
-
-  scrollToSections();
-  scrollToTop();
-  scrollToTopOnBtnClick();
 }
 
 function popUpSectionsOnScroll() {
@@ -115,21 +135,6 @@ function popUpSectionsOnScroll() {
   const contact = 'contact';
   const footer = 'footer';
 
-  // $(window).scroll(function () {
-  //   if ($(this).scrollTop() !== 0) {
-  //     solutions.addClass('solutions--active');
-  //     headerWrapper.addClass('header__color-wrapper--active');
-  //   }
-  // });
-
-  function popUpOnScroll(section) {
-    $(window).scroll(function () {
-      if ($(this).scrollTop() + $(window).innerHeight() > $(`.${section}`).position().top) {
-        $(`.${section}`).addClass(`${section}--active`);
-      }
-    });
-  }
-
   popUpOnScroll(services);
   popUpOnScroll(promo);
   popUpOnScroll(features);
@@ -139,6 +144,33 @@ function popUpSectionsOnScroll() {
   popUpOnScroll(benefits);
   popUpOnScroll(contact);
   popUpOnScroll(footer);
+
+  // $(window).scroll(function () {
+  //   if ($(this).scrollTop() !== 0) {
+  //     solutions.addClass('solutions--active');
+  //     headerWrapper.addClass('header__color-wrapper--active');
+  //   }
+  // });
+
+  function popUpOnScroll(section) {
+    if ($(window).innerWidth() >= 1024) {
+      $(window).scroll(function () {
+        if ($(this).scrollTop() + $(window).innerHeight() > $(`.${section}`).position().top) {
+          $(`.${section}`).addClass(`${section}--active`);
+        }
+      });
+    }
+  }
+
+  // popUpOnScroll(services);
+  // popUpOnScroll(promo);
+  // popUpOnScroll(features);
+  // popUpOnScroll(portfolio);
+  // popUpOnScroll(clients);
+  // popUpOnScroll(brands);
+  // popUpOnScroll(benefits);
+  // popUpOnScroll(contact);
+  // popUpOnScroll(footer);
 }
 
 function manageSolutionsModals() {
@@ -151,22 +183,34 @@ function manageSolutionsModals() {
   const modalSecond = $('.modal-window__solutions-item--second');
   const modalThird = $('.modal-window__solutions-item--third');
 
-  const disableScroll = () => {
+  fadeInModal(cardFirst, modalFirst);
+  fadeInModal(cardSecond, modalSecond);
+  fadeInModal(cardThird, modalThird);
+
+  fadeOutModalAndStopVideo(modalFirst);
+  fadeOutModalAndStopVideo(modalSecond);
+  fadeOutModalAndStopVideo(modalThird);
+
+  fadeOutModalAndStopVideoOnCloseBtnClick(modalFirst);
+  fadeOutModalAndStopVideoOnCloseBtnClick(modalSecond);
+  fadeOutModalAndStopVideoOnCloseBtnClick(modalThird);
+
+  function disableScroll() {
     body.addClass('body--active');
   }
 
-  const enableScroll = () => {
+  function enableScroll() {
     body.removeClass('body--active');
   }
 
-  const fadeInModal = (card, modal) => {
+  function fadeInModal(card, modal) {
     card.click(() => {
       modal.fadeIn();
       disableScroll();
     });
   }
 
-  const fadeOutModalAndStopVideo = modal => {
+  function fadeOutModalAndStopVideo(modal) {
     const modalAttr = modal.find('iframe').attr('src');
 
     modal.click(function (ev) {
@@ -178,7 +222,7 @@ function manageSolutionsModals() {
     });
   }
 
-  const closeBtnFadeOutModalAndStopVideo = modal => {
+  function fadeOutModalAndStopVideoOnCloseBtnClick(modal) {
     const btn = $('.modal-window__solutions-close-btn');
     const modalAttr = modal.find('iframe').attr('src');
 
@@ -189,17 +233,17 @@ function manageSolutionsModals() {
     });
   }
 
-  fadeInModal(cardFirst, modalFirst);
-  fadeInModal(cardSecond, modalSecond);
-  fadeInModal(cardThird, modalThird);
+  // fadeInModal(cardFirst, modalFirst);
+  // fadeInModal(cardSecond, modalSecond);
+  // fadeInModal(cardThird, modalThird);
 
-  fadeOutModalAndStopVideo(modalFirst);
-  fadeOutModalAndStopVideo(modalSecond);
-  fadeOutModalAndStopVideo(modalThird);
+  // fadeOutModalAndStopVideo(modalFirst);
+  // fadeOutModalAndStopVideo(modalSecond);
+  // fadeOutModalAndStopVideo(modalThird);
 
-  closeBtnFadeOutModalAndStopVideo(modalFirst);
-  closeBtnFadeOutModalAndStopVideo(modalSecond);
-  closeBtnFadeOutModalAndStopVideo(modalThird);
+  // closeBtnFadeOutModalAndStopVideo(modalFirst);
+  // closeBtnFadeOutModalAndStopVideo(modalSecond);
+  // closeBtnFadeOutModalAndStopVideo(modalThird);
 }
 
 function toggleTooltipForAddress() {
@@ -225,11 +269,11 @@ function manageFooterMapModal() {
   const scrollToTopBtn = $('.scroll-top-btn');
   const scrollToTopBtnActive = 'scroll-top-btn--active';
 
-  const disableScroll = () => {
+  function disableScroll() {
     body.addClass('body--active');
   }
 
-  const enableScroll = () => {
+  function enableScroll() {
     body.removeClass('body--active');
   }
 
@@ -506,13 +550,11 @@ function togglePortfolioTabs() {
   const brandingListItems = $('.portfolio__projects-list-item--branding');
   const designListItems = $('.portfolio__projects-list-item--design');
 
-  const projectsList = $('.portfolio__projects-list');
-
-  projectsList.css({ // ?
-    'min-height': '686px',
-    'align-items': 'center',
-    // 'justify-content': 'center' // ?
-  });
+  toggleTabs(allMenuItem, allListItems, allListItems);
+  toggleTabs(webMenuItem, webListItems, allListItems);
+  toggleTabs(adMenuItem, adListItems, allListItems);
+  toggleTabs(brandingMenuItem, brandingListItems, allListItems);
+  toggleTabs(designMenuItem, designListItems, allListItems);
 
   function toggleTabs(menuItem, listItem, allListItems) {
     menuItem.click(() => {
@@ -526,15 +568,13 @@ function togglePortfolioTabs() {
     });
   }
 
-
-  toggleTabs(allMenuItem, allListItems, allListItems);
-  toggleTabs(webMenuItem, webListItems, allListItems);
-  toggleTabs(adMenuItem, adListItems, allListItems);
-  toggleTabs(brandingMenuItem, brandingListItems, allListItems);
-  toggleTabs(designMenuItem, designListItems, allListItems);
+  // toggleTabs(allMenuItem, allListItems, allListItems);
+  // toggleTabs(webMenuItem, webListItems, allListItems);
+  // toggleTabs(adMenuItem, adListItems, allListItems);
+  // toggleTabs(brandingMenuItem, brandingListItems, allListItems);
+  // toggleTabs(designMenuItem, designListItems, allListItems);
 }
 
-togglePortfolioTabs();
 
 function useMobileMenu() {
   const body = $('body');
@@ -563,6 +603,6 @@ function useMobileMenu() {
   });
 }
 
-useMobileMenu();
+
 
 

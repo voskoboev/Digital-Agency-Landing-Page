@@ -4,6 +4,14 @@
   transition: 1s all ease;
   opacity: 0;
 
+  @media screen and (max-width: 1024px) {
+    & {
+      transform: none;
+      transition: none;
+      opacity: 1;
+    }
+  }
+
   &--active {
     transform: translateY(0);
     opacity: 1;
@@ -31,7 +39,7 @@
   }
 }
 
-// This mixin used to align elements in responsive design.
+// This mixin used mostly to align elements in responsive design.
 @mixin pl-pr($val) {
   padding: {
     left: $val;

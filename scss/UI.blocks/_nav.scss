@@ -59,10 +59,17 @@
     position: absolute;
     right: 40px;
     top: 60px;
-
     z-index: 15;
-
   }
+
+  @media screen and (max-width: 450px) {
+    .header__nav-mobile-btn {
+
+      right: 20px;
+    }
+  }
+
+
 
   .header__nav-mobile-btn::before,
   .header__nav-mobile-btn::after,
