@@ -429,8 +429,8 @@
 }
 
 .modal-window__footer-map-container {
-  -webkit-transform: translate(-500px);
-          transform: translate(-500px);
+  -webkit-transform: translate(-500px, -282.5px);
+          transform: translate(-500px, -282.5px);
 }
 
 @media screen and (max-width: 1000px) {
@@ -1892,6 +1892,8 @@ input[type="submit"]:hover {
   font-size: 1rem;
   color: #000;
   line-height: 1.4rem;
+  height: 110px;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 1919px) {
@@ -2914,6 +2916,12 @@ input[type="submit"]:hover {
   top: 163px;
 }
 
+@media screen and (max-width: 1400px) {
+  .contact .contact__form-input--company-tooltip {
+    left: 400px;
+  }
+}
+
 .contact .contact__form-input--email {
   margin-bottom: 20px;
 }
@@ -2921,6 +2929,13 @@ input[type="submit"]:hover {
 .contact .contact__form-input--email-tooltip {
   top: 163px;
   right: 0;
+}
+
+@media screen and (max-width: 1400px) {
+  .contact .contact__form-input--email-tooltip {
+    right: 25px;
+    top: 235px;
+  }
 }
 
 .contact .contact__form-input--service {
@@ -2942,6 +2957,12 @@ input[type="submit"]:hover {
   top: 235px;
 }
 
+@media screen and (max-width: 1400px) {
+  .contact .contact__form-input--service-tooltip {
+    top: 305px;
+  }
+}
+
 .contact .contact__form-input--textarea {
   width: 100%;
   min-height: 270px;
@@ -2953,6 +2974,12 @@ input[type="submit"]:hover {
 .contact .contact__form-input--textarea-tooltip {
   left: 400px;
   top: 306px;
+}
+
+@media screen and (max-width: 1400px) {
+  .contact .contact__form-input--textarea-tooltip {
+    top: 376px;
+  }
 }
 
 .contact .contact__form-input--submit {
@@ -3200,6 +3227,13 @@ input[type="submit"]:hover {
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 100px;
+  position: relative;
+}
+
+.footer .tooltip__footer-form-item {
+  top: -60px;
+  left: 250px;
+  z-index: 10;
 }
 
 .footer .footer__form-input--email {

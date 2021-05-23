@@ -1,24 +1,23 @@
 'use strict';
 
-initSlickSlider();
-scrollTo();
+initPromoSlickSlider();
+
+// scrollTo();
 popUpSectionsOnScroll();
+
+// manageMobileMenu();
 // manageSolutionsModals();
-
-// toggleTooltipForAddress();
-// manageFooterMapModal();
-
-// playClientsVideo();
+// togglePortfolioTabs();
+playClientsVideo();
 // activateBrandsPics();
 
-// manageContactForm();
+manageContactForm();
+manageFooterForm();
 
-togglePortfolioTabs();
-
-useMobileMenu();
+// manageFooterMapModal();
 
 
-function initSlickSlider() {
+function initPromoSlickSlider() {
   const container = $('.promo__carousel-container');
 
   container.slick({
@@ -86,12 +85,6 @@ function scrollTo() {
         $('html, body').animate({ scrollTop: position - 200 }, 1000);
       }); // позиция изменена из-за всплывающих секций, изначальное значение + 50
     }
-
-    // scrollToCertainSection(servicesItems, servicesSection);
-    // scrollToCertainSection(portfolioItem, portfolioSection);
-    // scrollToCertainSection(promoItem, promoSection);
-    // scrollToCertainSection(clientsItem, clientsSection);
-    // scrollToCertainSection(contactItems, contactSection);
   }
 
   function scrollToTop() {
@@ -161,16 +154,6 @@ function popUpSectionsOnScroll() {
       });
     }
   }
-
-  // popUpOnScroll(services);
-  // popUpOnScroll(promo);
-  // popUpOnScroll(features);
-  // popUpOnScroll(portfolio);
-  // popUpOnScroll(clients);
-  // popUpOnScroll(brands);
-  // popUpOnScroll(benefits);
-  // popUpOnScroll(contact);
-  // popUpOnScroll(footer);
 }
 
 function manageSolutionsModals() {
@@ -232,35 +215,29 @@ function manageSolutionsModals() {
       enableScroll();
     });
   }
-
-  // fadeInModal(cardFirst, modalFirst);
-  // fadeInModal(cardSecond, modalSecond);
-  // fadeInModal(cardThird, modalThird);
-
-  // fadeOutModalAndStopVideo(modalFirst);
-  // fadeOutModalAndStopVideo(modalSecond);
-  // fadeOutModalAndStopVideo(modalThird);
-
-  // closeBtnFadeOutModalAndStopVideo(modalFirst);
-  // closeBtnFadeOutModalAndStopVideo(modalSecond);
-  // closeBtnFadeOutModalAndStopVideo(modalThird);
 }
 
-function toggleTooltipForAddress() {
-  const address = $('.footer__location');
-  const tooltip = $('.footer__adress-tooltip');
-  const footerLeft = $('.footer__left');
-
-  address.hover(() => {
-    tooltip.addClass('footer__adress-tooltip--active');
-  });
-
-  footerLeft.mouseleave(() => {
-    tooltip.removeClass('footer__adress-tooltip--active');
-  });
-}
 
 function manageFooterMapModal() {
+  function toggleTooltipForAddress() {
+    const address = $('.footer__location');
+    const tooltip = $('.footer__adress-tooltip');
+    const footerLeft = $('.footer__left');
+
+    address.hover(() => {
+      tooltip.addClass('footer__adress-tooltip--active');
+    });
+
+    footerLeft.mouseleave(() => {
+      tooltip.removeClass('footer__adress-tooltip--active');
+    });
+  }
+
+  toggleTooltipForAddress();
+
+
+
+
   const addressItems = $('.footer__location, .footer__adress-tooltip');
   const mapModal = $('.map-modal');
   const closeBtn = $('.map-modal__close-btn');
@@ -323,20 +300,6 @@ function playClientsVideo() {
     playBtn.toggleClass('clients__video-btn-play--active');
   });
 }
-
-// function displayFeature() {
-
-//     var $magic = $(".magic"),
-//       magicWHalf = $magic.width() / 2;
-//     $(document).on("mousemove", function(e) {
-//       $magic.css({
-//         "left": e.pageX - magicWHalf,
-//         "top": e.pageY - magicWHalf
-//       });
-//     });
-// }
-
-// function displayFeature();
 
 function activateBrandsPics() {
   const firstPic = $('.brands__pic:first');
@@ -460,7 +423,7 @@ function manageContactForm() {
         form.trigger('reset');
       },
       error: () => {
-        // console.log('failed'); // убрать
+        console.log('failed'); // убрать
         changeFormModalText();
         toggleFormModal();
 
@@ -487,54 +450,8 @@ function manageContactForm() {
 
   formInputs.focus(() => {
     formTooltips.removeClass(tooltipActivationClass)
-    tooltipText.text('Enter value!');
+    tooltipText.text('Enter a value');
   });
-
-  // =================================
-
-  function toggleFormModal() {
-    const body = $('body');
-    const modal = $('.modal-window__contact-form-item');
-    const modalCloseBtn = $('.modal-window__contact-form-close-btn');
-
-    const scrollToTopBtn = $('.scroll-top-btn');
-    const scrollToTopBtnActive = 'scroll-top-btn--active';
-
-    const disableScroll = () => {
-      body.addClass('body--active');
-    }
-
-    const enableScroll = () => {
-      body.removeClass('body--active');
-    }
-
-    modal.fadeIn();
-    scrollToTopBtn.removeClass(scrollToTopBtnActive);
-    disableScroll();
-
-    modal.click(function (ev) {
-      if (ev.target === this) {
-        $(this).fadeOut();
-        scrollToTopBtn.addClass(scrollToTopBtnActive);
-        enableScroll();
-      }
-    });
-
-    modalCloseBtn.click(function () {
-      $(this)
-        .parent()
-        .fadeOut();
-      scrollToTopBtn.addClass(scrollToTopBtnActive);
-      enableScroll();
-    });
-  }
-
-  function changeFormModalText() {
-    const modal = $('.modal-window__contact-form-item');
-    modal
-      .find('p')
-      .text('Your message has not been sent. Try again later');
-  }
 }
 
 function togglePortfolioTabs() {
@@ -567,16 +484,9 @@ function togglePortfolioTabs() {
       }
     });
   }
-
-  // toggleTabs(allMenuItem, allListItems, allListItems);
-  // toggleTabs(webMenuItem, webListItems, allListItems);
-  // toggleTabs(adMenuItem, adListItems, allListItems);
-  // toggleTabs(brandingMenuItem, brandingListItems, allListItems);
-  // toggleTabs(designMenuItem, designListItems, allListItems);
 }
 
-
-function useMobileMenu() {
+function manageMobileMenu() {
   const body = $('body');
   const mobileBtn = $('.header__nav-mobile-btn');
   const navMenu = $('.nav__menu');
@@ -602,6 +512,130 @@ function useMobileMenu() {
     }
   });
 }
+
+// =========== toggle form modal for contacts and footer ===========
+
+function toggleFormModal() {
+  const body = $('body');
+  const modal = $('.modal-window__contact-form-item');
+  const modalCloseBtn = $('.modal-window__contact-form-close-btn');
+
+  const scrollToTopBtn = $('.scroll-top-btn');
+  const scrollToTopBtnActive = 'scroll-top-btn--active';
+
+  function disableScroll() {
+    body.addClass('body--active');
+  }
+
+  function enableScroll() {
+    body.removeClass('body--active');
+  }
+
+  modal.fadeIn();
+  scrollToTopBtn.removeClass(scrollToTopBtnActive);
+  disableScroll();
+
+  modal.click(function (ev) {
+    if (ev.target === this) {
+      $(this).fadeOut();
+      scrollToTopBtn.addClass(scrollToTopBtnActive);
+      enableScroll();
+    }
+  });
+
+  modalCloseBtn.click(function () {
+    $(this)
+      .parent()
+      .fadeOut();
+    scrollToTopBtn.addClass(scrollToTopBtnActive);
+    enableScroll();
+  });
+}
+
+function changeFormModalText() {
+  const modal = $('.modal-window__contact-form-item');
+  modal
+    .find('p')
+    .text('Your message has not been sent. Try again later');
+}
+
+// =========== /toggle form modal or contacts and footer ===========
+
+function manageFooterForm() {
+  const submitBtn = $('.form__input--submit');
+
+  submitBtn.click(ev => {
+    const form = $('.footer__form');
+    const input = $('.footer__form-input--email');
+    const inputProtectedValue = $('.footer__form-input--email').val().toString().trim();
+
+    const tooltip = $('.tooltip__footer-form-item');
+    const tooltipText = tooltip.find('p');
+    const tooltipActivationClass = 'tooltip--active';
+    const length = 50;
+
+    ev.preventDefault();
+
+    function checkInputsForAjax() {
+      function activateTooltip() {
+        tooltip.addClass(tooltipActivationClass);
+      }
+
+      if (inputProtectedValue === null ||
+        inputProtectedValue === '') {
+        activateTooltip();
+        return false;
+      }
+
+      if (inputProtectedValue.includes('@') === false ||
+        inputProtectedValue.includes('.') === false) {
+        tooltipText.text('Enter correct email');
+        activateTooltip();
+        return false;
+      }
+
+      if (inputProtectedValue.length > length) {
+        tooltipText.text(`Max number of letters is ${length}`);
+        activateTooltip();
+        return false;
+      }
+
+      tooltip.removeClass(tooltipActivationClass);
+      return true;
+    }
+
+    tooltipText.text('Enter a value');
+
+    $.ajax({
+      url: '/php/mail.php', // ? 
+      type: 'POST',
+      data: form.serialize(),
+      beforeSend: () => {
+        return checkInputsForAjax();
+      },
+      success: () => {
+        toggleFormModal();
+
+        // console.log('success'); // убрать
+        form.trigger('reset');
+      },
+      error: () => {
+        // console.log('failed'); // убрать
+
+        changeFormModalText();
+        toggleFormModal();
+
+        // form.trigger('reset');
+      }
+    });
+
+    input.focus(() => {
+      tooltip.removeClass(tooltipActivationClass);
+      tooltipText.text('Enter a value');
+    });
+  });
+}
+
 
 
 

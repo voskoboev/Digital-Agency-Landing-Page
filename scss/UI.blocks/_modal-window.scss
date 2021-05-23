@@ -70,7 +70,7 @@
 
 .modal-window__footer-map-container {
   // для карты
-  transform: translate(-500px);
+  transform: translate(-500px, -282.5px);
 }
 
 @media screen and (max-width: 1000px) {
@@ -78,7 +78,6 @@
     transform: translate(-275px, -150px);
   }
 }
-
 
 .modal-window__solutions-video {
   // для трех видео 
