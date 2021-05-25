@@ -633,6 +633,7 @@ input[type="submit"]:hover {
   }
 
   @media screen and (max-width: 719px) {
+
     .services__feature:nth-child(4),
     .services__feature:nth-child(5) {
       margin-bottom: 62px;
@@ -640,6 +641,7 @@ input[type="submit"]:hover {
   }
 
   @media screen and (max-width: 550px) {
+
     .services__feature:nth-child(4),
     .services__feature:nth-child(5) {
       margin-bottom: 10px;
@@ -1243,11 +1245,11 @@ input[type="submit"]:hover {
     margin-right: 8px; // 8
   }
 
-  @media screen and (max-width: 795px) {
-    .portfolio__projects-list-item:not(:nth-child(4n)) {
-      margin-right: 0;
-    }
-  }
+  // @media screen and (max-width: 795px) {
+  //   .portfolio__projects-list-item:not(:nth-child(4n)) {
+  //     margin-right: 0;
+  //   }
+  // }
 
   .portfolio__projects-list-item--active {
     margin-right: 8px;
@@ -1300,6 +1302,15 @@ input[type="submit"]:hover {
     }
   }
 
+  @media screen and (max-width: 390px) {
+
+    .portfolio__project-list-item-img,
+    .portfolio__projects-list-info {
+      width: 320px;
+      height: 200px;
+    }
+  }
+
   .portfolio__projects-list-info {
     transform: rotateY(180deg);
     position: absolute;
@@ -1307,6 +1318,12 @@ input[type="submit"]:hover {
     left: 0;
     outline: 1px solid $primary-color;
     padding: 40px;
+  }
+
+  @media screen and (max-width: 390px) {
+    .portfolio__projects-list-info {
+      padding: 20px;
+    }
   }
 
   .portfolio__projects-list-item-title {
@@ -1338,7 +1355,7 @@ input[type="submit"]:hover {
     }
   }
 
-  .portfolio__projects-list-item-link {
+  .portfolio__projects-list-item-click {
     color: $secondary-color;
     position: absolute;
     left: 40px;
@@ -1346,11 +1363,39 @@ input[type="submit"]:hover {
     @include font($primary-font, 400, 1rem, $secondary-color);
   }
 
-  .portfolio__projects-list-item-link:hover {
-    color: darken($secondary-color, 20%);
+  @media screen and (max-width: 390px) {
+    .portfolio__projects-list-item-click {
+      left: 20px;
+      bottom: 30px;
+    }
   }
 
+  portfolio__projects-list-item-link {
+    width: 350px;
+    height: 250px;
+    min-width: 100%;
+    min-height: 100%;
+  }
 
+  @media screen and (max-width: 1919px) {
+    portfolio__projects-list-item-link {
+      width: 350px;
+      height: 250px;
+
+      min-width: 100%;
+      min-height: 100%;
+    }
+  }
+
+  @media screen and (max-width: 390px) {
+    portfolio__projects-list-item-link {
+      width: 320px;
+      height: 200px;
+
+      min-width: 100%;
+      min-height: 100%;
+    }
+  }
 
 
   // .portfolio__projects-list-item:not(:nth-child(4n)) {
@@ -1397,6 +1442,14 @@ input[type="submit"]:hover {
     .portfolio__project-list-img {
       width: 350px;
       height: 250px;
+    }
+  }
+
+  @media screen and (max-width: 390px) {
+    .portfolio__project-list-img {
+      width: 320px;
+      height: 200px;
+
     }
   }
 
@@ -2225,6 +2278,12 @@ input[type="submit"]:hover {
     top: 93px;
   }
 
+  @media screen and (max-width: 1200px) {
+    .contact__form-input--name-tooltip {
+      left: 230px;
+    }
+  }
+
   // .contact__inputs-container {
   //   display: flex;
   //   justify-content: space-between;
@@ -2267,6 +2326,12 @@ input[type="submit"]:hover {
     }
   }
 
+  @media screen and (max-width: 1200px) {
+    .contact__form-input--company-tooltip {
+      left: 230px;
+    }
+  }
+
   .contact__form-input--email {
     margin-bottom: 20px;
   }
@@ -2278,8 +2343,14 @@ input[type="submit"]:hover {
 
   @media screen and (max-width: 1400px) {
     .contact__form-input--email-tooltip {
-    right: 25px;
-    top: 235px;
+      right: 25px;
+      top: 235px;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .contact__form-input--email-tooltip {
+      right: 155px;
     }
   }
 
@@ -2311,7 +2382,7 @@ input[type="submit"]:hover {
 
   @media screen and (max-width: 1400px) {
     .contact__form-input--service-tooltip {
-    top: 305px;
+      top: 305px;
     }
   }
 
@@ -2588,14 +2659,17 @@ input[type="submit"]:hover {
     z-index: 10;
   }
 
+  @media screen and (max-width: 1300px) {
+    .tooltip__footer-form-item {
+      left: 100px;
+    }
+  }
+
 
   .footer__form-input--email {
-
     @include font($primary-font, 300, 1rem, $dark-font-color);
-
     min-height: 45px;
     width: 100%;
-
     padding-left: 16px;
   }
 

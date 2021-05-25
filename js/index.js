@@ -2,19 +2,19 @@
 
 initPromoSlickSlider();
 
-// scrollTo();
+scrollTo();
 popUpSectionsOnScroll();
 
-// manageMobileMenu();
-// manageSolutionsModals();
-// togglePortfolioTabs();
+manageHeaderMobileMenu();
+manageSolutionsModals();
+togglePortfolioTabs();
 playClientsVideo();
-// activateBrandsPics();
+activateBrandsPics();
 
 manageContactForm();
 manageFooterForm();
 
-// manageFooterMapModal();
+manageFooterMapModal();
 
 
 function initPromoSlickSlider() {
@@ -29,9 +29,9 @@ function initPromoSlickSlider() {
     variableWidth: true,
     draggable: true,
 
-    // autoplay: true,
-    // autoplaySpeed: 2000,
-    // pauseOnHover: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
 
     responsive: [
       {
@@ -59,6 +59,12 @@ function scrollTo() {
   scrollToTop();
   scrollToTopOnPopUpBtnClick();
 
+  function showAllPortfolioTabs() {
+    const portfolioTabs = $('.portfolio__projects-list-item');
+
+    portfolioTabs.fadeIn()
+  }
+
   function scrollToSections() {
     const servicesItems = $('.nav__menu-item--services, .header__services-btn');
     const portfolioItem = $('.nav__menu-item--works');
@@ -82,6 +88,7 @@ function scrollTo() {
       const position = positionItem.offset().top;
 
       interactItems.click(() => {
+        showAllPortfolioTabs();
         $('html, body').animate({ scrollTop: position - 200 }, 1000);
       }); // позиция изменена из-за всплывающих секций, изначальное значение + 50
     }
@@ -92,6 +99,7 @@ function scrollTo() {
 
     homeItem.click(() => {
       $('html, body').animate({ scrollTop: 0 }, 1000);
+      showAllPortfolioTabs();
     });
   }
 
@@ -110,6 +118,7 @@ function scrollTo() {
     });
 
     btn.click(() => {
+      showAllPortfolioTabs()
       $('html, body').animate({ scrollTop: 0 }, 1000);
     });
   }
@@ -150,6 +159,8 @@ function popUpSectionsOnScroll() {
       $(window).scroll(function () {
         if ($(this).scrollTop() + $(window).innerHeight() > $(`.${section}`).position().top) {
           $(`.${section}`).addClass(`${section}--active`);
+        } else {
+          return;
         }
       });
     }
@@ -231,11 +242,10 @@ function manageFooterMapModal() {
     footerLeft.mouseleave(() => {
       tooltip.removeClass('footer__adress-tooltip--active');
     });
+
   }
 
   toggleTooltipForAddress();
-
-
 
 
   const addressItems = $('.footer__location, .footer__adress-tooltip');
@@ -486,7 +496,7 @@ function togglePortfolioTabs() {
   }
 }
 
-function manageMobileMenu() {
+function manageHeaderMobileMenu() {
   const body = $('body');
   const mobileBtn = $('.header__nav-mobile-btn');
   const navMenu = $('.nav__menu');
@@ -517,8 +527,8 @@ function manageMobileMenu() {
 
 function toggleFormModal() {
   const body = $('body');
-  const modal = $('.modal-window__contact-form-item');
-  const modalCloseBtn = $('.modal-window__contact-form-close-btn');
+  const modal = $('.modal-window__form-item');
+  const modalCloseBtn = $('.modal-window__form-close-btn');
 
   const scrollToTopBtn = $('.scroll-top-btn');
   const scrollToTopBtnActive = 'scroll-top-btn--active';
@@ -553,7 +563,7 @@ function toggleFormModal() {
 }
 
 function changeFormModalText() {
-  const modal = $('.modal-window__contact-form-item');
+  const modal = $('.modal-window__form-item');
   modal
     .find('p')
     .text('Your message has not been sent. Try again later');
@@ -563,9 +573,9 @@ function changeFormModalText() {
 
 function manageFooterForm() {
   const submitBtn = $('.form__input--submit');
+  const form = $('.footer__form');
 
-  submitBtn.click(ev => {
-    const form = $('.footer__form');
+  function checkFormAndSubmitValues() {
     const input = $('.footer__form-input--email');
     const inputProtectedValue = $('.footer__form-input--email').val().toString().trim();
 
@@ -573,8 +583,6 @@ function manageFooterForm() {
     const tooltipText = tooltip.find('p');
     const tooltipActivationClass = 'tooltip--active';
     const length = 50;
-
-    ev.preventDefault();
 
     function checkInputsForAjax() {
       function activateTooltip() {
@@ -633,6 +641,18 @@ function manageFooterForm() {
       tooltip.removeClass(tooltipActivationClass);
       tooltipText.text('Enter a value');
     });
+  }
+
+  submitBtn.click(ev => {
+    ev.preventDefault();
+    checkFormAndSubmitValues();
+  })
+
+  form.keypress(ev => {
+    if (ev.which === 13) {
+      ev.preventDefault();
+      checkFormAndSubmitValues();
+    }
   });
 }
 
