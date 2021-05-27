@@ -1,6 +1,7 @@
 @import 'ancillary/_fonts';
 @import 'ancillary/_vars';
 @import 'ancillary/_mixins';
+@import 'ancillary/_common-styles';
 
 @import 'UI.blocks/_nav';
 @import 'UI.blocks/_button';
@@ -14,53 +15,6 @@
 //     font-size: 12px;
 //   }
 // }
-
-html {
-  box-sizing: border-box;
-  font-size: 16px;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-body {
-  font-family: $default-font;
-  overflow-x: hidden;
-  width: 100vw;
-
-  // background-color: red !important;
-}
-
-.body--active {
-  height: 100%;
-  overflow: hidden;
-}
-
-a {
-  text-decoration: none;
-}
-
-img {
-  display: block;
-}
-
-button:hover,
-input[type="submit"]:hover {
-  transition: .2s all ease;
-}
-
-::selection {
-  background-color: lighten($secondary-color, 20%);
-}
-
-.container {
-  max-width: 1300px;
-  margin: 0 auto;
-}
-
 
 .header {
 
@@ -336,6 +290,14 @@ input[type="submit"]:hover {
     transition: .2s all ease;
     transform: scale(1.03);
     // transition: .3s transform ease;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .solutions__card:hover {
+      background-color: $primary-color;
+      transition: none;
+      transform: none;
+    }
   }
 
   .solutions__card:not(:last-child) {
@@ -1927,12 +1889,12 @@ input[type="submit"]:hover {
     z-index: 100;
 
     // filter: grayscale(100%);
-
   }
 
   @media screen and (max-width: 1300px) {
     .benefits__left {
       width: auto;
+      box-shadow: none;
     }
   }
 
@@ -2350,7 +2312,8 @@ input[type="submit"]:hover {
 
   @media screen and (max-width: 1200px) {
     .contact__form-input--email-tooltip {
-      right: 155px;
+      right: none;
+      left: 230px;
     }
   }
 
@@ -2362,6 +2325,12 @@ input[type="submit"]:hover {
   //   }
   // }
 
+  @media screen and (max-width: 1200px) {
+    .contact__form-input--email-tooltip {
+      right: 155px;
+    }
+  }
+
   .contact__form-input--service {
     width: 100%;
     margin-bottom: 20px;
@@ -2370,6 +2339,7 @@ input[type="submit"]:hover {
     background-position: right 20px center;
     appearance: none;
   }
+
 
   .contact__form-input--service-option {
     height: 50px;
@@ -2383,6 +2353,12 @@ input[type="submit"]:hover {
   @media screen and (max-width: 1400px) {
     .contact__form-input--service-tooltip {
       top: 305px;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .contact__form-input--service-tooltip {
+      left: 230px;
     }
   }
 
@@ -2406,6 +2382,26 @@ input[type="submit"]:hover {
       top: 376px;
     }
   }
+
+  @media screen and (max-width: 1200px) {
+    .contact__form-input--textarea-tooltip {
+      left: 230px;
+    }
+  }
+
+  // @media screen and (max-width: 880px) {
+
+  //   .contact__form-input--name-tooltip,
+  //   .contact__form-input--company-tooltip,
+  //   .contact__form-input--email-tooltip,
+  //   .contact__form-input--service-tooltip,
+  //   .contact__form-input--textarea-tooltip {
+  //     position: fixed;
+  //     top: 50px;
+  //     left: 50%;
+
+  //   }
+  // }
 
   .contact__form-input--submit {
     background-color: $secondary-color;

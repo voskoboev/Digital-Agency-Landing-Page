@@ -7,14 +7,14 @@ popUpSectionsOnScroll();
 
 manageHeaderMobileMenu();
 manageSolutionsModals();
-togglePortfolioTabs();
-playClientsVideo();
-activateBrandsPics();
+// togglePortfolioTabs();
+// playClientsVideo();
+// activateBrandsPics();
 
 manageContactForm();
 manageFooterForm();
 
-manageFooterMapModal();
+// manageFooterMapModal();
 
 
 function initPromoSlickSlider() {
@@ -177,6 +177,8 @@ function manageSolutionsModals() {
   const modalSecond = $('.modal-window__solutions-item--second');
   const modalThird = $('.modal-window__solutions-item--third');
 
+  const mobileBtn = $('.header__nav-mobile-btn');
+
   fadeInModal(cardFirst, modalFirst);
   fadeInModal(cardSecond, modalSecond);
   fadeInModal(cardThird, modalThird);
@@ -200,6 +202,7 @@ function manageSolutionsModals() {
   function fadeInModal(card, modal) {
     card.click(() => {
       modal.fadeIn();
+      mobileBtn.hide();
       disableScroll();
     });
   }
@@ -207,22 +210,27 @@ function manageSolutionsModals() {
   function fadeOutModalAndStopVideo(modal) {
     const modalAttr = modal.find('iframe').attr('src');
 
-    modal.click(function (ev) {
-      if (ev.target === this) {
-        $(this).find('iframe').attr('src', modalAttr);
-        $(this).fadeOut();
-        enableScroll();
-      }
-    });
+    if ($(window).innerWidth() > 600) {
+      modal.click(function (ev) {
+        if (ev.target === this) {
+          $(this).find('iframe').attr('src', modalAttr);
+          $(this).fadeOut();
+          mobileBtn.show();
+          enableScroll();
+        }
+      });
+    }
   }
 
   function fadeOutModalAndStopVideoOnCloseBtnClick(modal) {
-    const btn = $('.modal-window__solutions-close-btn');
+    // const btn = $('.modal-window__solutions-close-btn');
+    const btn = $('.modal-window__close-btn');
     const modalAttr = modal.find('iframe').attr('src');
 
     btn.click(() => {
       modal.find('iframe').attr('src', modalAttr);
       modal.fadeOut();
+      mobileBtn.show();
       enableScroll();
     });
   }
@@ -658,5 +666,33 @@ function manageFooterForm() {
 
 
 
+function changeIframeOrientation() {
+
+  const modal = document.querySelector('.modal-window__solutions-item--first');
+
+  const iframe = document.querySelector('.modal-window__solutions-video');
+
+  // modal.style.display = 'block';
+
+  if ($(window).innerWidth() < 600) {
+
+    // modal.style.display = 'flex';
+    // modal.style.justifyContent = 'center'
+    // modal.style.alignItems = 'center';
+
+
+    // iframe.style.transform = 'rotate(90deg)';
+  }
+
+
+  // iframe.style.height = document.body.clientWidth + 'px';
+  // iframe.style.width = document.body.clientHeight + 'px';
+
+  // iframe.style.height = '100%'
+  // iframe.style.width = '100%'
+
+}
+
+changeIframeOrientation();
 
 

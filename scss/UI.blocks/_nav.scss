@@ -62,15 +62,6 @@
     z-index: 15;
   }
 
-  @media screen and (max-width: 450px) {
-    .header__nav-mobile-btn {
-
-      right: 20px;
-    }
-  }
-
-
-
   .header__nav-mobile-btn::before,
   .header__nav-mobile-btn::after,
   .header__nav-mobile-span {
@@ -94,6 +85,17 @@
     top: 0;
   }
 
+  
+  // .header__nav-mobile-span--inactive {
+  //   display: none;
+  // }
+
+}
+
+@media screen and (max-width: 450px) {
+  .header__nav-mobile-btn {
+    right: 20px;
+  }
 }
 
 .nav__menu-item {

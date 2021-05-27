@@ -16,14 +16,24 @@
   position: absolute;
   // left: 400px;
   // bottom: 8px;
-  
+
   // display: none;
-  
+
   visibility: hidden;
   opacity: 0;
 
   transition: .3s all ease;
 }
+
+// @media screen and (max-width: 880px) {
+//   .tooltip {
+//     position: fixed;
+//     top: 50px !important;
+//     left: calc(50% - 150px) !important;
+
+//     min-width: 300px;
+//   }
+// }
 
 // .footer__adress-tooltip:hover {
 //   background-color: #fff;
@@ -33,7 +43,7 @@
 .tooltip--active {
   visibility: visible;
   opacity: 1;
-  
+
   // display: block;
 }
 
@@ -44,3 +54,9 @@
   bottom: -18px;
   left: -2px;
 }
+
+// @media screen and (max-width: 880px) {
+//   .tooltip__triangle {
+//     display: none;
+//   }
+// }
