@@ -3,17 +3,13 @@
 // Certain <button> tags have their own specific styles computed over this module. These specific styles contains in "index.scss" file.
 
 .button {
+  @extend %centering-flex-container;
   width: 190px;
   min-height: 55px;
-
-  @include font($primary-font, 400, 1rem, $light-font-color);
-
-  background: transparent;
   border-style: solid;
   border-width: 2px;
   outline: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include font($primary-font, 400, 1rem, $light-font-color);
+  background: transparent;
   padding: 5px;
 }

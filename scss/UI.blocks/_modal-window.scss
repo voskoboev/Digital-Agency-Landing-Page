@@ -1,24 +1,19 @@
 .modal-window {
-  display: none;
-
   position: fixed;
+  display: none;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, .8);
-
   z-index: 10;
 }
 
 .modal-window__close-btn {
-  width: 40px;
-  height: 40px;
-
   position: absolute;
   top: 50px;
   right: 50px;
-
+  width: 40px;
+  height: 40px;
   cursor: pointer;
-
   // background-color: #fff;
 }
 
@@ -31,10 +26,10 @@
 
 .modal-window__close-btn::before,
 .modal-window__close-btn::after {
+  content: '';
   position: absolute;
   top: 18px;
   left: -5px;
-  content: '';
   width: 50px;
   height: 5px;
   border-radius: 15%;
@@ -93,6 +88,7 @@
 .modal-window__footer-map-container {
   // для карты
   transform: translate(-500px, -282.5px);
+  display: block;
 }
 
 @media screen and (max-width: 1000px) {
@@ -128,10 +124,16 @@
 // }
 
 .map-modal__script {
-  // для карты
   width: 1000px;
   height: 565px;
 }
+
+@media screen and (max-width: 1000px) {
+  .map-modal__script {
+    display: none;
+  }
+}
+
 
 .modal-window__contact-form-container {
   transform: translate(-200px, -125px);
@@ -145,22 +147,20 @@
 
 .modal-window__form-text {
   // для формы
-  @include font($primary-font, 600, 2.5rem, $primary-font-color);
-  line-height: 50px;
-
+  @include flex(center, center);
+  text-align: center;
   width: 400px;
   min-height: 250px;
-
-  background-color: #fff;
   padding: 20px;
   outline: 5px solid $secondary-color;
+  @include font($primary-font, 600, 2.5rem, $primary-font-color);
+  line-height: 50px;
+  background-color: #fff;
 
   // flex($jcc: initial, $aic: initial, $flw: initial, $fld: initial)
-  @include flex(center, center);
   // display: flex;
   // justify-content: center;
   // align-items: center;
-  text-align: center;
 }
 
 @media screen and (max-width: 410px) {

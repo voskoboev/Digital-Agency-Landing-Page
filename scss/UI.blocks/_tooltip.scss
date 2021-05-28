@@ -1,27 +1,18 @@
 .tooltip {
-
-  @include font($primary-font, 400, 1rem, $dark-font-color);
-  padding: 5px;
-
-  border: 2px solid $secondary-color;
-
-  // content: 'Click to See the Map';
+  position: absolute;
+  @extend %centering-flex-container;
   min-width: 170px;
   height: 50px;
-
-  @extend %centering-flex-container;
-
+  padding: 5px;
+  border: 2px solid $secondary-color;
+  // content: 'Click to See the Map';
+  @include font($primary-font, 400, 1rem, $dark-font-color);
   background-color: #fff;
-
-  position: absolute;
   // left: 400px;
   // bottom: 8px;
-
   // display: none;
-
   visibility: hidden;
   opacity: 0;
-
   transition: .3s all ease;
 }
 
@@ -48,11 +39,11 @@
 }
 
 .tooltip__triangle {
-  border: 8px solid transparent;
-  border-top: 8px solid $secondary-color;
   position: absolute;
   bottom: -18px;
   left: -2px;
+  border: 8px solid transparent;
+  border-top: 8px solid $secondary-color;
 }
 
 // @media screen and (max-width: 880px) {

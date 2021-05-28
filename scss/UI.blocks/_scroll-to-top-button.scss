@@ -1,46 +1,48 @@
 .scroll-top-btn {
-  width: 70px;
-  height: 70px;
-  background-color: #f8f8f8;
-  opacity: 0;
-  z-index: 1000;
-  border: 2px solid #000;
-  border-radius: 50%;
   position: fixed;
   bottom: 50px;
   right: 50px;
-
+  width: 70px;
+  height: 70px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background-color: #f8f8f8;
+  opacity: 0;
+  z-index: 1000;
   cursor: pointer;
-
   visibility: hidden;
   transform: translateY(30px);
   transition: .2s all ease;
 }
 
+@media screen and (max-width: 600px) {
+  .scroll-top-btn {
+    display: none;
+  }
+}
+
 .scroll-top-btn::before {
   content: '';
-  width: 45px;
-  height: 5px;
-  background-color: #000;
   position: absolute;
   top: 27px;
   left: 0;
-  transform: rotate(300deg);
-
+  width: 45px;
+  height: 5px;
   border-radius: 15%;
+  background-color: #000;
+  transform: rotate(300deg);
 }
 
 .scroll-top-btn::after {
   content: '';
-  width: 45px;
-  height: 5px;
-  background-color: #000;
   position: absolute;
   top: 27px;
   right: 0;
-  transform: rotate(60deg);
-
+  width: 45px;
+  height: 5px;
   border-radius: 15%;
+  background-color: #000;
+  transform: rotate(60deg);
 }
 
 .scroll-top-btn:active {

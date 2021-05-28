@@ -10,14 +10,13 @@ html {
 }
 
 body {
+  width: 100vw;
   font-family: $default-font;
   overflow-x: hidden;
-  width: 100vw;
-
   // background-color: red !important;
 }
 
-.body--active {
+.body--inactive {
   height: 100%;
   overflow: hidden;
 }

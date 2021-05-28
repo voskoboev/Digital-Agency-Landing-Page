@@ -1,58 +1,19 @@
 'use strict';
 
-initPromoSlickSlider();
-
 scrollTo();
 popUpSectionsOnScroll();
 
 manageHeaderMobileMenu();
 manageSolutionsModals();
-// togglePortfolioTabs();
-// playClientsVideo();
-// activateBrandsPics();
+togglePortfolioTabs();
+playClientsVideo();
+activateBrandsPics();
 
 manageContactForm();
 manageFooterForm();
 
-// manageFooterMapModal();
+manageFooterMapModal();
 
-
-function initPromoSlickSlider() {
-  const container = $('.promo__carousel-container');
-
-  container.slick({
-    infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 2,
-    arrows: false,
-    dots: true,
-    variableWidth: true,
-    draggable: true,
-
-    autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: true,
-
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          autoplay: false,
-        }
-      },
-      {
-        breakpoint: 550,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: true,
-          variableWidth: false,
-          autoplay: false
-        }
-      }
-    ]
-  });
-}
 
 function scrollTo() {
   scrollToSections();
@@ -155,15 +116,11 @@ function popUpSectionsOnScroll() {
   // });
 
   function popUpOnScroll(section) {
-    if ($(window).innerWidth() >= 1024) {
-      $(window).scroll(function () {
-        if ($(this).scrollTop() + $(window).innerHeight() > $(`.${section}`).position().top) {
-          $(`.${section}`).addClass(`${section}--active`);
-        } else {
-          return;
-        }
-      });
-    }
+    $(window).scroll(function () {
+      if ($(this).scrollTop() + $(window).innerHeight() > $(`.${section}`).position().top) {
+        $(`.${section}`).addClass(`${section}--active`);
+      }
+    });
   }
 }
 
@@ -192,11 +149,11 @@ function manageSolutionsModals() {
   fadeOutModalAndStopVideoOnCloseBtnClick(modalThird);
 
   function disableScroll() {
-    body.addClass('body--active');
+    body.addClass('body--inactive');
   }
 
   function enableScroll() {
-    body.removeClass('body--active');
+    body.removeClass('body--inactive');
   }
 
   function fadeInModal(card, modal) {
@@ -238,6 +195,9 @@ function manageSolutionsModals() {
 
 
 function manageFooterMapModal() {
+  toggleTooltipForAddress();
+  toggleFooterMapModal();
+
   function toggleTooltipForAddress() {
     const address = $('.footer__location');
     const tooltip = $('.footer__adress-tooltip');
@@ -250,46 +210,50 @@ function manageFooterMapModal() {
     footerLeft.mouseleave(() => {
       tooltip.removeClass('footer__adress-tooltip--active');
     });
-
   }
 
-  toggleTooltipForAddress();
+  function toggleFooterMapModal() {
+    const addressItems = $('.footer__location, .footer__adress-tooltip');
+    const mapModal = $('.map-modal');
+    const closeBtn = $('.map-modal__close-btn');
+    const body = $('body');
 
+    const scrollToTopBtn = $('.scroll-top-btn');
+    const scrollToTopBtnActive = 'scroll-top-btn--active';
 
-  const addressItems = $('.footer__location, .footer__adress-tooltip');
-  const mapModal = $('.map-modal');
-  const closeBtn = $('.map-modal__close-btn');
-  const body = $('body');
-
-  const scrollToTopBtn = $('.scroll-top-btn');
-  const scrollToTopBtnActive = 'scroll-top-btn--active';
-
-  function disableScroll() {
-    body.addClass('body--active');
-  }
-
-  function enableScroll() {
-    body.removeClass('body--active');
-  }
-
-  addressItems.click(() => {
-    mapModal.fadeIn();
-    scrollToTopBtn.removeClass(scrollToTopBtnActive);
-    disableScroll();
-  });
-
-  mapModal.click(function (ev) {
-    if (ev.target === this) {
-      $(this).fadeOut();
-      scrollToTopBtn.addClass(scrollToTopBtnActive);
-      enableScroll();
+    function disableScroll() {
+      body.addClass('body--inactive');
     }
-  });
 
-  closeBtn.click(() => {
-    mapModal.fadeOut();
-    enableScroll();
-  });
+    function enableScroll() {
+      body.removeClass('body--inactive');
+    }
+
+    if ($(window).innerWidth() > 1000) {
+      addressItems.click(() => {
+        mapModal.fadeIn();
+        scrollToTopBtn.removeClass(scrollToTopBtnActive);
+        disableScroll();
+      });
+
+      mapModal.click(function (ev) {
+        if (ev.target === this) {
+          $(this).fadeOut();
+          scrollToTopBtn.addClass(scrollToTopBtnActive);
+          enableScroll();
+        }
+      });
+
+      closeBtn.click(() => {
+        mapModal.fadeOut();
+        enableScroll();
+      });
+    }
+
+    if ($(window).innerWidth() <= 1000) {
+      addressItems.off('click');
+    }
+  }
 }
 
 function playClientsVideo() {
@@ -511,13 +475,13 @@ function manageHeaderMobileMenu() {
   const menuItems = $('.nav__menu-item');
 
   function activateScrollAndCloseMenu() {
-    body.removeClass('body--active');
+    body.removeClass('body--inactive');
     navMenu.removeClass('nav__menu--active');
   }
 
   mobileBtn.click(() => {
     navMenu.toggleClass('nav__menu--active');
-    body.toggleClass('body--active');
+    body.toggleClass('body--inactive');
   });
 
   menuItems.click(() => {
@@ -542,11 +506,11 @@ function toggleFormModal() {
   const scrollToTopBtnActive = 'scroll-top-btn--active';
 
   function disableScroll() {
-    body.addClass('body--active');
+    body.addClass('body--inactive');
   }
 
   function enableScroll() {
-    body.removeClass('body--active');
+    body.removeClass('body--inactive');
   }
 
   modal.fadeIn();
