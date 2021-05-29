@@ -2,6 +2,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 300;
+  font-display: fallback;
   src: local(""), url("../fonts/Roboto/roboto-v20-latin-300.woff2") format("woff2"), url("../fonts/Roboto/roboto-v20-latin-300.woff") format("woff");
 }
 
@@ -9,6 +10,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
+  font-display: fallback;
   src: local(""), url("../fonts/Roboto/roboto-v20-latin-regular.woff2") format("woff2"), url("../fonts/Roboto/roboto-v20-latin-regular.woff") format("woff");
 }
 
@@ -16,6 +18,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
+  font-display: fallback;
   src: local(""), url("../fonts/Roboto/roboto-v20-latin-500.woff2") format("woff2"), url("../fonts/Roboto/roboto-v20-latin-500.woff") format("woff");
 }
 
@@ -23,6 +26,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
+  font-display: fallback;
   src: local(""), url("../fonts/Roboto/roboto-v20-latin-700.woff2") format("woff2"), url("../fonts/Roboto/roboto-v20-latin-700.woff") format("woff");
 }
 
@@ -30,6 +34,7 @@
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 400;
+  font-display: fallback;
   src: local(""), url("../fonts/SourceSansPro/source-sans-pro-v14-latin-regular.woff2") format("woff2"), url("../fonts/SourceSansPro/source-sans-pro-v14-latin-regular.woff") format("woff");
 }
 
@@ -37,6 +42,7 @@
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 600;
+  font-display: fallback;
   src: local(""), url("../fonts/SourceSansPro/source-sans-pro-v14-latin-600.woff2") format("woff2"), url("../fonts/SourceSansPro/source-sans-pro-v14-latin-600.woff") format("woff");
 }
 
@@ -44,6 +50,7 @@
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 700;
+  font-display: fallback;
   src: local(""), url("../fonts/SourceSansPro/source-sans-pro-v14-latin-700.woff2") format("woff2"), url("../fonts/SourceSansPro/source-sans-pro-v14-latin-700.woff") format("woff");
 }
 
@@ -302,21 +309,21 @@ input[type="submit"]:hover {
 .button {
   width: 190px;
   min-height: 55px;
-  border-style: solid;
+  padding: 5px;
   border-width: 2px;
+  border-style: solid;
   outline: none;
   font-family: Roboto;
   font-weight: 400;
   font-size: 1rem;
   color: #fff;
   background: transparent;
-  padding: 5px;
 }
 
 .scroll-top-btn {
   position: fixed;
-  bottom: 50px;
   right: 50px;
+  bottom: 50px;
   width: 70px;
   height: 70px;
   border: 2px solid #000;
@@ -551,11 +558,11 @@ input[type="submit"]:hover {
   -webkit-box-direction: initial;
       -ms-flex-direction: initial;
           flex-direction: initial;
-  text-align: center;
   width: 400px;
   min-height: 250px;
   padding: 20px;
   outline: 5px solid #fb414e;
+  text-align: center;
   font-family: Roboto;
   font-weight: 600;
   font-size: 2.5rem;
@@ -822,7 +829,7 @@ input[type="submit"]:hover {
 
 @media screen and (max-width: 1450px) {
   .solutions .solutions__card {
-    margin: 10px 10px 10px 10px;
+    margin: 10px;
   }
   .solutions .solutions__card:not(:last-child) {
     margin-right: 10px;
@@ -839,13 +846,13 @@ input[type="submit"]:hover {
   font-size: .9rem;
   color: #fff;
   opacity: 1;
-  -webkit-animation: animate-click-hint ease infinite alternate;
-          animation: animate-click-hint ease infinite alternate;
+  -webkit-animation: animate-solutions-click-hint ease infinite alternate;
+          animation: animate-solutions-click-hint ease infinite alternate;
   -webkit-animation-duration: 1.5s;
           animation-duration: 1.5s;
 }
 
-@-webkit-keyframes animate-click-hint {
+@-webkit-keyframes animate-solutions-click-hint {
   0% {
     opacity: .2;
   }
@@ -854,7 +861,7 @@ input[type="submit"]:hover {
   }
 }
 
-@keyframes animate-click-hint {
+@keyframes animate-solutions-click-hint {
   0% {
     opacity: .2;
   }
@@ -1402,10 +1409,6 @@ input[type="submit"]:hover {
      object-fit: cover;
 }
 
-.promo .promo__img:hover {
-  background-image: #fb414e;
-}
-
 .promo .promo__first-img {
   margin-right: 35px;
 }
@@ -1831,6 +1834,7 @@ input[type="submit"]:hover {
 }
 
 .portfolio .portfolio__projects-list-item {
+  position: relative;
   margin-bottom: 8px;
   -webkit-perspective: 1500px;
           perspective: 1500px;
@@ -1854,6 +1858,48 @@ input[type="submit"]:hover {
 
 .portfolio .portfolio__projects-list-item--active {
   margin-right: 8px;
+}
+
+.portfolio .portfolio__projects-list-hint {
+  visibility: hidden;
+}
+
+@media screen and (max-width: 1024px) {
+  .portfolio .portfolio__projects-list-hint {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    visibility: visible;
+    padding: 7px;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #fb414e;
+    background-color: #fff;
+    z-index: 100;
+    -webkit-animation: animate-portfolio-click-hint ease infinite alternate;
+            animation: animate-portfolio-click-hint ease infinite alternate;
+    -webkit-animation-duration: 1.5s;
+            animation-duration: 1.5s;
+  }
+  @-webkit-keyframes animate-portfolio-click-hint {
+    0% {
+      opacity: .6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes animate-portfolio-click-hint {
+    0% {
+      opacity: .6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
 
 .portfolio .portfolio__projects-list-item:hover .portfolio__projects-list-item-inner {
@@ -1977,8 +2023,6 @@ input[type="submit"]:hover {
   .portfolio portfolio__projects-list-item-link {
     width: 350px;
     height: 250px;
-    min-width: 100%;
-    min-height: 100%;
   }
 }
 
@@ -1986,8 +2030,6 @@ input[type="submit"]:hover {
   .portfolio portfolio__projects-list-item-link {
     width: 320px;
     height: 200px;
-    min-width: 100%;
-    min-height: 100%;
   }
 }
 
@@ -2904,7 +2946,7 @@ input[type="submit"]:hover {
   }
 }
 
-.contact .contact__text:first-of-type {
+.contact .contact__text-upper {
   margin-bottom: 30px;
 }
 
@@ -2973,13 +3015,20 @@ input[type="submit"]:hover {
 }
 
 .contact .contact__form-input--name-tooltip {
-  left: 400px;
   top: 93px;
+  left: 400px;
 }
 
 @media screen and (max-width: 1200px) {
   .contact .contact__form-input--name-tooltip {
     left: 230px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .contact .contact__form-input--name-tooltip {
+    left: 110px;
+    top: -60px;
   }
 }
 
@@ -3023,6 +3072,13 @@ input[type="submit"]:hover {
   }
 }
 
+@media screen and (max-width: 800px) {
+  .contact .contact__form-input--company-tooltip {
+    left: 110px;
+    top: 12px;
+  }
+}
+
 .contact .contact__form-input--email {
   margin-bottom: 20px;
 }
@@ -3041,21 +3097,24 @@ input[type="submit"]:hover {
 
 @media screen and (max-width: 1200px) {
   .contact .contact__form-input--email-tooltip {
-    right: none;
+    right: inherit;
     left: 230px;
   }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 800px) {
   .contact .contact__form-input--email-tooltip {
-    right: 155px;
+    top: 82px;
+    left: 110px;
+    width: 170px;
+    text-align: center;
   }
 }
 
 .contact .contact__form-input--service {
   width: 100%;
   margin-bottom: 20px;
-  background-image: url(/images/order/drop-down-arrow.png) no-repeat;
+  background: url(/images/order/drop-down-arrow.png) no-repeat;
   background-position: right 20px center;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -3080,6 +3139,13 @@ input[type="submit"]:hover {
 @media screen and (max-width: 1200px) {
   .contact .contact__form-input--service-tooltip {
     left: 230px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .contact .contact__form-input--service-tooltip {
+    top: 154px;
+    left: 110px;
   }
 }
 
@@ -3108,16 +3174,22 @@ input[type="submit"]:hover {
   }
 }
 
+@media screen and (max-width: 800px) {
+  .contact .contact__form-input--textarea-tooltip {
+    top: 225px;
+    left: 110px;
+  }
+}
+
 .contact .contact__form-input--submit {
   min-height: 48px;
   width: 100%;
-  border: 2px solid #fb414e;
+  border: 2px solid transparent;
   font-family: Roboto;
   font-weight: 400;
   font-size: 1rem;
   color: #fff;
   background-color: #fb414e;
-  opacity: 1;
 }
 
 .contact .contact__form-input--submit:hover {

@@ -1,5 +1,6 @@
 'use strict';
 
+// Slick slider fn must be downloaded before other js/jquery fns because of compatibility. If this is not done, jquery scroll fn will work wrongly. 
 initPromoSlickSlider();
 
 function initPromoSlickSlider() {
@@ -13,11 +14,9 @@ function initPromoSlickSlider() {
     dots: true,
     variableWidth: true,
     draggable: true,
-
     autoplay: true,
     autoplaySpeed: 2000,
     pauseOnHover: true,
-
     responsive: [
       {
         breakpoint: 1024,

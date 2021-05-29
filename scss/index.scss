@@ -9,28 +9,13 @@
 @import 'UI.blocks/_tooltip';
 @import 'UI.blocks/_modal-window';
 
-
-// @media screen and (max-width: 768px){
-//   html {
-//     font-size: 12px;
-//   }
-// }
-
 .header {
 
   background: url(../images/header/office.jpg) no-repeat;
-  // background-size: auto auto;
-
   background-size: cover;
   background-position-x: 50%;
 
-  // padding-bottom: 245px; // по avocode ?
-  // padding-bottom: 190px;
-
-
   @media screen and (max-width: 768px) {
-
-    // 959
     & {
       background-size: cover;
     }
@@ -38,14 +23,14 @@
 
   .header__color-wrapper {
     width: 100%;
-    padding-bottom: 242px; // выставлено по картинке на экране 180
+    padding-bottom: 242px;
     background-color: rgba(0, 0, 0, .5);
 
   }
 
   @media screen and (max-width: 980px) {
     .header__color-wrapper {
-      padding-bottom: 150px; // 142 , 162
+      padding-bottom: 150px;
     }
   }
 
@@ -59,7 +44,7 @@
 
   .header__upper {
     @include flex(space-between, baseline);
-    padding-top: 50px; // 60
+    padding-top: 50px;
   }
 
   @media screen and (max-width: 1400px) {
@@ -82,7 +67,7 @@
   }
 
   .header__center {
-    padding-top: 110px; // 126
+    padding-top: 110px;
   }
 
   @media screen and (max-width: 1400px) {
@@ -113,7 +98,7 @@
   .header__title {
     max-width: 950px;
     margin: 0 auto;
-    margin-bottom: 45px; // 66
+    margin-bottom: 45px;
     text-align: center;
     @include font($secondary-font, 700, 3.75rem, $light-font-color);
     line-height: normal;
@@ -138,7 +123,6 @@
 
   @media screen and (max-width: 768px) {
     .header__text {
-      // display: none;
       max-width: 300px;
       font-size: .9rem;
     }
@@ -152,20 +136,12 @@
 
   .header__btn-container {
     text-align: center;
-    // margin-bottom: 245px;
   }
-
-  // @media screen and (max-width: 768px) {
-  //   .header__btn-container {
-  //     // ?
-  //   }
-  // }
 
   .header__btn {
     display: inline-block;
     border-color: $secondary-color;
   }
-
 
   .header__btn:hover {
     background-color: $secondary-color;
@@ -193,7 +169,6 @@
   justify-content: center;
   flex-wrap: wrap;
   margin-top: -85px;
-  // padding-bottom: 140px;
 
   @media screen and (max-width: 1450px) {
     & {
@@ -232,12 +207,10 @@
     }
   }
 
-
   .solutions__card:hover {
     background-color: $secondary-color;
     transform: scale(1.03);
     transition: .2s all ease;
-    // transition: .3s transform ease;
   }
 
   @media screen and (max-width: 1024px) {
@@ -254,8 +227,7 @@
 
   @media screen and (max-width: 1450px) {
     .solutions__card {
-      // margin-bottom: 20px;
-      margin: 10px 10px 10px 10px;
+      margin: 10px;
     }
 
     .solutions__card:not(:last-child) {
@@ -273,11 +245,11 @@
     font-size: .9rem;
     color: #fff;
     opacity: 1;
-    animation: animate-click-hint ease infinite alternate;
+    animation: animate-solutions-click-hint ease infinite alternate;
     animation-duration: 1.5s;
   }
 
-  @keyframes animate-click-hint {
+  @keyframes animate-solutions-click-hint {
     0% {
       opacity: .2;
     }
@@ -306,12 +278,6 @@
     @include font($primary-font, 500, 1.25rem, $light-font-color);
 
   }
-
-  // @media screen and (max-width: 768px) {
-  //   .solutions__card-title {
-  //     font-size: 1.1rem;
-  //   }
-  // }
 
   .solutions__card-title:after {
     content: '';
@@ -350,7 +316,6 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
-    // background-color: #fff;
   }
 
   .card-modal__close-btn::before,
@@ -409,7 +374,6 @@
     }
   }
 
-
   .services__title {
     margin-bottom: 19px;
     @include font($primary-font, 700, 1rem, $secondary-color);
@@ -447,8 +411,6 @@
     }
   }
 
-
-
   .services__explain-title-decor {
     color: $secondary-color;
   }
@@ -456,7 +418,7 @@
   .services__text {
     max-width: 680px;
     margin: 0 auto;
-    margin-bottom: 123px; // переделать
+    margin-bottom: 123px;
     text-align: center;
     @include font($primary-font, 300, 1rem, $secondary-font-color);
     line-height: 28px;
@@ -478,7 +440,6 @@
 
   .services__feature-container {
     display: flex;
-    // justify-content: space-between;
     flex-wrap: wrap;
   }
 
@@ -514,7 +475,6 @@
   .services__feature:first-child,
   .services__feature:nth-child(2),
   .services__feature:nth-child(3) {
-    // ?
     margin-bottom: 62px;
   }
 
@@ -566,33 +526,24 @@
     }
   }
 
-
-
   .services__feature-text {
     text-align: center;
     @include font($primary-font, 300, 1rem, $secondary-font-color);
     line-height: 28px;
   }
 
-  // .services__feature-container {
-  // opacity: .5;
-  // }
-
   @media screen and (max-width: 550px) {
     .services__feature-text {
       font-size: .9rem;
     }
   }
-
 }
-
 
 .promo {
   background-color: $primary-color;
   @include sections-display-onscroll;
 
   .promo__container {
-    // width: 1800px;
     display: flex;
     padding-top: 114px;
     padding-bottom: 70px;
@@ -603,14 +554,12 @@
       flex-direction: column;
       align-items: center;
       @include pl-pr(40px);
-
     }
   }
 
   @media screen and (max-width: 992px) {
     .promo__container {
       padding-top: 80px;
-      //  padding-bottom: 50px;
     }
   }
 
@@ -658,8 +607,6 @@
     }
   }
 
-
-
   .promo__text {
     max-width: 557px;
     margin-bottom: 50px;
@@ -687,7 +634,6 @@
       font-size: .9rem;
     }
   }
-
 
   .promo__btn {
     border-color: #fff;
@@ -725,29 +671,11 @@
   }
 
   @media screen and (max-width: 550px) {
-
-    // ========
     .promo__right-side {
       width: 256px;
       padding-left: 0;
     }
   }
-
-  // @media screen and (max-width: 1350px) {
-  //   .promo__right-side {
-  //     display: flex;
-  //     justify-content: center;
-  //   }
-  // }
-
-
-  // @media screen and (max-width: 1350px) {
-  //   .promo__carousel-container {
-  //     width: 256px; // повторы 
-  //     // height: 370px; // повторы 
-  //   }
-
-  // }
 
   .slick-list {
     position: relative;
@@ -755,20 +683,15 @@
   }
 
   .promo__carousel-slide {
-    width: 256px; // повторы 
-    height: 370px; // повторы 
+    width: 256px;
+    height: 370px;
     margin-right: 35px;
   }
 
   .promo__img {
-    width: 256px; // повторы 
-    height: 370px; // повторы 
+    width: 256px;
+    height: 370px;
     object-fit: cover;
-  }
-
-  .promo__img:hover {
-    background-image: $secondary-color;
-    // opacity: 1;
   }
 
   .promo__first-img {
@@ -777,12 +700,6 @@
 
   .slick-dots {
     @extend %centering-flex-container;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-
-    // margin-top: 30px;
-    // display: none !important;
   }
 
   .slick-dots li {
@@ -798,7 +715,6 @@
   }
 
   .slick-dots li button {
-    // list-style: none;
     width: 15px;
     height: 15px;
     border: 1px solid #fff;
@@ -810,7 +726,6 @@
     background-color: #fff;
     z-index: 100;
   }
-
 }
 
 .features {
@@ -1000,7 +915,6 @@
       margin-bottom: 20px;
     }
   }
-
 }
 
 .portfolio {
@@ -1085,9 +999,6 @@
   @media screen and (max-width: 1500px) {
     .portfolio__projects-container {
       @include pl-pr(40px);
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
     }
   }
 
@@ -1102,22 +1013,16 @@
   }
 
   .portfolio__projects-list-item {
+    position: relative;
     margin-bottom: 8px;
     perspective: 1500px;
   }
-
 
   @media screen and (max-width: 1500px) {
     .portfolio__projects-list-item {
       margin-right: 8px; // 8
     }
   }
-
-  // @media screen and (max-width: 795px) {
-  //   .portfolio__projects-list-item {
-  //     margin-right: 8px; // 8
-  //   }
-  // }
 
   @media screen and (max-width: 795px) {
     .portfolio__projects-list-item {
@@ -1129,21 +1034,40 @@
     margin-right: 8px; // 8
   }
 
-  // @media screen and (max-width: 795px) {
-  //   .portfolio__projects-list-item:not(:nth-child(4n)) {
-  //     margin-right: 0;
-  //   }
-  // }
-
   .portfolio__projects-list-item--active {
     margin-right: 8px;
   }
 
-  // @media screen and (max-width: 550px) {
-  //   .portfolio__projects-list-item--active {
-  //     margin-right: 0;
-  //   }
-  // }
+  .portfolio__projects-list-hint {
+    visibility: hidden;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .portfolio__projects-list-hint {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      visibility: visible;
+      padding: 7px;
+      border: 1px solid transparent;
+      border-radius: 50px;
+      @include font($primary-font, 400, 1rem, $secondary-color);
+      background-color: #fff;
+      z-index: 100;
+      animation: animate-portfolio-click-hint ease infinite alternate;
+      animation-duration: 1.5s;
+    }
+
+    @keyframes animate-portfolio-click-hint {
+      0% {
+        opacity: .6;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  }
 
   .portfolio__projects-list-item:hover .portfolio__projects-list-item-inner {
     transform: rotateY(180deg);
@@ -1163,10 +1087,6 @@
 
   .portfolio__project-list-item-img,
   .portfolio__projects-list-info {
-    // width: 443px;
-    // height: 335px;
-    // width: 100%;
-    // height: 100%;
     background: #fff;
     backface-visibility: hidden;
     overflow: hidden;
@@ -1177,7 +1097,6 @@
     .portfolio__project-list-item-img,
     .portfolio__projects-list-info {
       width: 443px;
-      // width: 385px;
       height: 335px;
     }
   }
@@ -1216,22 +1135,19 @@
   }
 
   .portfolio__projects-list-item-title {
-    // font-size: 2rem;
     margin-bottom: 40px;
     @include font($secondary-font, 400, 2rem, #000);
   }
 
   @media screen and (max-width: 1919px) {
     .portfolio__projects-list-item-title {
-      margin-bottom: 10px; // ?
+      margin-bottom: 10px;
       font-size: 1.5rem;
     }
   }
 
   .portfolio__projects-list-item-text {
     @include font($primary-font, 400, 1rem, #000);
-    // font-size: 1rem;
-    // margin-bottom: 50px;
     height: 110px;
     line-height: 1.4rem;
     overflow: hidden;
@@ -1258,13 +1174,10 @@
     }
   }
 
-
   @media screen and (max-width: 1919px) {
     portfolio__projects-list-item-link {
       width: 350px;
       height: 250px;
-      min-width: 100%;
-      min-height: 100%;
     }
   }
 
@@ -1272,15 +1185,12 @@
     portfolio__projects-list-item-link {
       width: 320px;
       height: 200px;
-      min-width: 100%;
-      min-height: 100%;
     }
   }
 
   @media screen and (min-width: 1920px) {
     .portfolio__project-list-img {
       width: 443px;
-      // width: 385px;
       height: 335px;
     }
   }
@@ -1296,17 +1206,8 @@
     .portfolio__project-list-img {
       width: 320px;
       height: 200px;
-
     }
   }
-
-  // @media screen and (max-width: 992px) {
-  //   .portfolio__project-list-img {
-  //     width: 300px;
-  //     height: 200px;
-  //   }
-  // }
-
 }
 
 
@@ -1322,9 +1223,6 @@
   @media screen and (max-width: 1400px) {
     .clients__container {
       @include pl-pr(40px);
-
-      // display: flex;
-      // flex-direction: column;
     }
   }
 
@@ -1392,14 +1290,11 @@
     }
   }
 
-
-
   .clients__text {
     max-width: 560px;
     margin-bottom: 54px;
     @include font($primary-font, 300, 1rem, $primary-font-color);
     line-height: 28px;
-
   }
 
   @media screen and (max-width: 1150px) {
@@ -1420,8 +1315,6 @@
     min-height: 51px;
     border: 2px solid #1f1f1f;
     @include font($primary-font, inherit, 1rem);
-    // font-family: $primary-font;
-    // font-size: 16px;
     background-color: transparent;
   }
 
@@ -1454,9 +1347,6 @@
     width: 660px;
     height: 330px;
     object-fit: cover;
-    // margin-top: -20px;
-    // width: 650x;
-    // height: 340px;
   }
 
   @media screen and (max-width: 600px) {
@@ -1479,16 +1369,14 @@
     border: 1px solid #fff;
     border-radius: 50%;
     background-color: transparent;
-    // outline: 1px solid #fff;
     opacity: .7;
   }
 
   .clients__video-btn:hover {
-    cursor: pointer; // курсор не наводится на границу блока
+    cursor: pointer;
   }
 
   .clients__video-btn-play {
-    // background-repeat: no-repeat;
     width: 12px;
     height: 16px;
     background: url(../images/clients/play-btn.png) no-repeat;
@@ -1502,9 +1390,6 @@
     display: none;
   }
 }
-
-
-
 
 .brands {
   background-color: #202b30;
@@ -1544,13 +1429,11 @@
     width: 50%;
     padding-top: 80px;
     padding-right: 120px;
-
   }
 
   @media screen and (max-width: 1400px) {
     .brands__left {
       padding-right: 60px;
-      // width: auto;
     }
   }
 
@@ -1571,13 +1454,6 @@
     }
   }
 
-
-  // @media screen and (max-width: 550px) { 
-  //   .brands__pic {
-  //     margin-bottom: 50px;
-  //   }
-  // }
-
   .brands__pic {
     transition: .5s all ease;
   }
@@ -1595,11 +1471,6 @@
     margin-bottom: 5px;
   }
 
-  // .brands__pic:first-child,
-  // .brands__pic:nth-child(2) {
-  //   margin-bottom: 30px; // 75
-  // }
-
   @media screen and (max-width: 830px) {
 
     .brands__pic:first-child,
@@ -1611,9 +1482,6 @@
     }
   }
 
-
-
-
   .brands__pic--active {
     transform: scale(1.2);
     transition: .5s all ease;
@@ -1624,11 +1492,6 @@
     height: 34px;
     background-image: url(/images/brands/fast-company.png);
   }
-
-  // .brands__first-pic:hover {
-  //   filter: blur(5px);
-  //   transition: .5s all ease;
-  // }
 
   .brands__pic:nth-child(2) {
     width: 217px;
@@ -1684,7 +1547,6 @@
   .brands__title {
     margin-bottom: 38px;
     @include font($secondary-font, 700, 3rem, $light-font-color);
-    // text-align: right;
     line-height: 60px;
   }
 
@@ -1856,13 +1718,6 @@
     margin-bottom: 17px;
   }
 
-  // @media screen and (max-width: 1300px) {
-  //   .benefits__card-img {
-  //     display: inline-block;
-  //     text-align: center;
-  //   }
-  // }
-
   .benefits__card-img--left {
     background-image: url(/images/benefits/database.webp);
   }
@@ -1958,7 +1813,6 @@
     }
   }
 
-
   .contact__form-upper {
     display: flex;
     margin-bottom: 40px;
@@ -1981,9 +1835,6 @@
   @media screen and (max-width: 1400px) {
     .contact__form-upper-left {
       padding-right: 50px;
-      // display: flex;
-      // flex-direction: column;
-      // align-items: center;
     }
   }
 
@@ -2007,7 +1858,6 @@
     }
   }
 
-
   @media screen and (max-width: 550px) {
     .contact__title {
       font-size: 2.5rem;
@@ -2030,7 +1880,7 @@
     }
   }
 
-  .contact__text:first-of-type {
+  .contact__text-upper {
     margin-bottom: 30px;
   }
 
@@ -2072,8 +1922,8 @@
   }
 
   .contact__form-input--name-tooltip {
-    left: 400px;
     top: 93px;
+    left: 400px;
   }
 
   @media screen and (max-width: 1200px) {
@@ -2082,11 +1932,12 @@
     }
   }
 
-  // .contact__inputs-container {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   margin-bottom: 20px;
-  // }
+  @media screen and (max-width: 800px) {
+    .contact__form-input--name-tooltip {
+      left: 110px;
+      top: -60px;
+    }
+  }
 
   .contact__form-input--company,
   .contact__form-input--email {
@@ -2104,7 +1955,6 @@
   .contact__form-input--company {
     margin-right: 14px;
     margin-bottom: 20px;
-
   }
 
   @media screen and (max-width: 1400px) {
@@ -2130,6 +1980,13 @@
     }
   }
 
+  @media screen and (max-width: 800px) {
+    .contact__form-input--company-tooltip {
+      left: 110px;
+      top: 12px;
+    }
+  }
+
   .contact__form-input--email {
     margin-bottom: 20px;
   }
@@ -2148,33 +2005,27 @@
 
   @media screen and (max-width: 1200px) {
     .contact__form-input--email-tooltip {
-      right: none;
+      right: inherit;
       left: 230px;
     }
   }
 
-  // @media screen and (max-width: 1400px) {
-  //   .contact__form-input--company {
-  //     margin-right: 10px;
-  //     // width: 0;
-  //     max-width: 310px;
-  //   }
-  // }
-
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 800px) {
     .contact__form-input--email-tooltip {
-      right: 155px;
+      top: 82px;
+      left: 110px;
+      width: 170px;
+      text-align: center;
     }
   }
 
   .contact__form-input--service {
     width: 100%;
     margin-bottom: 20px;
-    background-image: url(/images/order/drop-down-arrow.png) no-repeat;
+    background: url(/images/order/drop-down-arrow.png) no-repeat;
     background-position: right 20px center;
     appearance: none;
   }
-
 
   .contact__form-input--service-option {
     height: 50px;
@@ -2197,13 +2048,19 @@
     }
   }
 
+  @media screen and (max-width: 800px) {
+    .contact__form-input--service-tooltip {
+      top: 154px;
+      left: 110px;
+    }
+  }
+
   .contact__form-input--textarea {
     width: 100%;
     min-height: 270px;
     max-height: 400px;
     padding: 15px 20px;
     resize: vertical;
-    // font-family: $primary-font; // ?
   }
 
   .contact__form-input--textarea-tooltip {
@@ -2223,32 +2080,20 @@
     }
   }
 
-  // @media screen and (max-width: 880px) {
-
-  //   .contact__form-input--name-tooltip,
-  //   .contact__form-input--company-tooltip,
-  //   .contact__form-input--email-tooltip,
-  //   .contact__form-input--service-tooltip,
-  //   .contact__form-input--textarea-tooltip {
-  //     position: fixed;
-  //     top: 50px;
-  //     left: 50%;
-  //   }
-  // }
+  @media screen and (max-width: 800px) {
+    .contact__form-input--textarea-tooltip {
+      top: 225px;
+      left: 110px;
+    }
+  }
 
   .contact__form-input--submit {
     min-height: 48px;
     width: 100%;
-    border: 2px solid $secondary-color;
+    border: 2px solid transparent; // $secondary-color
     @include font($primary-font, 400, 1rem, $light-font-color);
     background-color: $secondary-color;
-    // border: none;
-    opacity: 1;
   }
-
-  // .contact__form-input--submit:active {
-  //   background-color: darken($secondary-color, 15%);
-  // }
 
   .contact__form-input--submit:hover {
     border: 2px solid $secondary-color;
@@ -2260,7 +2105,6 @@
     color: $light-font-color;
     background-color: $secondary-color;
   }
-
 }
 
 .footer {
@@ -2333,7 +2177,6 @@
     }
   }
 
-
   .footer__adress-tooltip {
     position: absolute;
     top: -60px;
@@ -2355,15 +2198,9 @@
     }
   }
 
-  // .footer__adress-tooltip:hover {
-  //   background-color: #fff;
-  //   color: $secondary-color;
-  // }
-
   .footer__adress-tooltip--active {
     visibility: visible;
     opacity: 1;
-
   }
 
   .footer__adress-tooltip-triangle {
@@ -2404,7 +2241,6 @@
       margin-bottom: 50px;
     }
   }
-
 
   .footer__socials-item:not(:last-child) {
     margin-right: 24px;
@@ -2475,8 +2311,6 @@
   }
 
   .tooltip__footer-form-item {
-    // visibility: visible;
-    // opacity: 1;
     top: -60px;
     left: 250px;
     z-index: 10;
@@ -2487,7 +2321,6 @@
       left: 100px;
     }
   }
-
 
   .footer__form-input--email {
     width: 100%;

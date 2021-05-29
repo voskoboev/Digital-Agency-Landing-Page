@@ -14,7 +14,6 @@
   width: 40px;
   height: 40px;
   cursor: pointer;
-  // background-color: #fff;
 }
 
 @media screen and (max-width: 600px) {
@@ -53,23 +52,12 @@
 }
 
 .modal-window__container {
-  // background-color: #fff;
   position: absolute;
   left: 50%;
   top: 50%;
 }
 
-// @media screen and (max-width: 600px) {
-//   .modal-window__container {
-//     left: 50%;
-//     top: 50%;
-//     // left: 0;
-//     // top: 0;
-//   }
-// }
-
 .modal-window__solutions-container {
-  // для трех видео 
   transform: translate(-500px, -282.5px);
 }
 
@@ -79,14 +67,7 @@
   }
 }
 
-// @media screen and (max-width: 600px) {
-//   .modal-window__solutions-container {
-//     transform: translate(-150px, -75px);
-//   }
-// }
-
 .modal-window__footer-map-container {
-  // для карты
   transform: translate(-500px, -282.5px);
   display: block;
 }
@@ -98,7 +79,6 @@
 }
 
 .modal-window__solutions-video {
-  // для трех видео 
   width: 1000px;
   height: 565px;
 }
@@ -112,16 +92,9 @@
 
 @media screen and (max-width: 600px) {
   .modal-window__solutions-video {
-    // width: 100vw;
-    // height: 100vh;
     transform: rotate(90deg);
-    // position: none;
   }
 }
-
-// .tooltip {
-//   display: none; // убрать
-// }
 
 .map-modal__script {
   width: 1000px;
@@ -134,7 +107,6 @@
   }
 }
 
-
 .modal-window__contact-form-container {
   transform: translate(-200px, -125px);
 }
@@ -146,21 +118,15 @@
 }
 
 .modal-window__form-text {
-  // для формы
   @include flex(center, center);
-  text-align: center;
   width: 400px;
   min-height: 250px;
   padding: 20px;
   outline: 5px solid $secondary-color;
+  text-align: center;
   @include font($primary-font, 600, 2.5rem, $primary-font-color);
   line-height: 50px;
   background-color: #fff;
-
-  // flex($jcc: initial, $aic: initial, $flw: initial, $fld: initial)
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
 }
 
 @media screen and (max-width: 410px) {

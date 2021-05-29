@@ -16,14 +16,6 @@
     transform: translateY(0);
     opacity: 1;
   }
-
-  // @media screen and (max-width: 1024px) {
-  //   &--active {
-  //     transform: none;
-  //     // transition: none;
-  //     opacity: 1;
-  //   }
-  // }
 }
 
 @mixin font($family: $default-font, $weight: 400, $size: 1rem, $color: initial) {

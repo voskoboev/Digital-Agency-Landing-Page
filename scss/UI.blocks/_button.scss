@@ -1,4 +1,4 @@
-// This module applies to all <button> tags on the page excepting <input type="submit"> tags used in the contact form and in the footer.
+// This module applies to all <button> tags on the page excepting <input type="submit"> tags used in the Contact form and in the Footer.
 
 // Certain <button> tags have their own specific styles computed over this module. These specific styles contains in "index.scss" file.
 
@@ -6,10 +6,10 @@
   @extend %centering-flex-container;
   width: 190px;
   min-height: 55px;
-  border-style: solid;
+  padding: 5px;
   border-width: 2px;
+  border-style: solid;
   outline: none;
   @include font($primary-font, 400, 1rem, $light-font-color);
   background: transparent;
-  padding: 5px;
 }

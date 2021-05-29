@@ -1,26 +1,21 @@
 'use strict';
 
+// These common fn are used on the whole web page.
 scrollTo();
 popUpSectionsOnScroll();
 
+// These specific fns are used on certain sections. 
 manageHeaderMobileMenu();
 manageSolutionsModals();
 togglePortfolioTabs();
 playClientsVideo();
 activateBrandsPics();
-
 manageContactForm();
 manageFooterForm();
-
 manageFooterMapModal();
 
-
 function scrollTo() {
-  scrollToSections();
-  scrollToTop();
-  scrollToTopOnPopUpBtnClick();
-
-  function showAllPortfolioTabs() {
+  function showAllPortfolioTabs() { // Provides correct scroll to sections after tabs were toggled in Portfolio section.
     const portfolioTabs = $('.portfolio__projects-list-item');
 
     portfolioTabs.fadeIn()
@@ -39,32 +34,42 @@ function scrollTo() {
     const clientsSection = $('.clients');
     const contactSection = $('.contact');
 
+    function scrollToCertainSection(interactItems, positionItem) {
+      const position = positionItem.offset().top;
+
+      let verticalOffset = 200; // An offset is determined and changed by visual user experience.
+
+      if ($(window).innerWidth() < 1024) {
+        verticalOffset = -50;
+      }
+
+      if ($(window).innerWidth() < 325) {
+        verticalOffset = -100;
+      }
+
+      interactItems.click(() => {
+        showAllPortfolioTabs();
+        $('html, body').animate({ scrollTop: position - verticalOffset }, 1000);
+      });
+    }
+
     scrollToCertainSection(servicesItems, servicesSection);
     scrollToCertainSection(portfolioItem, portfolioSection);
     scrollToCertainSection(promoItem, promoSection);
     scrollToCertainSection(clientsItem, clientsSection);
     scrollToCertainSection(contactItems, contactSection);
-
-    function scrollToCertainSection(interactItems, positionItem) {
-      const position = positionItem.offset().top;
-
-      interactItems.click(() => {
-        showAllPortfolioTabs();
-        $('html, body').animate({ scrollTop: position - 200 }, 1000);
-      }); // позиция изменена из-за всплывающих секций, изначальное значение + 50
-    }
   }
 
   function scrollToTop() {
-    const homeItem = $('.nav__menu-item--home');
+    const homeItems = $('.nav__menu-item--home, .footer__logo-img');
 
-    homeItem.click(() => {
+    homeItems.click(() => {
       $('html, body').animate({ scrollTop: 0 }, 1000);
       showAllPortfolioTabs();
     });
   }
 
-  function scrollToTopOnPopUpBtnClick() {
+  function scrollToTopOnPopUpBtnClick() { // Button is placed in the right bottom corner of a window.
     const btn = $('.scroll-top-btn');
 
     $(window).scroll(() => {
@@ -83,11 +88,13 @@ function scrollTo() {
       $('html, body').animate({ scrollTop: 0 }, 1000);
     });
   }
+
+  scrollToSections();
+  scrollToTop();
+  scrollToTopOnPopUpBtnClick();
 }
 
 function popUpSectionsOnScroll() {
-  // const headerWrapper = $('.header__color-wrapper');
-  // const solutions = $('.solutions');
   const services = 'services';
   const promo = 'promo';
   const features = 'features';
@@ -98,6 +105,14 @@ function popUpSectionsOnScroll() {
   const contact = 'contact';
   const footer = 'footer';
 
+  function popUpOnScroll(section) {
+    $(window).scroll(function () {
+      if ($(this).scrollTop() + $(window).innerHeight() > $(`.${section}`).position().top) {
+        $(`.${section}`).addClass(`${section}--active`);
+      }
+    });
+  }
+
   popUpOnScroll(services);
   popUpOnScroll(promo);
   popUpOnScroll(features);
@@ -107,21 +122,33 @@ function popUpSectionsOnScroll() {
   popUpOnScroll(benefits);
   popUpOnScroll(contact);
   popUpOnScroll(footer);
+}
 
-  // $(window).scroll(function () {
-  //   if ($(this).scrollTop() !== 0) {
-  //     solutions.addClass('solutions--active');
-  //     headerWrapper.addClass('header__color-wrapper--active');
-  //   }
-  // });
+function manageHeaderMobileMenu() {
+  const body = $('body');
+  const mobileBtn = $('.header__nav-mobile-btn');
+  const navMenu = $('.nav__menu');
+  const menuItems = $('.nav__menu-item');
 
-  function popUpOnScroll(section) {
-    $(window).scroll(function () {
-      if ($(this).scrollTop() + $(window).innerHeight() > $(`.${section}`).position().top) {
-        $(`.${section}`).addClass(`${section}--active`);
-      }
-    });
+  function activateScrollAndCloseMenu() {
+    body.removeClass('body--inactive');
+    navMenu.removeClass('nav__menu--active');
   }
+
+  mobileBtn.click(() => {
+    navMenu.toggleClass('nav__menu--active');
+    body.toggleClass('body--inactive');
+  });
+
+  menuItems.click(() => {
+    activateScrollAndCloseMenu();
+  });
+
+  navMenu.click(function (ev) {
+    if (ev.target === this) {
+      activateScrollAndCloseMenu();
+    }
+  });
 }
 
 function manageSolutionsModals() {
@@ -135,18 +162,6 @@ function manageSolutionsModals() {
   const modalThird = $('.modal-window__solutions-item--third');
 
   const mobileBtn = $('.header__nav-mobile-btn');
-
-  fadeInModal(cardFirst, modalFirst);
-  fadeInModal(cardSecond, modalSecond);
-  fadeInModal(cardThird, modalThird);
-
-  fadeOutModalAndStopVideo(modalFirst);
-  fadeOutModalAndStopVideo(modalSecond);
-  fadeOutModalAndStopVideo(modalThird);
-
-  fadeOutModalAndStopVideoOnCloseBtnClick(modalFirst);
-  fadeOutModalAndStopVideoOnCloseBtnClick(modalSecond);
-  fadeOutModalAndStopVideoOnCloseBtnClick(modalThird);
 
   function disableScroll() {
     body.addClass('body--inactive');
@@ -170,7 +185,7 @@ function manageSolutionsModals() {
     if ($(window).innerWidth() > 600) {
       modal.click(function (ev) {
         if (ev.target === this) {
-          $(this).find('iframe').attr('src', modalAttr);
+          $(this).find('iframe').attr('src', modalAttr); // Stops video after modal has been closed.
           $(this).fadeOut();
           mobileBtn.show();
           enableScroll();
@@ -180,80 +195,28 @@ function manageSolutionsModals() {
   }
 
   function fadeOutModalAndStopVideoOnCloseBtnClick(modal) {
-    // const btn = $('.modal-window__solutions-close-btn');
     const btn = $('.modal-window__close-btn');
     const modalAttr = modal.find('iframe').attr('src');
 
     btn.click(() => {
-      modal.find('iframe').attr('src', modalAttr);
+      modal.find('iframe').attr('src', modalAttr); // Stops video after modal has been closed.
       modal.fadeOut();
       mobileBtn.show();
       enableScroll();
     });
   }
-}
 
+  fadeInModal(cardFirst, modalFirst);
+  fadeInModal(cardSecond, modalSecond);
+  fadeInModal(cardThird, modalThird);
 
-function manageFooterMapModal() {
-  toggleTooltipForAddress();
-  toggleFooterMapModal();
+  fadeOutModalAndStopVideo(modalFirst);
+  fadeOutModalAndStopVideo(modalSecond);
+  fadeOutModalAndStopVideo(modalThird);
 
-  function toggleTooltipForAddress() {
-    const address = $('.footer__location');
-    const tooltip = $('.footer__adress-tooltip');
-    const footerLeft = $('.footer__left');
-
-    address.hover(() => {
-      tooltip.addClass('footer__adress-tooltip--active');
-    });
-
-    footerLeft.mouseleave(() => {
-      tooltip.removeClass('footer__adress-tooltip--active');
-    });
-  }
-
-  function toggleFooterMapModal() {
-    const addressItems = $('.footer__location, .footer__adress-tooltip');
-    const mapModal = $('.map-modal');
-    const closeBtn = $('.map-modal__close-btn');
-    const body = $('body');
-
-    const scrollToTopBtn = $('.scroll-top-btn');
-    const scrollToTopBtnActive = 'scroll-top-btn--active';
-
-    function disableScroll() {
-      body.addClass('body--inactive');
-    }
-
-    function enableScroll() {
-      body.removeClass('body--inactive');
-    }
-
-    if ($(window).innerWidth() > 1000) {
-      addressItems.click(() => {
-        mapModal.fadeIn();
-        scrollToTopBtn.removeClass(scrollToTopBtnActive);
-        disableScroll();
-      });
-
-      mapModal.click(function (ev) {
-        if (ev.target === this) {
-          $(this).fadeOut();
-          scrollToTopBtn.addClass(scrollToTopBtnActive);
-          enableScroll();
-        }
-      });
-
-      closeBtn.click(() => {
-        mapModal.fadeOut();
-        enableScroll();
-      });
-    }
-
-    if ($(window).innerWidth() <= 1000) {
-      addressItems.off('click');
-    }
-  }
+  fadeOutModalAndStopVideoOnCloseBtnClick(modalFirst);
+  fadeOutModalAndStopVideoOnCloseBtnClick(modalSecond);
+  fadeOutModalAndStopVideoOnCloseBtnClick(modalThird);
 }
 
 function playClientsVideo() {
@@ -284,10 +247,10 @@ function playClientsVideo() {
 }
 
 function activateBrandsPics() {
-  const firstPic = $('.brands__pic:first');
-  const secondPic = $('.brands__pic:nth-child(2)');
-  const thirdPic = $('.brands__pic:nth-child(3)');
-  const fourthPic = $('.brands__pic:last');
+  const firstPic = $('.brands__pic--first');
+  const secondPic = $('.brands__pic--second');
+  const thirdPic = $('.brands__pic--third');
+  const fourthPic = $('.brands__pic--fourth');
   const activationClass = 'brands__pic--active';
   const activationTime = 2000;
 
@@ -314,6 +277,82 @@ function activateBrandsPics() {
   activatePicsConsecutively();
 }
 
+function togglePortfolioTabs() {
+  const allMenuItem = $('.portfolio__menu-item--all');
+  const webMenuItem = $('.portfolio__menu-item--web');
+  const adMenuItem = $('.portfolio__menu-item--ad');
+  const brandingMenuItem = $('.portfolio__menu-item--branding');
+  const designMenuItem = $('.portfolio__menu-item--design');
+
+  const allListItems = $('.portfolio__projects-list-item');
+  const webListItems = $('.portfolio__projects-list-item--web');
+  const adListItems = $('.portfolio__projects-list-item--ad');
+  const brandingListItems = $('.portfolio__projects-list-item--branding');
+  const designListItems = $('.portfolio__projects-list-item--design');
+
+  function toggleTabs(menuItem, listItem, allListItems) {
+    menuItem.click(() => {
+      allListItems.hide();
+      allListItems.addClass('portfolio__projects-list-item--active');
+      listItem.fadeIn();
+
+      if (menuItem === allMenuItem) {
+        allListItems.removeClass('portfolio__projects-list-item--active');
+      }
+    });
+  }
+
+  toggleTabs(allMenuItem, allListItems, allListItems);
+  toggleTabs(webMenuItem, webListItems, allListItems);
+  toggleTabs(adMenuItem, adListItems, allListItems);
+  toggleTabs(brandingMenuItem, brandingListItems, allListItems);
+  toggleTabs(designMenuItem, designListItems, allListItems);
+}
+
+function toggleFormModal() { // Auxiliary fn provides toggling of modals in Contacts section form and Footer section form. It called inside manageContactForm() and manageFooterForm().
+  const body = $('body');
+  const modal = $('.modal-window__form-item');
+  const modalCloseBtn = $('.modal-window__form-close-btn');
+
+  const scrollToTopBtn = $('.scroll-top-btn');
+  const scrollToTopBtnActive = 'scroll-top-btn--active';
+
+  function disableScroll() {
+    body.addClass('body--inactive');
+  }
+
+  function enableScroll() {
+    body.removeClass('body--inactive');
+  }
+
+  modal.fadeIn();
+  scrollToTopBtn.removeClass(scrollToTopBtnActive);
+  disableScroll();
+
+  modal.click(function (ev) {
+    if (ev.target === this) {
+      $(this).fadeOut();
+      scrollToTopBtn.addClass(scrollToTopBtnActive);
+      enableScroll();
+    }
+  });
+
+  modalCloseBtn.click(function () {
+    $(this)
+      .parent()
+      .fadeOut();
+    scrollToTopBtn.addClass(scrollToTopBtnActive);
+    enableScroll();
+  });
+}
+
+function changeFormModalText() { // Auxiliary fn provides changing of text inside modals in Contacts section form and Footer section form in case of failed submission of a form. It called inside manageContactForm() and manageFooterForm().
+  const modal = $('.modal-window__form-item');
+  modal
+    .find('p')
+    .text('Your message has not been sent. Try again later');
+}
+
 function manageContactForm() {
   const form = $('.contact__form');
   const formInputs = $('.contact__form-input');
@@ -334,6 +373,8 @@ function manageContactForm() {
     const inputEmailTooltip = $('.contact__form-input--email-tooltip');
     const inputServiceTooltip = $('.contact__form-input--service-tooltip');
     const inputTextareaTooltip = $('.contact__form-input--textarea-tooltip');
+
+    // checkEmptyValue(), checkLength() fns check forms for lack of values and maximum chars quantity. checkEmailCharTypes() fn checks email input for presence of "@" and "." chars: these chars mean inserted email address. Then all of this fns transfer final value to checkAggregatedCallsForAjax() for to return one final value used in an ajax fn.
 
     function checkEmptyValue(input, tooltip) {
       const inputValue = input.val();
@@ -399,21 +440,18 @@ function manageContactForm() {
       },
       success: () => {
         toggleFormModal();
-
-        console.log('success'); // убрать
-
+        console.log('success'); // remove
         form.trigger('reset');
       },
       error: () => {
-        console.log('failed'); // убрать
+        console.log('failed'); // remove
         changeFormModalText();
         toggleFormModal();
-
         // form.trigger('reset');
       }
     });
 
-    $('.modal-window__contact-form-item').find('p').text('Your message has been sent');
+    $('.modal-window__contact-form-item').find('p').text('Your message has been sent'); // Restores default text value after form submission has failed.
   }
 
   submitBtn.click(ev => {
@@ -430,118 +468,11 @@ function manageContactForm() {
     return;
   });
 
-  formInputs.focus(() => {
+  formInputs.focus(() => { // Hides tooltips on inputs focus.
     formTooltips.removeClass(tooltipActivationClass)
     tooltipText.text('Enter a value');
   });
 }
-
-function togglePortfolioTabs() {
-  const allMenuItem = $('.portfolio__menu-item--all');
-  const webMenuItem = $('.portfolio__menu-item--web');
-  const adMenuItem = $('.portfolio__menu-item--ad');
-  const brandingMenuItem = $('.portfolio__menu-item--branding');
-  const designMenuItem = $('.portfolio__menu-item--design');
-
-  const allListItems = $('.portfolio__projects-list-item');
-  const webListItems = $('.portfolio__projects-list-item--web');
-  const adListItems = $('.portfolio__projects-list-item--ad');
-  const brandingListItems = $('.portfolio__projects-list-item--branding');
-  const designListItems = $('.portfolio__projects-list-item--design');
-
-  toggleTabs(allMenuItem, allListItems, allListItems);
-  toggleTabs(webMenuItem, webListItems, allListItems);
-  toggleTabs(adMenuItem, adListItems, allListItems);
-  toggleTabs(brandingMenuItem, brandingListItems, allListItems);
-  toggleTabs(designMenuItem, designListItems, allListItems);
-
-  function toggleTabs(menuItem, listItem, allListItems) {
-    menuItem.click(() => {
-      allListItems.hide();
-      allListItems.addClass('portfolio__projects-list-item--active');
-      listItem.fadeIn();
-
-      if (menuItem === allMenuItem) {
-        allListItems.removeClass('portfolio__projects-list-item--active');
-      }
-    });
-  }
-}
-
-function manageHeaderMobileMenu() {
-  const body = $('body');
-  const mobileBtn = $('.header__nav-mobile-btn');
-  const navMenu = $('.nav__menu');
-  const menuItems = $('.nav__menu-item');
-
-  function activateScrollAndCloseMenu() {
-    body.removeClass('body--inactive');
-    navMenu.removeClass('nav__menu--active');
-  }
-
-  mobileBtn.click(() => {
-    navMenu.toggleClass('nav__menu--active');
-    body.toggleClass('body--inactive');
-  });
-
-  menuItems.click(() => {
-    activateScrollAndCloseMenu();
-  });
-
-  navMenu.click(function (ev) {
-    if (ev.target === this) {
-      activateScrollAndCloseMenu();
-    }
-  });
-}
-
-// =========== toggle form modal for contacts and footer ===========
-
-function toggleFormModal() {
-  const body = $('body');
-  const modal = $('.modal-window__form-item');
-  const modalCloseBtn = $('.modal-window__form-close-btn');
-
-  const scrollToTopBtn = $('.scroll-top-btn');
-  const scrollToTopBtnActive = 'scroll-top-btn--active';
-
-  function disableScroll() {
-    body.addClass('body--inactive');
-  }
-
-  function enableScroll() {
-    body.removeClass('body--inactive');
-  }
-
-  modal.fadeIn();
-  scrollToTopBtn.removeClass(scrollToTopBtnActive);
-  disableScroll();
-
-  modal.click(function (ev) {
-    if (ev.target === this) {
-      $(this).fadeOut();
-      scrollToTopBtn.addClass(scrollToTopBtnActive);
-      enableScroll();
-    }
-  });
-
-  modalCloseBtn.click(function () {
-    $(this)
-      .parent()
-      .fadeOut();
-    scrollToTopBtn.addClass(scrollToTopBtnActive);
-    enableScroll();
-  });
-}
-
-function changeFormModalText() {
-  const modal = $('.modal-window__form-item');
-  modal
-    .find('p')
-    .text('Your message has not been sent. Try again later');
-}
-
-// =========== /toggle form modal or contacts and footer ===========
 
 function manageFooterForm() {
   const submitBtn = $('.form__input--submit');
@@ -584,7 +515,7 @@ function manageFooterForm() {
       return true;
     }
 
-    tooltipText.text('Enter a value');
+    tooltipText.text('Enter a value'); // Restores default text value.
 
     $.ajax({
       url: '/php/mail.php', // ? 
@@ -595,16 +526,13 @@ function manageFooterForm() {
       },
       success: () => {
         toggleFormModal();
-
-        // console.log('success'); // убрать
+        // console.log('success'); // remove
         form.trigger('reset');
       },
       error: () => {
-        // console.log('failed'); // убрать
-
+        // console.log('failed'); // remove
         changeFormModalText();
         toggleFormModal();
-
         // form.trigger('reset');
       }
     });
@@ -628,35 +556,67 @@ function manageFooterForm() {
   });
 }
 
+function manageFooterMapModal() {
+  function toggleTooltipForAddress() {
+    const address = $('.footer__location');
+    const tooltip = $('.footer__adress-tooltip');
+    const footerLeft = $('.footer__left');
 
+    address.hover(() => {
+      tooltip.addClass('footer__adress-tooltip--active');
+    });
 
-function changeIframeOrientation() {
-
-  const modal = document.querySelector('.modal-window__solutions-item--first');
-
-  const iframe = document.querySelector('.modal-window__solutions-video');
-
-  // modal.style.display = 'block';
-
-  if ($(window).innerWidth() < 600) {
-
-    // modal.style.display = 'flex';
-    // modal.style.justifyContent = 'center'
-    // modal.style.alignItems = 'center';
-
-
-    // iframe.style.transform = 'rotate(90deg)';
+    footerLeft.mouseleave(() => {
+      tooltip.removeClass('footer__adress-tooltip--active');
+    });
   }
 
+  function toggleFooterMapModal() {
+    const addressItems = $('.footer__location, .footer__adress-tooltip');
+    const mapModal = $('.map-modal');
+    const closeBtn = $('.map-modal__close-btn');
+    const body = $('body');
 
-  // iframe.style.height = document.body.clientWidth + 'px';
-  // iframe.style.width = document.body.clientHeight + 'px';
+    const scrollToTopBtn = $('.scroll-top-btn');
+    const scrollToTopBtnActive = 'scroll-top-btn--active';
 
-  // iframe.style.height = '100%'
-  // iframe.style.width = '100%'
+    function disableScroll() {
+      body.addClass('body--inactive');
+    }
 
+    function enableScroll() {
+      body.removeClass('body--inactive');
+    }
+
+    if ($(window).innerWidth() > 1000) {
+      addressItems.click(() => {
+        mapModal.fadeIn();
+        scrollToTopBtn.removeClass(scrollToTopBtnActive);
+        disableScroll();
+      });
+
+      mapModal.click(function (ev) {
+        if (ev.target === this) {
+          $(this).fadeOut();
+          scrollToTopBtn.addClass(scrollToTopBtnActive);
+          enableScroll();
+        }
+      });
+
+      closeBtn.click(() => {
+        mapModal.fadeOut();
+        enableScroll();
+      });
+    }
+
+    if ($(window).innerWidth() <= 1000) {
+      addressItems.off('click');
+    }
+  }
+
+  toggleTooltipForAddress();
+  toggleFooterMapModal();
 }
 
-changeIframeOrientation();
 
 
