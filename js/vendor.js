@@ -1,6 +1,8 @@
 'use strict';
 
-// Slick slider fn must be downloaded before other js/jquery fns because of compatibility. If this is not done, jquery scroll fn will work wrongly. 
+// Slick slider fn must be loaded before other js/jquery fns because of compatibility. 
+// If it is not done, jquery scroll fn will work wrongly. 
+
 initPromoSlickSlider();
 
 function initPromoSlickSlider() {

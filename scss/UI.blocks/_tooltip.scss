@@ -1,3 +1,6 @@
+// Certain tooltips have their own specific styles computed over this module. 
+// These specific styles contains in "index.scss" file.
+
 .tooltip {
   position: absolute;
   @extend %centering-flex-container;

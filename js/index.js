@@ -1,10 +1,10 @@
 'use strict';
 
-// These common fn are used on the whole web page.
+// These fns are used on the whole web page.
 scrollTo();
 popUpSectionsOnScroll();
 
-// These specific fns are used on certain sections. 
+// These fns are used on certain sections. 
 manageHeaderMobileMenu();
 manageSolutionsModals();
 togglePortfolioTabs();
@@ -22,11 +22,12 @@ function scrollTo() {
   }
 
   function scrollToSections() {
-    const servicesItems = $('.nav__menu-item--services, .header__services-btn');
+    const body = $('body');
+    const servicesItems = $('.nav__menu-item--services, .header__btn--services');
     const portfolioItem = $('.nav__menu-item--works');
     const promoItem = $('.nav__menu-item--features');
     const clientsItem = $('.nav__menu-item--about');
-    const contactItems = $('.nav__menu-item--contact, .header__start-btn, .promo__btn, .clients__btn');
+    const contactItems = $('.nav__menu-item--contact, .header__btn--start, .promo__btn, .clients__btn');
 
     const servicesSection = $('.services');
     const portfolioSection = $('.portfolio');
@@ -39,11 +40,11 @@ function scrollTo() {
 
       let verticalOffset = 200; // An offset is determined and changed by visual user experience.
 
-      if ($(window).innerWidth() < 1024) {
+      if (body.width() < 1024) {
         verticalOffset = -50;
       }
 
-      if ($(window).innerWidth() < 325) {
+      if (body.width() < 325) {
         verticalOffset = -100;
       }
 
@@ -69,7 +70,7 @@ function scrollTo() {
     });
   }
 
-  function scrollToTopOnPopUpBtnClick() { // Button is placed in the right bottom corner of a window.
+  function scrollToTopOnPopUpBtnClick() { // Button is placed in the right bottom corner of the window.
     const btn = $('.scroll-top-btn');
 
     $(window).scroll(() => {
@@ -182,10 +183,10 @@ function manageSolutionsModals() {
   function fadeOutModalAndStopVideo(modal) {
     const modalAttr = modal.find('iframe').attr('src');
 
-    if ($(window).innerWidth() > 600) {
+    if (body.width() > 600) {
       modal.click(function (ev) {
         if (ev.target === this) {
-          $(this).find('iframe').attr('src', modalAttr); // Stops video after modal has been closed.
+          $(this).find('iframe').attr('src', modalAttr); // Stops a video after a modal has been closed.
           $(this).fadeOut();
           mobileBtn.show();
           enableScroll();
@@ -199,7 +200,7 @@ function manageSolutionsModals() {
     const modalAttr = modal.find('iframe').attr('src');
 
     btn.click(() => {
-      modal.find('iframe').attr('src', modalAttr); // Stops video after modal has been closed.
+      modal.find('iframe').attr('src', modalAttr); // Stops a video after a modal has been closed.
       modal.fadeOut();
       mobileBtn.show();
       enableScroll();
@@ -309,7 +310,9 @@ function togglePortfolioTabs() {
   toggleTabs(designMenuItem, designListItems, allListItems);
 }
 
-function toggleFormModal() { // Auxiliary fn provides toggling of modals in Contacts section form and Footer section form. It called inside manageContactForm() and manageFooterForm().
+// This auxiliary fn provides toggling of modals in Contacts section form and Footer section form. 
+// It called inside manageContactForm() and manageFooterForm() fns.
+function toggleFormModal() {
   const body = $('body');
   const modal = $('.modal-window__form-item');
   const modalCloseBtn = $('.modal-window__form-close-btn');
@@ -346,7 +349,9 @@ function toggleFormModal() { // Auxiliary fn provides toggling of modals in Cont
   });
 }
 
-function changeFormModalText() { // Auxiliary fn provides changing of text inside modals in Contacts section form and Footer section form in case of failed submission of a form. It called inside manageContactForm() and manageFooterForm().
+// This auxiliary fn provides changing of text inside modals in Contacts section form and Footer section form in case of failed submission of a form. 
+// It called inside manageContactForm() and manageFooterForm() fns.
+function changeFormModalText() {
   const modal = $('.modal-window__form-item');
   modal
     .find('p')
@@ -368,13 +373,15 @@ function manageContactForm() {
     const inputService = $('.contact__form-input--service');
     const inputTextarea = $('.contact__form-input--textarea');
 
-    const inputNameTooltip = $('.contact__form-input--name-tooltip');
-    const inputCompanyTooltip = $('.contact__form-input--company-tooltip');
-    const inputEmailTooltip = $('.contact__form-input--email-tooltip');
-    const inputServiceTooltip = $('.contact__form-input--service-tooltip');
-    const inputTextareaTooltip = $('.contact__form-input--textarea-tooltip');
+    const inputNameTooltip = $('.contact__form-input-tooltip--name');
+    const inputCompanyTooltip = $('.contact__form-input-tooltip--company');
+    const inputEmailTooltip = $('.contact__form-input-tooltip--email');
+    const inputServiceTooltip = $('.contact__form-input-tooltip--service');
+    const inputTextareaTooltip = $('.contact__form-input-tooltip--textarea');
 
-    // checkEmptyValue(), checkLength() fns check forms for lack of values and maximum chars quantity. checkEmailCharTypes() fn checks email input for presence of "@" and "." chars: these chars mean inserted email address. Then all of this fns transfer final value to checkAggregatedCallsForAjax() for to return one final value used in an ajax fn.
+    // checkEmptyValue(), checkLength() fns check forms for lack of values and maximum chars quantity. 
+    // checkEmailCharTypes() fn checks email input for presence of "@" and "." chars: these chars mean inserted email address. 
+    // Then all of these fns transfer final value to checkAggregatedCallsForAjax() to return one final value used in an ajax fn.
 
     function checkEmptyValue(input, tooltip) {
       const inputValue = input.val();
@@ -432,7 +439,7 @@ function manageContactForm() {
     }
 
     $.ajax({
-      url: '/php/mail.php', // ? /
+      url: '/php/mail.php',
       type: 'POST',
       data: form.serialize(),
       beforeSend: () => {
@@ -440,18 +447,16 @@ function manageContactForm() {
       },
       success: () => {
         toggleFormModal();
-        console.log('success'); // remove
         form.trigger('reset');
       },
       error: () => {
-        console.log('failed'); // remove
         changeFormModalText();
         toggleFormModal();
-        // form.trigger('reset');
+        form.trigger('reset');
       }
     });
 
-    $('.modal-window__contact-form-item').find('p').text('Your message has been sent'); // Restores default text value after form submission has failed.
+    $('.modal-window__contact-form-item').find('p').text('Your message has been sent'); // Restores default text value.
   }
 
   submitBtn.click(ev => {
@@ -518,7 +523,7 @@ function manageFooterForm() {
     tooltipText.text('Enter a value'); // Restores default text value.
 
     $.ajax({
-      url: '/php/mail.php', // ? 
+      url: '/php/mail.php',
       type: 'POST',
       data: form.serialize(),
       beforeSend: () => {
@@ -526,14 +531,12 @@ function manageFooterForm() {
       },
       success: () => {
         toggleFormModal();
-        // console.log('success'); // remove
         form.trigger('reset');
       },
       error: () => {
-        // console.log('failed'); // remove
         changeFormModalText();
         toggleFormModal();
-        // form.trigger('reset');
+        form.trigger('reset');
       }
     });
 
@@ -572,10 +575,10 @@ function manageFooterMapModal() {
   }
 
   function toggleFooterMapModal() {
-    const addressItems = $('.footer__location, .footer__adress-tooltip');
-    const mapModal = $('.map-modal');
-    const closeBtn = $('.map-modal__close-btn');
     const body = $('body');
+    const mapModal = $('.modal-window__footer-map');
+    const addressItems = $('.footer__location, .footer__adress-tooltip');
+    const closeBtn = $('.modal-window__footer-map-close-btn');
 
     const scrollToTopBtn = $('.scroll-top-btn');
     const scrollToTopBtnActive = 'scroll-top-btn--active';
@@ -588,7 +591,7 @@ function manageFooterMapModal() {
       body.removeClass('body--inactive');
     }
 
-    if ($(window).innerWidth() > 1000) {
+    if (body.width() >= 1024) {
       addressItems.click(() => {
         mapModal.fadeIn();
         scrollToTopBtn.removeClass(scrollToTopBtnActive);
@@ -609,7 +612,7 @@ function manageFooterMapModal() {
       });
     }
 
-    if ($(window).innerWidth() <= 1000) {
+    if (body.width() < 1024) {
       addressItems.off('click');
     }
   }

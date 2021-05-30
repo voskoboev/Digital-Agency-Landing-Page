@@ -1,5 +1,4 @@
-// This mixin provides sections popup emergency on page scroll.
-@mixin sections-display-onscroll {
+@mixin sections-display-onscroll { // Provides sections popup emergency on page scroll.
   transform: translateY(250px);
   transition: 1s all ease;
   opacity: 0;
@@ -39,8 +38,7 @@
   }
 }
 
-// This mixin used mostly to align elements in responsive design.
-@mixin pl-pr($val) {
+@mixin pl-pr($val) { // Used mostly to align elements in responsive design.
   padding: {
     left: $val;
     right: $val;

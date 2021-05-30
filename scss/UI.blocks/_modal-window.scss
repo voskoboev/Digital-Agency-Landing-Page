@@ -1,3 +1,5 @@
+// This file contains specific styles of certain modals.
+
 .modal-window {
   position: fixed;
   display: none;
@@ -93,17 +95,6 @@
 @media screen and (max-width: 600px) {
   .modal-window__solutions-video {
     transform: rotate(90deg);
-  }
-}
-
-.map-modal__script {
-  width: 1000px;
-  height: 565px;
-}
-
-@media screen and (max-width: 1000px) {
-  .map-modal__script {
-    display: none;
   }
 }
 
