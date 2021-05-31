@@ -9,7 +9,7 @@ Presentation of digital agency services for potential clients.
 SCSS, jQuery, Slick Slider, Reset.css, Perfect Pixel.
 ### Stack Reasons:
 #### 1. Reset.css:
-- Project does not assume separated content structure for weak devices and slow internet connection.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Project does not assume separated content structure for weak devices and slow internet connection.
 #### 2. SCSS: </br>
    1. Widespread use (potential support);
    2. Provides modules;
@@ -31,7 +31,7 @@ SCSS, jQuery, Slick Slider, Reset.css, Perfect Pixel.
 4. Pictures optimized by quality reduction to 75%, most of the files converted to ‘webp’ extension for less file weight. ‘Webp’ is used where it provides better compression and average quality.
 ### Code Features:
 #### HTML:
-- Semantic layout;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Semantic layout;
 #### SCSS:
 1. BEM naming.
 2. SCSS contains general file ‘index.scss’, compiled into CSS file with map, and auxiliary modules for clarification and diversification of project structure.
