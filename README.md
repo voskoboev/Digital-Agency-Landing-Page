@@ -7,7 +7,7 @@ Presentation of digital agency services for potential clients.
 3. Most of clients are familiar with general page interactivity.
 ### Stack: 
 SCSS, jQuery, Slick Slider, Reset.css, Perfect Pixel.
-### Stack reasons:
+### Stack Reasons:
 #### 1. Reset.css:
 - Project does not assume separated content structure for weak devices and slow internet connection.
 #### 2. SCSS: </br>
