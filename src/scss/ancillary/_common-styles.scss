@@ -1,0 +1,62 @@
+:root {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  width: 100vw;
+  font-family: $default-font;
+  overflow-x: hidden;
+}
+
+.body--inactive {
+  height: 100%;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  transition: .2s all ease;
+  cursor: pointer;
+}
+
+input:focus,
+input:active,
+input:hover {
+  outline: none;
+}
+
+textarea:focus,
+textarea:active,
+textarea:hover {
+  outline: none;
+}
+
+select:focus,
+select:active,
+select:hover {
+  outline: none;
+}
+
+::selection {
+  background-color: lighten($secondary-color, 20%);
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}

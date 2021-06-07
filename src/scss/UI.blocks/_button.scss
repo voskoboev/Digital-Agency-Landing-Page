@@ -1,0 +1,15 @@
+// This module applies to all <button> tags on the page excepting <input type="submit">.
+// Certain buttons have their own specific styles computed over this module. 
+// These specific styles are in "index.scss" file.
+
+.button {
+  @extend %centering-flex-container;
+  width: 190px;
+  min-height: 55px;
+  padding: 5px;
+  border-width: 2px;
+  border-style: solid;
+  outline: none;
+  @include font($primary-font, 400, 1rem, $light-font-color);
+  background: transparent;
+}
