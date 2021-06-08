@@ -889,7 +889,7 @@
     border-bottom: 1px solid transparent;
     color: #a4a4a4;
     cursor: pointer;
-    transition: .2s all ease;
+    transition: 0.2s all ease;
   }
 
   @media screen and (max-width: 550px) {
@@ -901,7 +901,7 @@
   .portfolio__menu-item:hover {
     color: #1f1f1f;
     border-bottom: 1px solid #1f1f1f;
-    transition: .2s all ease;
+    transition: 0.2s all ease;
   }
 
   .portfolio__menu-item:not(:last-child) {
@@ -1843,6 +1843,8 @@
     @include font($primary-font, 300, 0.875rem);
     padding-left: 20px;
     border: 1px solid #000;
+
+    color: $dark-font-color;
   }
 
   .contact__form-input:not(:last-child) {
@@ -1962,9 +1964,11 @@
   .contact__form-input--service {
     width: 100%;
     margin-bottom: 20px;
-    background: url(/images/order/drop-down-arrow.png) no-repeat;
+    background: url(../images/order/drop-down-arrow.png) no-repeat;
     background-position: right 20px center;
     appearance: none;
+
+    color: $dark-font-color;
   }
 
   .contact__form-input-tooltip--service {

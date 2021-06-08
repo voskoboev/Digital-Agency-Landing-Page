@@ -69,17 +69,6 @@
   }
 }
 
-.modal-window__footer-map-container {
-  transform: translate(-500px, -282.5px);
-  display: block;
-}
-
-@media screen and (max-width: 1000px) {
-  .modal-window__footer-map-container {
-    transform: translate(-275px, -150px);
-  }
-}
-
 .modal-window__solutions-video {
   width: 1000px;
   height: 565px;
@@ -95,6 +84,17 @@
 @media screen and (max-width: 600px) {
   .modal-window__solutions-video {
     transform: rotate(90deg);
+  }
+}
+
+.modal-window__footer-map-container {
+  transform: translate(-500px, -282.5px);
+  display: block;
+}
+
+@media screen and (max-width: 1000px) {
+  .modal-window__footer-map-container {
+    transform: translate(-275px, -150px);
   }
 }
 
