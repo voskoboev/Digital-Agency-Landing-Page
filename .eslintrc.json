@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "plugins": [
+        "jquery"
+    ],
+    "extends": [
+        "standard",
+        "plugin:jquery/slim"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "rules": {
+        "space-before-function-paren": 0,
+        "no-undef": 0, // Excluded incorrect recognition of $ as a variable.
+        "semi": 0,
+        "jquery/no-animate": 0,
+        "jquery/no-fade": 0,
+        "jquery/no-ajax": 0
+    }
+}
