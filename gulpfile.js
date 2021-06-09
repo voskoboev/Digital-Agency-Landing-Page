@@ -13,7 +13,7 @@ const browsersync = () => {
   browserSync.init({
     server: { baseDir: 'src/' },
     notify: false,
-    online: false,
+    online: false
   })
 }
 
@@ -33,7 +33,7 @@ const styles = () => {
   return src([
     'node_modules/reset-css/reset.css',
     'node_modules/slick-carousel/slick/slick.css',
-    'src/scss/bundle.scss',
+    'src/scss/bundle.scss'
   ])
     .pipe(sass())
     .pipe(concat('bundle.min.css'))
@@ -56,12 +56,12 @@ const cleanimg = () => {
 
 const fonts = () => {
   return src('src/fonts/**/*')
-  .pipe(dest('src/fonts/'))
+    .pipe(dest('src/fonts/'))
 }
 
 const videos = () => {
   return src('src/videos/**/*')
-  .pipe(dest('src/videos/'))
+    .pipe(dest('src/videos/'))
 }
 
 const cleandist = () => {
@@ -77,7 +77,7 @@ const buildcopy = () => {
     'src/videos/**/*', // dest/
     'src/**/*.html'
   ],
-    { base: 'src/' })
+  { base: 'src/' })
     .pipe(dest('dist'))
 }
 
@@ -98,6 +98,5 @@ exports.videos = videos
 exports.cleanimg = cleanimg
 exports.cleandist = cleandist
 
-exports.build = series(cleandist, styles, scripts, images, fonts, videos, buildcopy) 
-exports.default = parallel(styles, scripts, browsersync, startWatch) 
-
+exports.build = series(cleandist, styles, scripts, images, fonts, videos, buildcopy)
+exports.default = parallel(styles, scripts, browsersync, startWatch)
