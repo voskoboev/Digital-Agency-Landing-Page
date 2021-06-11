@@ -37,8 +37,17 @@ const styles = () => {
   ])
     .pipe(sass())
     .pipe(concat('bundle.min.css'))
-    .pipe(autoprefixer({ overrideBrowserslist: ['last 10 versions'], grid: true }))
-    .pipe(cleancss(({ level: { 1: { specialComments: 0 } } })))
+    .pipe(
+      autoprefixer({
+        overrideBrowserslist: ['last 10 versions'],
+        grid: true
+      })
+    )
+    .pipe(
+      cleancss({
+        level: { 1: { specialComments: 0 } }
+      })
+    )
     .pipe(dest('src/css/'))
     .pipe(browserSync.stream())
 }
@@ -69,15 +78,17 @@ const cleandist = () => {
 }
 
 const buildcopy = () => {
-  return src([
-    'src/css/**/*.min.css',
-    'src/js/**/*.min.js',
-    'src/images/**/*', // dest/
-    'src/fonts/**/*', // dest/
-    'src/videos/**/*', // dest/
-    'src/**/*.html'
-  ],
-  { base: 'src/' })
+  return src(
+    [
+      'src/css/**/*.min.css',
+      'src/js/**/*.min.js',
+      'src/images/**/*', // dest/
+      'src/fonts/**/*', // dest/
+      'src/videos/**/*', // dest/
+      'src/**/*.html'
+    ],
+    { base: 'src/' }
+  )
     .pipe(dest('dist'))
 }
 

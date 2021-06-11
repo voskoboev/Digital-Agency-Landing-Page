@@ -4,15 +4,15 @@
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
 body {
   width: 100vw;
-  font-family: $default-font;
   overflow-x: hidden;
+  font-family: $default-font;
 }
 
 .body--inactive {
@@ -29,23 +29,17 @@ img {
 }
 
 button:hover,
-input[type="submit"]:hover {
-  transition: .2s all ease;
+input[type='submit']:hover {
   cursor: pointer;
+  transition: 0.2s all ease;
 }
 
 input:focus,
 input:active,
-input:hover {
-  outline: none;
-}
-
+input:hover,
 textarea:focus,
 textarea:active,
-textarea:hover {
-  outline: none;
-}
-
+textarea:hover,
 select:focus,
 select:active,
 select:hover {

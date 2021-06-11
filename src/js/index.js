@@ -56,7 +56,10 @@ function initPromoSlickSlider() {
 }
 
 function scrollTo() {
-  function showAllPortfolioTabs() { // Provides correct scroll to sections after tabs were toggled.
+  // eslint-disable-next-line prettier/prettier
+
+  // This fn provides correct scroll to sections after tabs were toggled.
+  function showAllPortfolioTabs() {
     const portfolioTabs = $('.portfolio__projects-list-item')
 
     portfolioTabs.fadeIn()
@@ -68,7 +71,12 @@ function scrollTo() {
     const portfolioItem = $('.nav__menu-item--works')
     const promoItem = $('.nav__menu-item--features')
     const clientsItem = $('.nav__menu-item--about')
-    const contactItems = $('.nav__menu-item--contact, .header__btn--start, .promo__btn, .clients__btn')
+    const contactItems = $(
+      `.nav__menu-item--contact, 
+      .header__btn--start, 
+      .promo__btn, 
+      .clients__btn`
+    )
 
     const servicesSection = $('.services')
     const portfolioSection = $('.portfolio')
@@ -111,7 +119,8 @@ function scrollTo() {
     })
   }
 
-  function scrollToTopOnPopUpBtnClick() { // Button is placed in the right bottom corner of the window.
+  // Button in this fn is placed in the right bottom corner of the window.
+  function scrollToTopOnPopUpBtnClick() {
     const btn = $('.scroll-top-btn')
 
     $(window).on('scroll', () => {
@@ -149,7 +158,10 @@ function popUpSectionsOnScroll() {
 
   function popUpOnScroll(section) {
     $(window).on('scroll', function () {
-      if ($(this).scrollTop() + $(window).innerHeight() > $(`.${section}`).position().top) {
+      if (
+        $(this).scrollTop() + $(window).innerHeight() >
+        $(`.${section}`).position().top
+      ) {
         $(`.${section}`).addClass(`${section}--active`)
       }
     })
@@ -385,9 +397,7 @@ function toggleFormModal() {
   })
 
   modalCloseBtn.on('click', function () {
-    $(this)
-      .parent()
-      .fadeOut()
+    $(this).parent().fadeOut()
     scrollToTopBtn.addClass(scrollToTopBtnActive)
     enableScroll()
   })
@@ -400,9 +410,7 @@ It called inside manageContactForm() and manageFooterForm() fns.
 */
 function changeFormModalText() {
   const modal = $('.modal-window__form-item')
-  modal
-    .find('p')
-    .text('Your message has not been sent. Try again later')
+  modal.find('p').text('Your message has not been sent. Try again later')
 }
 
 function manageContactForm() {
@@ -455,8 +463,10 @@ function manageContactForm() {
         return false
       }
 
-      if (inputValue.includes('@') === false ||
-        inputValue.includes('.') === false) {
+      if (
+        inputValue.includes('@') === false ||
+        inputValue.includes('.') === false
+      ) {
         emailTooltipText.text('Enter correct email')
         emailTooltip.addClass(tooltipActivationClass)
         return false
@@ -479,7 +489,8 @@ function manageContactForm() {
     }
 
     function checkAggregatedCallsForAjax() {
-      return checkEmptyValue(inputName, inputNameTooltip) &&
+      return (
+        checkEmptyValue(inputName, inputNameTooltip) &&
         checkLength(inputName, inputNameTooltip, 100) &&
         checkEmptyValue(inputCompany, inputCompanyTooltip) &&
         checkLength(inputCompany, inputCompanyTooltip, 100) &&
@@ -489,6 +500,7 @@ function manageContactForm() {
         checkEmptyValue(inputService, inputServiceTooltip) &&
         checkEmptyValue(inputTextarea, inputTextareaTooltip) &&
         checkLength(inputTextarea, inputTextareaTooltip, 2500)
+      )
     }
 
     $.ajax({
@@ -526,7 +538,8 @@ function manageContactForm() {
     }
   })
 
-  formInputs.on('focus', () => { // Hides tooltips on inputs focus.
+  // Hides tooltips on inputs focus.
+  formInputs.on('focus', () => {
     formTooltips.removeClass(tooltipActivationClass)
     tooltipText.text('Enter a value')
   })
@@ -538,7 +551,10 @@ function manageFooterForm() {
 
   function checkFormAndSubmitValues() {
     const input = $('.footer__form-input--email')
-    const inputProtectedValue = $('.footer__form-input--email').val().toString().trim()
+    const inputProtectedValue = $('.footer__form-input--email')
+      .val()
+      .toString()
+      .trim()
 
     const tooltip = $('.tooltip__footer-form-item')
     const tooltipText = tooltip.find('p')
@@ -550,14 +566,15 @@ function manageFooterForm() {
         tooltip.addClass(tooltipActivationClass)
       }
 
-      if (inputProtectedValue === null ||
-        inputProtectedValue === '') {
+      if (inputProtectedValue === null || inputProtectedValue === '') {
         activateTooltip()
         return false
       }
 
-      if (inputProtectedValue.includes('@') === false ||
-        inputProtectedValue.includes('.') === false) {
+      if (
+        inputProtectedValue.includes('@') === false ||
+        inputProtectedValue.includes('.') === false
+      ) {
         tooltipText.text('Enter correct email')
         activateTooltip()
         return false

@@ -4,11 +4,13 @@
         "es2021": true
     },
     "plugins": [
-        "jquery"
+        "jquery",
+        "prettier"
     ],
     "extends": [
         "standard",
-        "plugin:jquery/slim"
+        "plugin:jquery/slim",
+        "prettier"
     ],
     "parserOptions": {
         "ecmaVersion": 12,
@@ -16,10 +18,11 @@
     },
     "rules": {
         "space-before-function-paren": 0,
-        "no-undef": 0, // Excluded incorrect recognition of $ as a variable.
+        "no-undef": 0, // Excluded incorrect recognition of $.
         "semi": 0,
         "jquery/no-animate": 0,
         "jquery/no-fade": 0,
-        "jquery/no-ajax": 0
+        "jquery/no-ajax": 0,
+        "prettier/prettier": 2
     }
 }

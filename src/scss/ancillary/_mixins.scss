@@ -1,23 +1,29 @@
-@mixin sections-display-onscroll { // Provides sections popup emergency on page scroll.
-  transform: translateY(250px);
-  transition: 1s all ease;
+@mixin sections-display-onscroll {
+  // Provides sections popup emergency on page scroll.
   opacity: 0;
+  transition: 1s all ease;
+  transform: translateY(250px);
 
   @media screen and (max-width: 1024px) {
     & {
-      transform: none;
-      transition: none;
       opacity: 1;
+      transition: none;
+      transform: none;
     }
   }
 
   &--active {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@mixin font($family: $default-font, $weight: 400, $size: 1rem, $color: initial) {
+@mixin font(
+  $family: $default-font,
+  $weight: 400,
+  $size: 1rem,
+  $color: initial
+) {
   font: {
     family: $family;
     weight: $weight;
@@ -29,8 +35,8 @@
 
 @mixin flex($jcc: initial, $aic: initial, $flw: initial, $fld: initial) {
   display: flex;
-  justify-content: $jcc;
   align-items: $aic;
+  justify-content: $jcc;
 
   flex: {
     wrap: $flw;
@@ -38,9 +44,10 @@
   }
 }
 
-@mixin pl-pr($val) { // Used mostly to align elements in responsive design.
+@mixin pl-pr($val) {
+  // Used mostly to align elements in responsive design.
   padding: {
-    left: $val;
     right: $val;
+    left: $val;
   }
 }
