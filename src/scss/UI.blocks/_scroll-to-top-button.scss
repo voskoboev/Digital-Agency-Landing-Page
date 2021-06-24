@@ -1,60 +1,58 @@
-// These styles applies to only one scroll button. 
+// These styles applies to only one scroll button.
 // Button placed in the right bottom corner of the window.
 
 .scroll-top-btn {
   position: fixed;
   right: 50px;
   bottom: 50px;
+  z-index: 1000;
   width: 70px;
   height: 70px;
-  border: 2px solid #000;
-  border-radius: 50%;
-  background-color: #f8f8f8;
-  opacity: 0;
-  z-index: 1000;
   cursor: pointer;
   visibility: hidden;
+  background-color: #f8f8f8;
+  border: 2px solid #000;
+  border-radius: 50%;
+  opacity: 0;
+  transition: 0.2s all ease;
   transform: translateY(30px);
-  transition: .2s all ease;
-}
 
-@media screen and (max-width: 600px) {
-  .scroll-top-btn {
+  @media screen and (max-width: 600px) {
     display: none;
   }
-}
 
-.scroll-top-btn::before {
-  content: '';
-  position: absolute;
-  top: 27px;
-  left: 0;
-  width: 45px;
-  height: 5px;
-  border-radius: 15%;
-  background-color: #000;
-  transform: rotate(300deg);
-}
+  &::before {
+    position: absolute;
+    top: 27px;
+    left: 0;
+    width: 45px;
+    height: 5px;
+    content: '';
+    background-color: #000;
+    border-radius: 15%;
+    transform: rotate(300deg);
+  }
 
-.scroll-top-btn::after {
-  content: '';
-  position: absolute;
-  top: 27px;
-  right: 0;
-  width: 45px;
-  height: 5px;
-  border-radius: 15%;
-  background-color: #000;
-  transform: rotate(60deg);
-}
+  &::after {
+    position: absolute;
+    top: 27px;
+    right: 0;
+    width: 45px;
+    height: 5px;
+    content: '';
+    background-color: #000;
+    border-radius: 15%;
+    transform: rotate(60deg);
+  }
 
-.scroll-top-btn:active {
-  background-color: #fff;
+  &:active {
+    background-color: #fff;
+  }
 }
 
 .scroll-top-btn--active {
   visibility: visible;
+  opacity: 0.3;
+  transition: 0.2s all ease;
   transform: translateY(0);
-  transition: .2s all ease;
-  opacity: .3;
 }

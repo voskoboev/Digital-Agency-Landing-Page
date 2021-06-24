@@ -1,27 +1,25 @@
-// Certain navs have their own specific styles computed over this module. 
+// Certain navs have their own specific styles computed over this module.
 // These specific styles are in "index.scss" file.
 
 @media screen and (max-width: 768px) {
   .nav {
     position: absolute;
-    left: 0;
     top: 0;
+    left: 0;
+    z-index: 10;
     width: 100%;
     height: auto;
-    z-index: 10;
   }
 }
 
 .nav__menu {
   display: flex;
-}
 
-@media screen and (max-width: 768px) {
-  .nav__menu {
+  @media screen and (max-width: 768px) {
     display: none;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: 100vw;
     height: 100vh;
     background-color: #000000d8;
@@ -30,22 +28,22 @@
 
 .nav__menu--active {
   display: flex;
-}
 
-.nav__menu--active::selection {
-  background-color: transparent;
+  &::selection {
+    background-color: transparent;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .header__nav-mobile-btn {
     position: absolute;
-    right: 40px;
     top: 60px;
+    right: 40px;
+    z-index: 15;
     display: flex;
     align-items: center;
     width: 35px;
     height: 25px;
-    z-index: 15;
     cursor: pointer;
   }
 
@@ -59,9 +57,9 @@
 
   .header__nav-mobile-btn::before,
   .header__nav-mobile-btn::after {
-    content: '';
     position: absolute;
     left: 0;
+    content: '';
   }
 
   .header__nav-mobile-btn::before {
@@ -82,35 +80,34 @@
 .nav__menu-item {
   position: relative;
   height: 22px;
-  border-bottom: 2px solid transparent;
   cursor: pointer;
-}
+  border-bottom: 2px solid transparent;
 
-@media screen and (max-width: 768px) {
-  .nav__menu-item {
+  @media screen and (max-width: 768px) {
     max-width: 200px;
+  }
+
+  &::before {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 0;
+    height: 0;
+    content: '';
+    background: transparent;
+    border-bottom: 2px solid transparent;
+  }
+
+  &:hover::before {
+    animation: animate-border 0.2s linear forwards;
   }
 }
 
-.nav__menu-item::before {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-bottom: 2px solid transparent;
-  background: transparent;
-}
-
 @media screen and (max-width: 768px) {
+  // ? ===================================== ?
   .nav__menu-item::before {
     content: none;
   }
-}
-
-.nav__menu-item:hover::before {
-  animation: animate-border .2s linear forwards;
 }
 
 @keyframes animate-border {
@@ -129,17 +126,12 @@
 
 .nav__menu-item:not(:last-child) {
   margin-right: 60px;
-}
 
-
-@media screen and (max-width: 992px) {
-  .nav__menu-item:not(:last-child) {
+  @media screen and (max-width: 992px) {
     margin-right: 30px;
   }
-}
 
-@media screen and (max-width: 768px) {
-  .nav__menu-item:not(:last-child) {
+  @media screen and (max-width: 768px) {
     margin-right: 0;
     margin-bottom: 50px;
   }
@@ -147,16 +139,16 @@
 
 .nav__menu-link {
   @include font($primary-font, 500, 1rem, $light-font-color);
-}
 
-@media screen and (max-width: 768px) {
-  .nav__menu-link {
-    border-bottom: 4px solid $secondary-color;
-    font-size: 2rem;
-    letter-spacing: .03rem;
-  }
+  @media screen and (max-width: 768px) {
+    & {
+      font-size: 2rem;
+      letter-spacing: 0.03rem;
+      border-bottom: 4px solid $secondary-color;
+    }
 
-  .nav__menu-link:active {
-    color: $secondary-color;
+    &:active {
+      color: $secondary-color;
+    }
   }
 }
