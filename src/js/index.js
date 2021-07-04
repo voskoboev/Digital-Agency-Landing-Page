@@ -518,7 +518,7 @@ function manageContactForm() {
     }
 
     $.ajax({
-      url: '/php/mail.php',
+      url: '../php/mail-contact-form.php',
       type: 'POST',
       data: $form.serialize(),
       beforeSend: () => {
@@ -610,7 +610,7 @@ function manageFooterForm() {
     }
 
     $.ajax({
-      url: '/php/mail.php',
+      url: '../php/mail-footer-form.php',
       type: 'POST',
       data: $form.serialize(),
       beforeSend: () => {

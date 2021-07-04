@@ -29,6 +29,14 @@ const scripts = () => {
     .pipe(browserSync.stream())
 }
 
+const php = () => {
+  return src([
+    'src/php/**/*'
+  ])
+    .pipe(dest('dist/php/'))
+    .pipe(browserSync.stream())
+}
+
 const styles = () => {
   return src([
     'node_modules/reset-css/reset.css',
@@ -53,10 +61,10 @@ const styles = () => {
 }
 
 const images = () => {
-  return src('src/images/**/*') // src/
-    .pipe(newer('src/images/')) // dest/
+  return src('src/images/**/*')
+    .pipe(newer('src/images/'))
     .pipe(imagemin())
-    .pipe(dest('src/images/')) // dest/
+    .pipe(dest('src/images/'))
 }
 
 const cleanimg = () => {
@@ -82,9 +90,10 @@ const buildcopy = () => {
     [
       'src/css/**/*.min.css',
       'src/js/**/*.min.js',
-      'src/images/**/*', // dest/
-      'src/fonts/**/*', // dest/
-      'src/videos/**/*', // dest/
+      'src/php/**/*.php',
+      'src/images/**/*',
+      'src/fonts/**/*',
+      'src/videos/**/*',
       'src/**/*.html'
     ],
     { base: 'src/' }
@@ -96,12 +105,14 @@ const startWatch = () => {
   watch('src/**/*.html').on('change', browserSync.reload)
   watch('src/**/*.scss', styles)
   watch(['src/**/*.js', '!src/**/*.min.js'], scripts)
+  watch('src/php/**/*', php)
   watch('src/images/**/*', images)
   watch('src/fonts/**/*', images)
 }
 
 exports.browsersync = browsersync
 exports.scripts = scripts
+exports.php = php
 exports.styles = styles
 exports.images = images
 exports.fonts = fonts
@@ -109,5 +120,18 @@ exports.videos = videos
 exports.cleanimg = cleanimg
 exports.cleandist = cleandist
 
-exports.build = series(cleandist, styles, scripts, images, fonts, videos, buildcopy)
-exports.default = parallel(styles, scripts, browsersync, startWatch)
+exports.build = series(
+  cleandist,
+  styles,
+  scripts,
+  php,
+  images,
+  fonts,
+  videos,
+  buildcopy)
+exports.default = parallel(
+  styles,
+  scripts,
+  php,
+  browsersync,
+  startWatch)

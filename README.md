@@ -19,24 +19,24 @@ Gulp, Reset.css, SCSS, jQuery, Slick Slider, ESLint, Stylelint, Perfect Pixel.
 
 ### Stack Reasons:
 
-#### 1. Gulp: </br>
+#### 1) Gulp: </br>
 
 1. Simple setup;
 2. Widespread use (potential support);
 3. A large number of packages.
 
-#### 2. Reset.css: </br>
+#### 2) Reset.css: </br>
 
 1.  Lack of important text content;
 2.  Web page has many elems with unique styles.
 
-#### 3. SCSS: </br>
+#### 3) SCSS: </br>
 
 1.  Widespread use (potential support);
 2.  Useful language structures;
 3.  Convenient documentation.
 
-#### 4. jQuery: </br>
+#### 4) jQuery: </br>
 
 1. Cross-browser compatibility;
 2. Less code than plain JS;
@@ -44,7 +44,7 @@ Gulp, Reset.css, SCSS, jQuery, Slick Slider, ESLint, Stylelint, Perfect Pixel.
 4. Appropriate for small projects with frequent animations;
 5. Convenient for projects with small clients conversion.
 
-#### 5. Slick Slider (jQuery plug-in): </br>
+#### 5) Slick Slider (jQuery plug-in): </br>
 
 1. Widespread use (potential support);
 2. Useful settings' API;
@@ -89,8 +89,6 @@ Gulp, Reset.css, SCSS, jQuery, Slick Slider, ESLint, Stylelint, Perfect Pixel.
 	- Converted to 'webp' where it provides less size;
 	- Compressed.
 - **Video**: Compressed.
-- **Fonts**:
-	- Compressed;
-	- Preloaded.
+- **Fonts**: Preloaded.
 ### Sources:
 [Template in PNG](https://yadi.sk/i/fGobJyPTymKI_A)
