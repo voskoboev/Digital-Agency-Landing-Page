@@ -1,5 +1,7 @@
-// Certain navs have their own specific styles computed over this module.
-// These specific styles are in "index.scss" file.
+/*
+ Certain navs have their own specific styles computed over this module.
+ These specific styles are in "index.scss" file.
+*/
 
 @media screen and (max-width: 768px) {
   .nav {
@@ -104,7 +106,6 @@
 }
 
 @media screen and (max-width: 768px) {
-  // ? ===================================== ?
   .nav__menu-item::before {
     content: none;
   }

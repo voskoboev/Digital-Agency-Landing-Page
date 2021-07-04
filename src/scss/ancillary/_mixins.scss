@@ -1,7 +1,7 @@
 @mixin sections-display-onscroll {
   // Provides sections popup emergency on page scroll.
   opacity: 0;
-  transition: 1s all ease;
+  transition: 0.5s all ease;
   transform: translateY(250px);
 
   @media screen and (max-width: 1024px) {

@@ -1,5 +1,7 @@
-// Certain tooltips have their own specific styles computed over this module.
-// These specific styles are in "index.scss" file.
+/*
+ Certain tooltips have their own specific styles computed over this module.
+ These specific styles are in "index.scss" file.
+*/
 
 .tooltip {
   @include font($primary-font, 400, 1rem, $dark-font-color);

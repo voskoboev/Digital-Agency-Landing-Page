@@ -1,6 +1,8 @@
-// This module applies to all <button> tags on the page excepting <input type="submit">.
-// Certain buttons have their own specific styles computed over this module.
-// These specific styles are in "index.scss" file.
+/*
+ This module applies to all <button> tags on the page excepting <input type="submit">.
+ Certain buttons have their own specific styles computed over this module.
+ These specific styles are in "index.scss" file.
+*/
 
 .button {
   @include font($primary-font, 400, 1rem, $light-font-color);

@@ -1,60 +1,96 @@
-## Digital Agency Landing Page ‘Kallyas’
+## Digital Agency ‘Kallyas’ Landing Page 
+
 ### Summary:
-   - Responsive, crossbrowser, valid;
-   - Gulp, Reset.css, SCSS, jQuery, Slick Slider, Perfect Pixel.
- ### Business Purpose: 
+- Valid, crossbrowser, responsive, optimized, pixel perfect;
+- Gulp, Reset.css, SCSS, jQuery, Slick Slider, ESLint, Stylelint, Perfect Pixel.
+- [Hosted Site](https://kallyas.netlify.app/)
+### Business Purpose:
+
 Presentation of digital agency services for potential clients.
+
 ### Conversion Assumptions:
-1. Small amount of clients with particular service requirements;
-2. Most of clients use modern mobile devices;
-3. Most of clients are familiar with general page interactivity.
-### Stack: 
-Gulp, Reset.css, SCSS, jQuery, Slick Slider, Perfect Pixel.
+
+1. A small amount of clients with particular service needs;
+3. Most of clients use modern mobile devices.
+
+### Stack:
+
+Gulp, Reset.css, SCSS, jQuery, Slick Slider, ESLint, Stylelint, Perfect Pixel.
+
 ### Stack Reasons:
+
 #### 1. Gulp: </br>
-   1. Simple setup;
-   2. Widespread use (potential support);
-   3. Frequent updates;
-   4. A large number of packages.
+
+1. Simple setup;
+2. Widespread use (potential support);
+3. A large number of packages.
+
 #### 2. Reset.css: </br>
-   1. The project does not contain importants text content;
-   2. A small number of visitors with old or weak devices.
+
+1.  Lack of important text content;
+2.  Web page has many elems with unique styles.
+
 #### 3. SCSS: </br>
-   1. Widespread use (potential support);
-   2. Provides modules;
-   3. Useful syntactic structures.
+
+1.  Widespread use (potential support);
+2.  Useful language structures;
+3.  Convenient documentation.
+
 #### 4. jQuery: </br>
-   1.	Cross-browser compatibility;
-   2.	Less code than pure JS;
-   3.	Simple in support;   
-   4.	Appropriate for small projects with frequent animations;
-   5.	Convenient for projects with small clients conversion.
+
+1. Cross-browser compatibility;
+2. Less code than plain JS;
+3. Simple in support;
+4. Appropriate for small projects with frequent animations;
+5. Convenient for projects with small clients conversion.
+
 #### 5. Slick Slider (jQuery plug-in): </br>
-   1. Widespread use (potential support);
-   2. Useful settings API;
-   3. Responsiveness.
+
+1. Widespread use (potential support);
+2. Useful settings' API;
+3. Responsiveness.
+
+#### 7) ESLint, Stylelint:</br>
+1. Widespread use (potential support);
+2. Useful standard cfgs.
+
 ### Tech Features:
-1. Folder structure: mostly file-based, SCSS is BEM flat scheme;
-2. Full responsiveness implemented from 1920px width to 320px width;
-3. Cross-browser compatibility is built and checked on modern browsers: ‘Chrome’, ‘Opera’, ‘Firefox’, ‘Edge’, ‘Yandex’. IE browsers excluded from analyses. Reductive browsers, e. g. ‘Opera Mini’, excluded from analyses as well;
-4. Pictures optimized by quality reduction to 75%, most of the files converted to ‘webp’ extension for less file weight. ‘Webp’ is used where it provides better compression and average quality.
-### Code Features:
-#### HTML:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Semantic layout;
-#### SCSS:
-1. BEM naming.
-2. ‘index.scss’ contains most of styles, auxiliary modules locted in ‘UI.blocks’ and ‘ancillary’ folders added for clarification and diversification of project structure;
-3. Font size determined in rem. It can be modified on the whole page by changing a value in the ‘body’ tag;
-4. Compiled CSS has prefixed properties;
-5. Compiled CSS is minified;
-6. All styles, incliding libs, compiled into a one css file ‘bundle.min.css’.
-#### JS:
-1. Used procedural paradigm;
-2. Programming logic is hided in functions;
-3. Functions mostly correspond with BEM blocks;
-4. Function declarations are used for readability; 
-5. Functions calls placed on the top of files for convenience of search and debugging;
-6. Js code is minified;
-6. All js code, incliding libs, compiled into a one js file ‘bundle.min.js.
 
+-   **Project in General**:
+    -   Folder structure is mostly file based besides SCSS;
+    -   SCSS has BEM based flat file structure;
+    -  	Cross-browser compatibility checked with ‘Chrome’, ‘Opera’, ‘Firefox’, ‘Edge’ and ‘Yandex’.
+-   **HTML:**  Semantic layout.
+-   **SCSS**:
+    -   BEM naming methodology;
+    -   UI blocks and auxiliary SCSS modules are splitted into two folders;
+    -   Final CSS bundle compiled with prefixes.
+ - **jQuery**: 
+	 - Used procedural paradigm;
+	 - Fns mostly correspond with BEM blocks;
+	 - Outer fns' calls disposed on the top JS file for convenience of search and debugging.
+-   **Gulp**: Configured individual project settings.
+-   **ESLint, Stylelint:**  Used standard cfgs with several individual settings.
 
+### Optimizations:
+-   **HTML**: 
+	- HTML entities changed with CSS pseudo-elems where possible;
+	- Implemented loading="lazy" attribute for imgs and iframes. 
+-   **CSS**:
+	- Minified;
+	- Styles isolated with BEM classes and SCSS modules;
+	- Excluded excessive props inheritance where possible;
+	- Excluded pseudo-classes where possible.
+- **jQuery**:
+	- Minified;
+	- Excluded obsolete and ineffective jQuery methods where possible;
+	- DRY, KISS, YAGNI.
+- **Pics**:
+	- Converted to 'webp' where it provides less size;
+	- Compressed.
+- **Video**: Compressed.
+- **Fonts**:
+	- Compressed;
+	- Preloaded.
+### Sources:
+[Template in PNG](https://yadi.sk/i/fGobJyPTymKI_A)

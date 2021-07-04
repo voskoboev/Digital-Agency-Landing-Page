@@ -13,7 +13,8 @@
         "ignoreAtRules": [
           "extend",
           "include",
-          "import"
+          "import",
+          "media"
         ]
       }
     ],

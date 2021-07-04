@@ -15,7 +15,7 @@ manageHeaderMobileMenu()
 manageSolutionsModals()
 togglePortfolioTabs()
 playClientsVideo()
-// activateBrandsPics()
+activateBrandsPics()
 manageContactForm()
 manageFooterForm()
 manageFooterMapModal()
@@ -57,7 +57,7 @@ function initPromoSlickSlider() {
 
 function scrollTo() {
   /* 
-  This fn provides correct scroll to sections after tabs were toggled.
+  showAllPortfolioTabs() provides correct scroll to sections after tabs were toggled.
   */
   function showAllPortfolioTabs() {
     const $portfolioTabs = $('.portfolio__projects-list-item')
@@ -66,31 +66,30 @@ function scrollTo() {
   }
 
   function scrollToSections() {
-    const $body = $('body')
-    const $servicesItems = $(`
-    .nav__menu-item--services, 
-    .header__btn--services
-    `)
-    const $portfolioItem = $('.nav__menu-item--works')
-    const $promoItem = $('.nav__menu-item--features')
-    const $clientsItem = $('.nav__menu-item--about')
-    const $contactItems = $(
-      `.nav__menu-item--contact, 
-      .header__btn--start, 
-      .promo__btn, 
-      .clients__btn`
-    )
+    const $body = $('body'),
+      $itemsServices = $(`
+        .nav__menu-item--services, 
+        .header__btn--services
+      `),
+      $menuItemPortfolio = $('.nav__menu-item--works'),
+      $menuItemPromo = $('.nav__menu-item--features'),
+      $menuItemClients = $('.nav__menu-item--about'),
+      $itemsContact = $(`
+        .nav__menu-item--contact, 
+        .header__btn--start, 
+        .promo__btn, 
+        .clients__btn
+      `),
+      $sectionServices = $('.services'),
+      $sectionPortfolio = $('.portfolio'),
+      $sectionPromo = $('.promo'),
+      $sectionClients = $('.clients'),
+      $sectionContact = $('.contact')
 
-    const $servicesSection = $('.services')
-    const $portfolioSection = $('.portfolio')
-    const $promoSection = $('.promo')
-    const $clientsSection = $('.clients')
-    const $contactSection = $('.contact')
-
-    function scrollToCertainSection(interactItems, positionItem) {
+    function scrollToCertainSection(interactiveItems, positionItem) {
       const position = positionItem.offset().top
 
-      let verticalOffset = 200 // An offset is determined and changed by visual user experience.
+      let verticalOffset = 200 // An offset is determined and changed by visual UX.
 
       if ($body.width() < 1024) {
         verticalOffset = -50
@@ -100,39 +99,43 @@ function scrollTo() {
         verticalOffset = -100
       }
 
-      interactItems.on('click', () => {
+      interactiveItems.on('click', () => {
         showAllPortfolioTabs()
-        $('html, body').animate({ scrollTop: position - verticalOffset }, 1000)
+        $('html, body').animate({ scrollTop: position - verticalOffset }, 700)
       })
     }
 
-    scrollToCertainSection($servicesItems, $servicesSection)
-    scrollToCertainSection($portfolioItem, $portfolioSection)
-    scrollToCertainSection($promoItem, $promoSection)
-    scrollToCertainSection($clientsItem, $clientsSection)
-    scrollToCertainSection($contactItems, $contactSection)
+    scrollToCertainSection($itemsServices, $sectionServices)
+    scrollToCertainSection($menuItemPortfolio, $sectionPortfolio)
+    scrollToCertainSection($menuItemPromo, $sectionPromo)
+    scrollToCertainSection($menuItemClients, $sectionClients)
+    scrollToCertainSection($itemsContact, $sectionContact)
   }
 
-  function scrollToTop() {
-    const $homeItems = $('.nav__menu-item--home, .footer__logo-img')
+  scrollToSections()
 
-    $homeItems.on('click', () => {
-      $('html, body').animate({ scrollTop: 0 }, 1000)
+  function scrollToTop() {
+    const $itemsHome = $('.nav__menu-item--home, .footer__logo-img')
+
+    $itemsHome.on('click', () => {
       showAllPortfolioTabs()
+      $('html, body').animate({ scrollTop: 0 }, 700)
     })
   }
 
+  scrollToTop()
+
   function scrollToTopOnPopUpBtnClick() {
     /* 
-    Button in this fn is placed in the right bottom corner of the window. 
+    The button of this fn is fixed and placed in the right bottom corner of the viewport. 
     */
     const $btn = $('.scroll-top-btn')
 
     $(window).on('scroll', () => {
-      const solutionsPosition = $('.solutions').offset().top
-      const windowPosition = $(window).scrollTop()
+      const positionSolutions = $('.solutions').offset().top,
+        positionWindow = $(window).scrollTop()
 
-      if (windowPosition > solutionsPosition) {
+      if (positionWindow > positionSolutions) {
         $btn.addClass('scroll-top-btn--active')
       } else {
         $btn.removeClass('scroll-top-btn--active')
@@ -141,43 +144,40 @@ function scrollTo() {
 
     $btn.on('click', () => {
       showAllPortfolioTabs()
-      $('html, body').animate({ scrollTop: 0 }, 1000)
+      $('html, body').animate({ scrollTop: 0 }, 700)
     })
   }
 
-  scrollToSections()
-  scrollToTop()
   scrollToTopOnPopUpBtnClick()
 }
 
 function popUpSectionsOnScroll() {
-  function popUpOnScroll(sectionName) {
+  function popUpOnScroll(elementName) {
     $(window).on('scroll', function () {
       if (
         $(this).scrollTop() + $(window).innerHeight() >
-        $(`.${sectionName}`).position().top
+        $(`.${elementName}`).position().top
       ) {
-        $(`.${sectionName}`).addClass(`${sectionName}--active`)
+        $(`.${elementName}`).addClass(`${elementName}--active`)
       }
     })
   }
 
   popUpOnScroll('services')
-  popUpOnScroll('promo')
-  popUpOnScroll('features')
+  popUpOnScroll('promo__container')
+  popUpOnScroll('features__container')
   popUpOnScroll('portfolio')
   popUpOnScroll('clients')
-  popUpOnScroll('brands')
+  popUpOnScroll('brands__container')
   popUpOnScroll('benefits')
   popUpOnScroll('contact')
-  popUpOnScroll('footer')
 }
 
 function manageHeaderMobileMenu() {
-  const $body = $('body')
-  const $mobileBtn = $('.header__nav-mobile-btn')
-  const $navMenu = $('.nav__menu')
-  const $menuItems = $('.nav__menu-item')
+  const $body = $('body'),
+    $mobileBtn = $('.header__nav-mobile-btn'),
+    $navMenu = $('.nav__menu'),
+    $menuItems = $('.nav__menu-item')
 
   function activateScrollAndCloseMenu() {
     $body.removeClass('body--inactive')
@@ -201,16 +201,14 @@ function manageHeaderMobileMenu() {
 }
 
 function manageSolutionsModals() {
-  const $body = $('body')
-  const $cardFirst = $('.solutions__card--first')
-  const $cardSecond = $('.solutions__card--second')
-  const $cardThird = $('.solutions__card--third')
-
-  const $modalFirst = $('.modal-window__solutions-item--first')
-  const $modalSecond = $('.modal-window__solutions-item--second')
-  const $modalThird = $('.modal-window__solutions-item--third')
-
-  const $mobileBtn = $('.header__nav-mobile-btn')
+  const $body = $('body'),
+    $cardFirst = $('.solutions__card--first'),
+    $cardSecond = $('.solutions__card--second'),
+    $cardThird = $('.solutions__card--third'),
+    $modalFirst = $('.modal-window__solutions-item--first'),
+    $modalSecond = $('.modal-window__solutions-item--second'),
+    $modalThird = $('.modal-window__solutions-item--third'),
+    $mobileBtn = $('.header__nav-mobile-btn')
 
   function disableScroll() {
     $body.addClass('body--inactive')
@@ -244,8 +242,8 @@ function manageSolutionsModals() {
   }
 
   function fadeOutModalAndStopVideoOnCloseBtnClick(modal) {
-    const $btn = $('.modal-window__close-btn')
-    const modalAttr = modal.find('iframe').attr('src')
+    const $btn = $('.modal-window__close-btn'),
+      modalAttr = modal.find('iframe').attr('src')
 
     $btn.on('click', () => {
       modal.find('iframe').attr('src', modalAttr) // Stops a video after a modal has been closed.
@@ -269,75 +267,88 @@ function manageSolutionsModals() {
 }
 
 function playClientsVideo() {
-  const $video = $('.clients__video')
-  const $playBtn = $('.clients__video-btn')
-  const $videoAndPlayBtn = $('.clients__video, .clients__video-btn')
+  const $video = $('.clients__video'),
+    $playBtn = $('.clients__video-btn'),
+    $videoAndPlayBtn = $('.clients__video, .clients__video-btn'),
+    hiddenClass = 'clients__video-btn-play--hidden',
+    activeClass = 'clients__video-btn-play--active'
 
-  $video.on('click', function () {
-    $playBtn.addClass('clients__video-btn-play--hidden')
-
-    if ($(this).attr('controls') === undefined) {
-      $(this).attr('controls', 'controls')
-    }
-  })
-
-  $playBtn.on('click', function () {
-    $(this).addClass('clients__video-btn-play--hidden')
-    $video.trigger('play')
-
+  function addControls() {
     if ($video.attr('controls') === undefined) {
       $video.attr('controls', 'controls')
     }
+  }
+
+  function removeHandlers() {
+    $videoAndPlayBtn.off('mouseleave').off('mouseenter')
+  }
+
+  $video.on('click', function () {
+    $playBtn.addClass(hiddenClass)
+    addControls()
+    removeHandlers()
   })
 
-  $videoAndPlayBtn.on('hover', () => {
-    $playBtn.toggleClass('clients__video-btn-play--active')
+  $playBtn.on('click', function () {
+    $(this).addClass(hiddenClass)
+    $video.trigger('play')
+    addControls()
+    removeHandlers()
+  })
+
+  $videoAndPlayBtn.on('mouseenter', () => {
+    $playBtn.addClass(activeClass)
+  })
+
+  $video.on('mouseleave', () => {
+    $playBtn.removeClass(activeClass)
   })
 }
 
 function activateBrandsPics() {
-  const $firstPic = $('.brands__pic--first')
-  const $secondPic = $('.brands__pic--second')
-  const $thirdPic = $('.brands__pic--third')
-  const $fourthPic = $('.brands__pic--fourth')
-  const activationClass = 'brands__pic--active'
-  const activationTime = 2000
+  const $firstPic = $('.brands__pic--first'),
+    $secondPic = $('.brands__pic--second'),
+    $thirdPic = $('.brands__pic--third'),
+    $fourthPic = $('.brands__pic--fourth'),
+    activeClass = 'brands__pic--active',
+    activationTime = 1000
 
-  const activatePicsConsecutively = function activate() {
-    setTimeout(() => {
-      $firstPic.addClass(activationClass)
-      $fourthPic.removeClass(activationClass)
-      setTimeout(() => {
-        $secondPic.addClass(activationClass)
-        $firstPic.removeClass(activationClass)
-        setTimeout(() => {
-          $thirdPic.addClass(activationClass)
-          $secondPic.removeClass(activationClass)
-          setTimeout(() => {
-            $fourthPic.addClass(activationClass)
-            $thirdPic.removeClass(activationClass)
-            activate()
-          }, activationTime)
-        }, activationTime)
-      }, activationTime)
+  const arrayOfPics = [$firstPic, $secondPic, $thirdPic, $fourthPic]
+  let index = 0
+
+  function activate(arr) {
+    const timer = setInterval(() => {
+      arr[index].addClass(activeClass)
+
+      index > 0
+        ? arr[index - 1].removeClass(activeClass)
+        : arr[arr.length - 1].removeClass(activeClass)
+
+      if (index === arr.length - 1) {
+        index = -1
+
+        clearInterval(timer)
+        activate(arrayOfPics)
+      }
+
+      index++
     }, activationTime)
   }
 
-  activatePicsConsecutively()
+  activate(arrayOfPics)
 }
 
 function togglePortfolioTabs() {
-  const $allMenuItem = $('.portfolio__menu-item--all')
-  const $webMenuItem = $('.portfolio__menu-item--web')
-  const $adMenuItem = $('.portfolio__menu-item--ad')
-  const $brandingMenuItem = $('.portfolio__menu-item--branding')
-  const $designMenuItem = $('.portfolio__menu-item--design')
-
-  const $allListItems = $('.portfolio__projects-list-item')
-  const $webListItems = $('.portfolio__projects-list-item--web')
-  const $adListItems = $('.portfolio__projects-list-item--ad')
-  const $brandingListItems = $('.portfolio__projects-list-item--branding')
-  const $designListItems = $('.portfolio__projects-list-item--design')
+  const $menuItemAll = $('.portfolio__menu-item--all'),
+    $menuItemWeb = $('.portfolio__menu-item--web'),
+    $menuItemAd = $('.portfolio__menu-item--ad'),
+    $menuItemBranding = $('.portfolio__menu-item--branding'),
+    $menuItemDesign = $('.portfolio__menu-item--design'),
+    $listItemsAll = $('.portfolio__projects-list-item'),
+    $listItemsWeb = $('.portfolio__projects-list-item--web'),
+    $listItemsAd = $('.portfolio__projects-list-item--ad'),
+    $listItemsBranding = $('.portfolio__projects-list-item--branding'),
+    $listItemsDesign = $('.portfolio__projects-list-item--design')
 
   function toggleTabs(menuItem, listItem, allListItems) {
     menuItem.on('click', () => {
@@ -351,22 +362,22 @@ function togglePortfolioTabs() {
     })
   }
 
-  toggleTabs($allMenuItem, $allListItems, $allListItems)
-  toggleTabs($webMenuItem, $webListItems, $allListItems)
-  toggleTabs($adMenuItem, $adListItems, $allListItems)
-  toggleTabs($brandingMenuItem, $brandingListItems, $allListItems)
-  toggleTabs($designMenuItem, $designListItems, $allListItems)
+  toggleTabs($menuItemAll, $listItemsAll, $listItemsAll)
+  toggleTabs($menuItemWeb, $listItemsWeb, $listItemsAll)
+  toggleTabs($menuItemAd, $listItemsAd, $listItemsAll)
+  toggleTabs($menuItemBranding, $listItemsBranding, $listItemsAll)
+  toggleTabs($menuItemDesign, $listItemsDesign, $listItemsAll)
 }
 
 /*
- This auxiliary fn provides toggling of modals
+ toggleFormModal() provides toggling of modals
 in Contacts section form and Footer section form.
 It called inside manageContactForm() and manageFooterForm() fns.
 */
 function toggleFormModal() {
-  const $body = $('body')
-  const $modal = $('.modal-window__form-item')
-  const $modalCloseBtn = $('.modal-window__form-close-btn')
+  const $body = $('body'),
+    $modal = $('.modal-window__form-item'),
+    $modalCloseBtn = $('.modal-window__form-close-btn')
 
   const $scrollToTopBtn = $('.scroll-top-btn')
   const scrollToTopBtnActive = 'scroll-top-btn--active'
@@ -379,6 +390,10 @@ function toggleFormModal() {
     $body.removeClass('body--inactive')
   }
 
+  function activateScrollToTopBtn() {
+    $scrollToTopBtn.addClass(scrollToTopBtnActive)
+  }
+
   $modal.fadeIn()
   $scrollToTopBtn.removeClass(scrollToTopBtnActive)
   disableScroll()
@@ -386,20 +401,20 @@ function toggleFormModal() {
   $modal.on('click', function (ev) {
     if (ev.target === this) {
       $(this).fadeOut()
-      $scrollToTopBtn.addClass(scrollToTopBtnActive)
+      activateScrollToTopBtn()
       enableScroll()
     }
   })
 
   $modalCloseBtn.on('click', function () {
     $(this).parent().fadeOut()
-    $scrollToTopBtn.addClass(scrollToTopBtnActive)
+    activateScrollToTopBtn()
     enableScroll()
   })
 }
 
 /*
-This auxiliary fn provides changing of text inside modals
+changeFormModalText() provides changing of text inside modals
 in Contacts section form and Footer section form in case of failed submission of a form.
 It called inside manageContactForm() and manageFooterForm() fns.
 */
@@ -410,25 +425,24 @@ function changeFormModalText() {
 }
 
 function manageContactForm() {
-  const $form = $('.contact__form')
-  const $formInputs = $('.contact__form-input')
-  const $formTooltips = $('.tooltip__contact-form-item')
-  const $tooltipText = $('.tooltip__text')
-  const $submitBtn = $('.contact__form-input--submit')
-  const tooltipActivationClass = 'tooltip--active'
+  const $form = $('.contact__form'),
+    $formInputs = $('.contact__form-input'),
+    $formTooltips = $('.tooltip__contact-form-item'),
+    $tooltipText = $('.tooltip__text'),
+    $submitBtn = $('.contact__form-input--submit'),
+    tooltipActivationClass = 'tooltip--active'
 
   function checkFormAndSubmitFormValues() {
-    const $inputName = $('.contact__form-input--name')
-    const $inputCompany = $('.contact__form-input--company')
-    const $inputEmail = $('.contact__form-input--email')
-    const $inputService = $('.contact__form-input--service')
-    const $inputTextarea = $('.contact__form-input--textarea')
-
-    const $inputNameTooltip = $('.contact__form-input-tooltip--name')
-    const $inputCompanyTooltip = $('.contact__form-input-tooltip--company')
-    const $inputEmailTooltip = $('.contact__form-input-tooltip--email')
-    const $inputServiceTooltip = $('.contact__form-input-tooltip--service')
-    const $inputTextareaTooltip = $('.contact__form-input-tooltip--textarea')
+    const $inputName = $('.contact__form-input--name'),
+      $inputCompany = $('.contact__form-input--company'),
+      $inputEmail = $('.contact__form-input--email'),
+      $inputService = $('.contact__form-input--service'),
+      $inputTextarea = $('.contact__form-input--textarea'),
+      $inputTooltipName = $('.contact__form-input-tooltip--name'),
+      $inputTooltipCompany = $('.contact__form-input-tooltip--company'),
+      $inputTooltipEmail = $('.contact__form-input-tooltip--email'),
+      $inputTooltipService = $('.contact__form-input-tooltip--service'),
+      $inputTooltipTextarea = $('.contact__form-input-tooltip--textarea')
 
     /*
     checkEmptyValue(), checkLength() fns check forms for
@@ -443,7 +457,7 @@ function manageContactForm() {
     function checkEmptyValue(input, tooltip) {
       const inputValue = input.val()
 
-      if (inputValue === null || inputValue.toString().trim() === '') {
+      if (!inputValue) {
         tooltip.addClass(tooltipActivationClass)
         return false
       }
@@ -452,10 +466,10 @@ function manageContactForm() {
     }
 
     function checkEmailCharTypes(emailInput, emailTooltip) {
-      const inputValue = emailInput.val().toString().trim()
-      const $emailTooltipText = emailTooltip.find('p')
+      const inputValue = emailInput.val().toString().trim(),
+        $emailTooltipText = emailTooltip.find('p')
 
-      if (inputValue === '') {
+      if (!inputValue) {
         return false
       }
 
@@ -472,8 +486,8 @@ function manageContactForm() {
     }
 
     function checkLength(input, tooltip, length) {
-      const inputValue = input.val().toString().trim()
-      const $tooltipText = tooltip.find('p')
+      const inputValue = input.val().toString().trim(),
+        $tooltipText = tooltip.find('p')
 
       if (inputValue.length > length) {
         $tooltipText.text(`Max number of letters is ${length}`)
@@ -486,17 +500,21 @@ function manageContactForm() {
 
     function checkAggregatedCallsForAjax() {
       return (
-        checkEmptyValue($inputName, $inputNameTooltip) &&
-        checkLength($inputName, $inputNameTooltip, 100) &&
-        checkEmptyValue($inputCompany, $inputCompanyTooltip) &&
-        checkLength($inputCompany, $inputCompanyTooltip, 100) &&
-        checkEmptyValue($inputEmail, $inputEmailTooltip) &&
-        checkLength($inputEmail, $inputEmailTooltip, 100) &&
-        checkEmailCharTypes($inputEmail, $inputEmailTooltip) &&
-        checkEmptyValue($inputService, $inputServiceTooltip) &&
-        checkEmptyValue($inputTextarea, $inputTextareaTooltip) &&
-        checkLength($inputTextarea, $inputTextareaTooltip, 2500)
+        checkEmptyValue($inputName, $inputTooltipName) &&
+        checkLength($inputName, $inputTooltipName, 100) &&
+        checkEmptyValue($inputCompany, $inputTooltipCompany) &&
+        checkLength($inputCompany, $inputTooltipCompany, 100) &&
+        checkEmptyValue($inputEmail, $inputTooltipEmail) &&
+        checkLength($inputEmail, $inputTooltipEmail, 100) &&
+        checkEmailCharTypes($inputEmail, $inputTooltipEmail) &&
+        checkEmptyValue($inputService, $inputTooltipService) &&
+        checkEmptyValue($inputTextarea, $inputTooltipTextarea) &&
+        checkLength($inputTextarea, $inputTooltipTextarea, 2500)
       )
+    }
+
+    function resetForm() {
+      $form.trigger('reset')
     }
 
     $.ajax({
@@ -508,12 +526,12 @@ function manageContactForm() {
       },
       success: () => {
         toggleFormModal()
-        $form.trigger('reset')
+        resetForm()
       },
       error: () => {
         changeFormModalText()
         toggleFormModal()
-        $form.trigger('reset')
+        resetForm()
       }
     })
 
@@ -534,7 +552,7 @@ function manageContactForm() {
     }
   })
 
-  // Hides tooltips on inputs focus.
+  // Hides tooltips on inputs' focus.
   $formInputs.on('focus', () => {
     $formTooltips.removeClass(tooltipActivationClass)
     $tooltipText.text('Enter a value')
@@ -542,27 +560,26 @@ function manageContactForm() {
 }
 
 function manageFooterForm() {
-  const $submitBtn = $('.form__input--submit')
-  const $form = $('.footer__form')
+  const $form = $('.footer__form'),
+    $submitBtn = $('.form__input--submit')
 
   function checkFormAndSubmitValues() {
-    const $input = $('.footer__form-input--email')
-    const inputProtectedValue = $('.footer__form-input--email')
-      .val()
-      .toString()
-      .trim()
-
-    const $tooltip = $('.tooltip__footer-form-item')
-    const $tooltipText = $tooltip.find('p')
-    const tooltipActivationClass = 'tooltip--active'
-    const length = 50
+    const $input = $('.footer__form-input--email'),
+      inputProtectedValue = $('.footer__form-input--email')
+        .val()
+        .toString()
+        .trim(),
+      $tooltip = $('.tooltip__footer-form-item'),
+      $tooltipText = $tooltip.find('p'),
+      tooltipActivationClass = 'tooltip--active',
+      length = 50
 
     function checkInputsForAjax() {
       function activateTooltip() {
         $tooltip.addClass(tooltipActivationClass)
       }
 
-      if (inputProtectedValue === null || inputProtectedValue === '') {
+      if (!inputProtectedValue) {
         activateTooltip()
         return false
       }
@@ -588,6 +605,10 @@ function manageFooterForm() {
 
     $tooltipText.text('Enter a value') // Restores default text value.
 
+    function resetForm() {
+      $form.trigger('reset')
+    }
+
     $.ajax({
       url: '/php/mail.php',
       type: 'POST',
@@ -597,12 +618,12 @@ function manageFooterForm() {
       },
       success: () => {
         toggleFormModal()
-        $form.trigger('reset')
+        resetForm()
       },
       error: () => {
         changeFormModalText()
         toggleFormModal()
-        $form.trigger('reset')
+        resetForm()
       }
     })
 
@@ -627,9 +648,9 @@ function manageFooterForm() {
 
 function manageFooterMapModal() {
   function toggleTooltipForAddress() {
-    const $address = $('.footer__location')
-    const $tooltip = $('.footer__adress-tooltip')
-    const $footerLeft = $('.footer__left')
+    const $address = $('.footer__location'),
+      $tooltip = $('.footer__adress-tooltip'),
+      $footerLeft = $('.footer__left')
 
     $address.on('mouseenter', () => {
       $tooltip.addClass('footer__adress-tooltip--active')
@@ -640,14 +661,15 @@ function manageFooterMapModal() {
     })
   }
 
-  function toggleFooterMapModal() {
-    const $body = $('body')
-    const $mapModal = $('.modal-window__footer-map')
-    const $addressItems = $('.footer__location, .footer__adress-tooltip')
-    const $closeBtn = $('.modal-window__footer-map-close-btn')
+  toggleTooltipForAddress()
 
-    const $scrollToTopBtn = $('.scroll-top-btn')
-    const scrollToTopBtnActive = 'scroll-top-btn--active'
+  function toggleFooterMapModal() {
+    const $body = $('body'),
+      $mapModal = $('.modal-window__footer-map'),
+      $addressItems = $('.footer__location, .footer__adress-tooltip'),
+      $closeBtn = $('.modal-window__footer-map-close-btn'),
+      $scrollToTopBtn = $('.scroll-top-btn'),
+      scrollToTopBtnActive = 'scroll-top-btn--active'
 
     function disableScroll() {
       $body.addClass('body--inactive')
@@ -683,6 +705,5 @@ function manageFooterMapModal() {
     }
   }
 
-  toggleTooltipForAddress()
   toggleFooterMapModal()
 }

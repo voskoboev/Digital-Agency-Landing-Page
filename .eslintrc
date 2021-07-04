@@ -20,6 +20,7 @@
         "space-before-function-paren": 0,
         "no-undef": 0, // Excluded incorrect recognition of $.
         "semi": 0,
+        "one-var": 0,
         "jquery/no-animate": 0,
         "jquery/no-fade": 0,
         "jquery/no-ajax": 0,
