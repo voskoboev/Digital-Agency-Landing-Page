@@ -1,24 +1,12 @@
 .header {
-  background: url('../images/header/office.jpg') no-repeat;
+  height: 88.6vh;
+  background: url('../images/header/office.webp') no-repeat;
   background-position-x: 50%;
   background-size: cover;
 
   @media screen and (max-width: 768px) {
+    height: auto;
     background-size: cover;
-  }
-
-  .header__color-wrapper {
-    width: 100%;
-    padding-bottom: 242px;
-    background-color: rgba(0, 0, 0, 0.5);
-
-    @media screen and (max-width: 980px) {
-      padding-bottom: 150px;
-    }
-
-    @media screen and (max-width: 768px) {
-      padding: 0;
-    }
   }
 
   .header__upper {
@@ -72,6 +60,7 @@
     margin-bottom: 45px;
     line-height: normal;
     text-align: center;
+    text-transform: capitalize;
     letter-spacing: 0.3px;
 
     @media screen and (max-width: 768px) {
@@ -232,6 +221,7 @@
 
     position: relative;
     margin-bottom: 59px;
+    text-transform: capitalize;
 
     &::after {
       position: absolute;
@@ -394,6 +384,7 @@
     @include font($secondary-font, 700, 2rem, $primary-font-color);
 
     margin-bottom: 26px;
+    text-transform: capitalize;
 
     @media screen and (max-width: 550px) {
       margin-bottom: 13px;
@@ -781,6 +772,7 @@
   .portfolio__menu-item {
     padding-bottom: 4px;
     color: #a4a4a4;
+    text-transform: uppercase;
     cursor: pointer;
     border-bottom: 1px solid transparent;
     transition: 0.2s all ease;
@@ -1900,20 +1892,10 @@
     }
   }
 
-  .footer__socials-item-link--inst {
-    background-image: url('../images/footer/inst.webp');
-  }
-
-  .footer__socials-item-link--fb {
-    background-image: url('../images/footer/fb.webp');
-  }
-
-  .footer__socials-item-link--tw {
-    background-image: url('../images/footer/tw.webp');
-  }
-
-  .footer__socials-item-link--ln {
-    background-image: url('../images/footer/ln.webp');
+  @each $elem in inst, fb, tw, ln {
+    .footer__socials-item-link--#{$elem} {
+      background-image: url('../images/footer/#{$elem}.webp');
+    }
   }
 
   .footer__right {

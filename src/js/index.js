@@ -65,7 +65,7 @@ function scrollTo() {
     $portfolioTabs.fadeIn()
   }
 
-  function scrollToSections() {
+  ;(() => {
     const $body = $('body'),
       $itemsServices = $(`
         .nav__menu-item--services, 
@@ -86,7 +86,7 @@ function scrollTo() {
       $sectionClients = $('.clients'),
       $sectionContact = $('.contact')
 
-    function scrollToCertainSection(interactiveItems, positionItem) {
+    function scrollToSection(interactiveItems, positionItem) {
       const position = positionItem.offset().top
 
       let verticalOffset = 200 // An offset is determined and changed by visual UX.
@@ -105,14 +105,12 @@ function scrollTo() {
       })
     }
 
-    scrollToCertainSection($itemsServices, $sectionServices)
-    scrollToCertainSection($menuItemPortfolio, $sectionPortfolio)
-    scrollToCertainSection($menuItemPromo, $sectionPromo)
-    scrollToCertainSection($menuItemClients, $sectionClients)
-    scrollToCertainSection($itemsContact, $sectionContact)
-  }
-
-  scrollToSections()
+    scrollToSection($itemsServices, $sectionServices)
+    scrollToSection($menuItemPortfolio, $sectionPortfolio)
+    scrollToSection($menuItemPromo, $sectionPromo)
+    scrollToSection($menuItemClients, $sectionClients)
+    scrollToSection($itemsContact, $sectionContact)
+  })()
 
   function scrollToTop() {
     const $itemsHome = $('.nav__menu-item--home, .footer__logo-img')
@@ -226,6 +224,10 @@ function manageSolutionsModals() {
     })
   }
 
+  fadeInModal($cardFirst, $modalFirst)
+  fadeInModal($cardSecond, $modalSecond)
+  fadeInModal($cardThird, $modalThird)
+
   function fadeOutModalAndStopVideo(modal) {
     const modalAttr = modal.find('iframe').attr('src')
 
@@ -241,6 +243,10 @@ function manageSolutionsModals() {
     }
   }
 
+  fadeOutModalAndStopVideo($modalFirst)
+  fadeOutModalAndStopVideo($modalSecond)
+  fadeOutModalAndStopVideo($modalThird)
+
   function fadeOutModalAndStopVideoOnCloseBtnClick(modal) {
     const $btn = $('.modal-window__close-btn'),
       modalAttr = modal.find('iframe').attr('src')
@@ -252,14 +258,6 @@ function manageSolutionsModals() {
       enableScroll()
     })
   }
-
-  fadeInModal($cardFirst, $modalFirst)
-  fadeInModal($cardSecond, $modalSecond)
-  fadeInModal($cardThird, $modalThird)
-
-  fadeOutModalAndStopVideo($modalFirst)
-  fadeOutModalAndStopVideo($modalSecond)
-  fadeOutModalAndStopVideo($modalThird)
 
   fadeOutModalAndStopVideoOnCloseBtnClick($modalFirst)
   fadeOutModalAndStopVideoOnCloseBtnClick($modalSecond)
@@ -316,7 +314,7 @@ function activateBrandsPics() {
   const arrayOfPics = [$firstPic, $secondPic, $thirdPic, $fourthPic]
   let index = 0
 
-  function activate(arr) {
+  function activateBrandsPicsConsecutively(arr) {
     const timer = setInterval(() => {
       arr[index].addClass(activeClass)
 
@@ -328,14 +326,14 @@ function activateBrandsPics() {
         index = -1
 
         clearInterval(timer)
-        activate(arrayOfPics)
+        activateBrandsPicsConsecutively(arrayOfPics)
       }
 
       index++
     }, activationTime)
   }
 
-  activate(arrayOfPics)
+  activateBrandsPicsConsecutively(arrayOfPics)
 }
 
 function togglePortfolioTabs() {
@@ -447,10 +445,10 @@ function manageContactForm() {
     /*
     checkEmptyValue(), checkLength() fns check forms for
     lack of values and maximum chars quantity.
-
+ 
     checkEmailCharTypes() fn checks email input for
     presence of "@" and "." chars: these chars mean inserted email address.
-
+ 
     Then all of these fns transfer final value to checkAggregatedCallsForAjax()
     for to return one final value used in an ajax fn.
     */
@@ -647,7 +645,7 @@ function manageFooterForm() {
 }
 
 function manageFooterMapModal() {
-  function toggleTooltipForAddress() {
+  function toggleAddressTooltip() {
     const $address = $('.footer__location'),
       $tooltip = $('.footer__adress-tooltip'),
       $footerLeft = $('.footer__left')
@@ -661,7 +659,7 @@ function manageFooterMapModal() {
     })
   }
 
-  toggleTooltipForAddress()
+  toggleAddressTooltip()
 
   function toggleFooterMapModal() {
     const $body = $('body'),

@@ -32,6 +32,7 @@ img {
 
 button:hover,
 input[type='submit']:hover {
+  text-transform: capitalize;
   cursor: pointer;
   transition: 0.2s all ease;
 }

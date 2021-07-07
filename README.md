@@ -50,7 +50,7 @@ Gulp, Reset.css, SCSS, jQuery, Slick Slider, ESLint, Stylelint, Perfect Pixel.
 2. Useful settings' API;
 3. Responsiveness.
 
-#### 7) ESLint, Stylelint:</br>
+#### 6) ESLint, Stylelint:</br>
 1. Widespread use (potential support);
 2. Useful standard cfgs.
 
@@ -59,7 +59,7 @@ Gulp, Reset.css, SCSS, jQuery, Slick Slider, ESLint, Stylelint, Perfect Pixel.
 -   **Project in General**:
     -   Folder structure is mostly file based besides SCSS;
     -   SCSS has BEM based flat file structure;
-    -  	Cross-browser compatibility checked with ‘Chrome’, ‘Opera’, ‘Firefox’, ‘Edge’ and ‘Yandex’.
+    -  	Cross-browser compatibility was checked with ‘Chrome’, ‘Opera’, ‘Firefox’, ‘Edge’ and ‘Yandex’.
 -   **HTML:**  Semantic layout.
 -   **SCSS**:
     -   BEM naming methodology;
